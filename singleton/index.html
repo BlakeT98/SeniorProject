@@ -383,9 +383,9 @@
 <p>Sometimes we will need to describe a type of object that will only have one instance variable. This is a design choice that we often need to ensure that only one instance will exist.</p>
 <h2 id="resolution">Resolution:</h2>
 <p>Ensures that only one object of its kind exists and provides a single point of access for any code. This is useful when exactly one object is needed to coordinate actions across the system.</p>
-<p>Implemented in C++:
-    #include <iostream></p>
-<pre><code>using namespace std;
+<p>Implemented in C++:</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
 
 class Singleton {
    static Singleton *instance;
