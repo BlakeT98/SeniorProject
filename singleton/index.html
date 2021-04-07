@@ -380,13 +380,53 @@
                   <h1>Singleton</h1>
                 
                 <h2 id="forces">Forces:</h2>
-<p>explaination of issue</p>
+<p>Sometimes we will need to describe a type of object that will only have one instance variable. This is a design choice that we often need to ensure that only one instance will exist.</p>
 <h2 id="resolution">Resolution:</h2>
-<p>step by step instructions to solve issue</p>
+<p>Ensures that only one object of its kind exists and provides a single point of access for any code. This is useful when exactly one object is needed to coordinate actions across the system.</p>
+<p>Implemented in C++:
+    "#include <iostream></p>
+<pre><code>using namespace std;
+
+class Singleton {
+   static Singleton *instance;
+   int data;
+
+   // Private constructor so that no objects can be created.
+   Singleton() {
+      data = 0;
+   }
+
+   public:
+   static Singleton *getInstance() {
+      if (!instance)
+      instance = new Singleton;
+      return instance;
+   }
+
+   int getData() {
+      return this -&gt; data;
+   }
+
+   void setData(int data) {
+      this -&gt; data = data;
+   }
+};
+
+//Initialize pointer to zero so that it can be initialized in first call to getInstance
+Singleton *Singleton::instance = 0;
+
+int main(){
+   Singleton *s = s-&gt;getInstance();
+   cout &lt;&lt; s-&gt;getData() &lt;&lt; endl;
+   s-&gt;setData(100);
+   cout &lt;&lt; s-&gt;getData() &lt;&lt; endl;
+   return 0;
+}"
+</code></pre>
 <h2 id="preceding-patterns">Preceding patterns:</h2>
-<p>issues that may occur before this</p>
+<p>TBD</p>
 <h2 id="following-patterns">Following patterns:</h2>
-<p>issues that may occur after this</p>
+<p>TBD</p>
                 
               
               
