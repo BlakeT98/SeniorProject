@@ -2,6 +2,14 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
+    <!-- TESTING: INITIALIZING MAP -->
+      <style> #map {
+                height: 480px;
+                width: 100%;
+              }
+        </style>
+<!-- ------------------------------------------------------- -->
+    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- BROWSER TAB LOGO AND TITLE -->
@@ -132,6 +140,24 @@
                 <p>APIs Used: Google - Maps JavaScript, Maps Elevation, and Geocoding</p>
                 <h2 id="pattern-layout">Map:</h2>
                 <h3> place holder for map. </h3>
+
+                <div id="map"></div>
+              <script>
+                function initMap(){
+                  var coord = {
+                    zoom: 8,
+                    center: {lat: -25.363, lng: 131.04}
+                  }
+                  var map = new google.maps.Map(document.getElementById('map'), coord);
+                  var marker = new google.maps.Marker({ 
+                    position: coord, 
+                    map: map 
+                  }); 
+                }
+              </script>
+              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&callback=myMap">
+              </script>
+
       
             </article>
           </div>
