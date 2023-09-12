@@ -141,22 +141,18 @@
                 <h2 id="pattern-layout">Map:</h2>
                 <h3> place holder for map. </h3>
 
-                <div id="map"></div>
-              <script>
-                function initMap(){
-                  var coord = {
-                    zoom: 8,
-                    center: {lat: -25.363, lng: 131.04}
+                <div id="map" style="width:100%;height:400px;"></div>
+                <script>
+                  function myMap(){
+                    var coord = {
+                      center:new google.maps.LatLng(51.508742,-0.120850),
+                      zoom:5,
+                    };
+                    var map = new google.maps.Map(document.getElementById('map'), coord);
+                   // var marker = new google.maps.Marker({  position: coord, map: map }); 
                   }
-                  var map = new google.maps.Map(document.getElementById('map'), coord);
-                  var marker = new google.maps.Marker({ 
-                    position: coord, 
-                    map: map 
-                  }); 
-                }
               </script>
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&callback=myMap">
-              </script>
+              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&callback=myMap"> </script>
 
       
             </article>
