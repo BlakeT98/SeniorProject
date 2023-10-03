@@ -11,11 +11,12 @@ function myMap(){
   // var marker = new google.maps.Marker({  position: coord, map: map }); 
 }
 
-//Creates button
+//Creates pop up message at button click
 function onButtonClick() {
   alert('Button clicked!');
 }
 
+//Applies onButtonClick to button
 const button = document.querySelector('button');
 button.addEventListener('click', onButtonClick);
 
