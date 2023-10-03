@@ -6,6 +6,7 @@ function myMap(){
   };
   var map = new google.maps.Map(document.getElementById('map'), coord);
   // var marker = new google.maps.Marker({  position: coord, map: map }); 
+}
   
 function onButtonClick() {
   alert('Button clicked!');
