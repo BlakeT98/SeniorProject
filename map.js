@@ -1,4 +1,12 @@
 
+function myMap(){
+  var coord = {
+    center:new google.maps.LatLng(46.547581, -87.395592),
+    zoom:16,
+  };
+  var map = new google.maps.Map(document.getElementById('map'), coord);
+  // var marker = new google.maps.Marker({  position: coord, map: map }); 
+  
 function onButtonClick() {
   alert('Button clicked!');
 }
