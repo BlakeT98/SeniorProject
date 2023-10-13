@@ -41,20 +41,17 @@ function grabAddress(){
  var start = document.getElementById("start").value;
  var end = document.getElementById("end").value;
  var txt = start + ' ' + end;
- alert(txt);
+ if(validAddress(start)){
+  if(validAddress(end)) alert('Creating Route!');
+  alert(end + ' is not a valid address.');
+ }
+ alert(start + ' is not a valid address.')                                               
 }
 
-//Creates pop up message at button click
-function onButtonClick() {
-  alert('Button clicked!');
+//Checks if address is within range
+function boolean validAddress(var ad) {
+  //return true if it is a valid address and within range
+ //return false if not
+ return true;
 }
 
-//Creates button at bottom of html page
-/*const newButton = document.createElement('button');
-newButton.textContent = 'Click me!';
-document.body.appendChild(newButton);
-
-newButton.addEventListener('click', () => {
-  alert('New button clicked!');
-});
-*/
