@@ -33,7 +33,15 @@ function myMap(){
 
 //Applies onButtonClick to button
 const button = document.querySelector('button');
-button.addEventListener('click', onButtonClick);
+button.addEventListener('click', grabAddress);
+//button.addEventListener('click', onButtonClick);
+
+//Grabs addresses from input text
+function grabAddress(){
+ var start = document.getElementById("startTxt").value;
+ var end = document.getElementById("endTxt").value;
+ alert(start + end);
+}
 
 //Creates pop up message at button click
 function onButtonClick() {
