@@ -1,5 +1,5 @@
 //Creates objects that are nodes in a graph and connects nodes to other nodes via edges
-class Graph{
+/*class Graph{
  
 }
 class Node{
@@ -17,7 +17,7 @@ class Node{
     this.West = w;
     this.Elevation = ele;
   }
-}
+}*/
 
 //Creates Map
 function myMap(){
