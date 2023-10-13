@@ -38,9 +38,10 @@ button.addEventListener('click', grabAddress);
 
 //Grabs addresses from input text
 function grabAddress(){
- var start = document.getElementById("startTxt").value;
- var end = document.getElementById("endTxt").value;
- alert(start + end);
+ var start = document.getElementById("start").value;
+ var end = document.getElementById("end").value;
+ var txt = start + ' ' + end;
+ alert(txt);
 }
 
 //Creates pop up message at button click
