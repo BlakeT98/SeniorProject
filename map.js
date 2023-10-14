@@ -40,7 +40,7 @@ button.addEventListener('click', grabAddress);
 function grabAddress(){
  var start = document.getElementById("start").value;
  var end = document.getElementById("end").value;
- alert(start + end);
+ alert(start + ' ' + end);
 }
 
 //Creates pop up message at button click
