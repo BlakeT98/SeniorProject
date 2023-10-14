@@ -44,9 +44,6 @@ function grabAddress(){
  
 }
 
-function validAddress(var add){
- return true;
-}
 
 //Creates pop up message at button click
 function onButtonClick() {
