@@ -38,20 +38,22 @@ button.addEventListener('click', grabAddress);
 
 //Grabs addresses from input text
 function grabAddress(){
- var start = document.getElementById("start").value;
- var end = document.getElementById("end").value;
- var txt = start + ' ' + end;
- if(validAddress(start)){
-  if(validAddress(end)) alert('Creating Route!');
-  alert(end + ' is not a valid address.');
- }
- alert(start + ' is not a valid address.')                                               
+ var start = document.getElementById("startTxt").value;
+ var end = document.getElementById("endTxt").value;
+ alert(start + end);
 }
 
-//Checks if address is within range
-function boolean validAddress(var ad) {
-  //return true if it is a valid address and within range
- //return false if not
- return true;
+//Creates pop up message at button click
+function onButtonClick() {
+  alert('Button clicked!');
 }
 
+//Creates button at bottom of html page
+/*const newButton = document.createElement('button');
+newButton.textContent = 'Click me!';
+document.body.appendChild(newButton);
+
+newButton.addEventListener('click', () => {
+  alert('New button clicked!');
+});
+*/
