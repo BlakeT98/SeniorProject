@@ -33,7 +33,7 @@ function myMap(){
 
 //Applies onButtonClick to button
 const button = document.querySelector('button');
-button.addEventListener('click', grabAddress);
+button.addEventListener('click', grabAddress());
 //button.addEventListener('click', onButtonClick);
 
 //Grabs addresses from input text
@@ -41,11 +41,23 @@ function grabAddress(){
  var start = document.getElementById("startTxt").value;
  var end = document.getElementById("endTxt").value;
  alert(start + end);
+ /* if(validAddress(start)){
+  if(validAddress(end)) alert('Creating Route!');
+  alert(end + ' is not a valid address.');
+ }
+ alert(start + ' is not a valid address.')  */
 }
 
 //Creates pop up message at button click
 function onButtonClick() {
   alert('Button clicked!');
+}
+
+//Checks if address is within range
+function boolean validAddress(var ad) {
+  //return true if it is a valid address and within range
+ //return false if not
+ return true;
 }
 
 //Creates button at bottom of html page
