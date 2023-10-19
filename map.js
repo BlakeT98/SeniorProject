@@ -34,7 +34,7 @@ function myMap(){
 //Applies onButtonClick to button
 const button = document.querySelector('button');
 //button.addEventListener('click', grabAddress);
-button.addEventListener('click', onButtonClick);
+//button.addEventListener('click', onButtonClick);
 
 //Grabs addresses from input text
 function grabAddress(){
