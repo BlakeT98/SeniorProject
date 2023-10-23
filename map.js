@@ -33,7 +33,7 @@ function myMap(){
 
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
-const button = document.getElementById("enter").onclick = function(){grabAddress()};
+document.getElementById("enter").addEventListener("click", grabAddress);
 
 
 //button.addEventListener('click', grabAddress);
