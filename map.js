@@ -32,8 +32,11 @@ function myMap(){
 }
 
 //Applies onButtonClick to button
-const button = document.querySelector('button');
-button.addEventListener('click', grabAddress);
+//const button = document.querySelector('button');
+const button = document.getElementById("enter").onclick = function(){gragAddress()};
+
+
+//button.addEventListener('click', grabAddress);
 //button.addEventListener('click', onButtonClick);
 
 //Grabs addresses from input text
