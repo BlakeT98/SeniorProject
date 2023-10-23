@@ -173,6 +173,21 @@
                  
                   <div></div>
                   <button class="button button1" id="enter"> Enter </button>
+                  <!-- testing js code -->
+                  <script>
+                    document.getElementById("enter").addEventListener("click", grabAddress);
+                    //button.addEventListener('click', grabAddress);
+                    //button.addEventListener('click', onButtonClick);
+                    
+                    //Grabs addresses from input text
+                    function grabAddress(){
+                     var start = document.getElementById("start").value;
+                     var end = document.getElementById("end").value;
+                     alert(start + ' ' + end);
+                     
+                    }
+
+                  </script>
               
                 <div id="map" style="width:100%;height:400px;"></div>
 
