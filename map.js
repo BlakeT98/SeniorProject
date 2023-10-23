@@ -37,11 +37,11 @@ const button = document.querySelector('button');
 button.addEventListener('click', onButtonClick);
 
 //Grabs addresses from input text
-function grabAddress(){
+/*function grabAddress(){
  var start = document.getElementById("start").value;
  var end = document.getElementById("end").value;
  alert(start + ' ' + end);
- 
+ */
 }
 
 
