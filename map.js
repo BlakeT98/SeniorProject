@@ -13,7 +13,7 @@ function myMap(){
 
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
-document.getElementById("enter").addEventListener("click", grabAddress);
+/*document.getElementById("enter").addEventListener("click", grabAddress);
 
 
 //button.addEventListener('click', grabAddress);
@@ -26,7 +26,7 @@ function grabAddress(){
  alert(start + ' ' + end);
  
 }
-
+*/
 
 //Creates pop up message at button click
 /*function onButtonClick() {
