@@ -28,7 +28,7 @@ function myMap(){
   });
 }
 
-window.initMap = initMap;
+window.myMap = myMap;
 
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
