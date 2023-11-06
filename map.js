@@ -2,7 +2,7 @@
 //Creates Map
 function myMap(){
   const myLatlng = {lat: 46.547581, -87.395592};
-  const map = new google.maps.Map(document.getElementById("map, {
+  const map = new google.maps.Map(document.getElementById("map), {
     zoom: 13,
     center: myLatlng,
   });
