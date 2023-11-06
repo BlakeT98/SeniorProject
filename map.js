@@ -1,34 +1,15 @@
 
 //Creates Map
 function myMap(){
-  const myLatlng = { lat: -25.363, lng: 131.044 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: myLatlng,
-  });
-  // Create the initial InfoWindow.
-  let infoWindow = new google.maps.InfoWindow({
-    content: "Click the map to get Lat/Lng!",
-    position: myLatlng,
-  });
+  var coord = {
+    center:new google.maps.LatLng(46.547581, -87.395592),
+    zoom:13,
+  };
+  var map = new google.maps.Map(document.getElementById('map'), coord);
 
-  infoWindow.open(map);
-  // Configure the click listener.
-  map.addListener("click", (mapsMouseEvent) => {
-    // Close the current InfoWindow.
-    infoWindow.close();
-    // Create a new InfoWindow.
-    infoWindow = new google.maps.InfoWindow({
-      position: mapsMouseEvent.latLng,
-    });
-    infoWindow.setContent(
-      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
-    );
-    infoWindow.open(map);
-  });
+  //Creates marker pin
+  // var marker = new google.maps.Marker({  position: coord, map: map }); 
 }
-
-window.myMap = myMap;
 
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
