@@ -6,7 +6,7 @@ function myMap(){
     zoom:13,
   };
   var map = new google.maps.Map(document.getElementById('map'), coord);
-  /*
+
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "Click the map to get Lat/Lng!",
@@ -27,8 +27,9 @@ function myMap(){
     );
     infoWindow.open(map);
   });
-  */
 }
+window.myMap = myMap;
+
 
 //window.myMap = myMap;
 
