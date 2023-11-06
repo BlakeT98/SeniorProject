@@ -3,10 +3,9 @@
 function myMap(){
   var coord = {
     center:new google.maps.LatLng(46.547581, -87.395592),
-    zoom:13,
+    zoom:4,
   };
   var map = new google.maps.Map(document.getElementById('map'), coord);
-  var marker = new google.maps.Marker({  position: coord, map: map }); 
   /*
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
@@ -35,7 +34,7 @@ function myMap(){
 
 
   //Creates marker pin
-   var marker = new google.maps.Marker({  position: coord, map: map }); 
+   //var marker = new google.maps.Marker({  position: coord, map: map }); 
 
 
 //Applies onButtonClick to button
