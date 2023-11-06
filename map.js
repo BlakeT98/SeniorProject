@@ -7,9 +7,32 @@ function myMap(){
   };
   var map = new google.maps.Map(document.getElementById('map'), coord);
 
+   // Create the initial InfoWindow.
+  let infoWindow = new google.maps.InfoWindow({
+    content: "Click the map to get Lat/Lng!",
+    position: myLatlng,
+  });
+
+  infoWindow.open(map);
+  // Configure the click listener.
+  map.addListener("click", (mapsMouseEvent) => {
+    // Close the current InfoWindow.
+    infoWindow.close();
+    // Create a new InfoWindow.
+    infoWindow = new google.maps.InfoWindow({
+      position: mapsMouseEvent.latLng,
+    });
+    infoWindow.setContent(
+      JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
+    );
+    infoWindow.open(map);
+  });
+}
+
+window.myMap = myMap;
   //Creates marker pin
   // var marker = new google.maps.Marker({  position: coord, map: map }); 
-}
+
 
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
