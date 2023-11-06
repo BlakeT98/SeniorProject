@@ -4,7 +4,7 @@ function myMap(){
 
   const myLatlng = { lat: 46.547581, lng: -87.395592 };
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
+    zoom: 13,
     center: myLatlng,
   });
    // Create the initial InfoWindow.
