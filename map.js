@@ -1,12 +1,12 @@
 
 //Creates Map
 function myMap(){
-  var coord = {
-    center:new google.maps.LatLng(46.547581, -87.395592),
-    zoom:13,
-  };
-  var map = new google.maps.Map(document.getElementById('map'), coord);
 
+  const myLatlng = { lat: 46.547581, lng: -87.395592 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: myLatlng,
+  });
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "Click the map to get Lat/Lng!",
