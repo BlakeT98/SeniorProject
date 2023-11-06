@@ -7,6 +7,7 @@ function myMap(){
   };
   var map = new google.maps.Map(document.getElementById('map'), coord);
 
+  /*
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "Click the map to get Lat/Lng!",
@@ -27,11 +28,14 @@ function myMap(){
     );
     infoWindow.open(map);
   });
+  */
 }
 
-window.myMap = myMap;
+//window.myMap = myMap;
+
+
   //Creates marker pin
-  // var marker = new google.maps.Marker({  position: coord, map: map }); 
+   var marker = new google.maps.Marker({  position: coord, map: map }); 
 
 
 //Applies onButtonClick to button
