@@ -1,9 +1,9 @@
 
 //Creates Map
 function myMap(){
-  const myLatlng = {lat: 46.547581, -87.395592};
-  const map = new google.maps.Map(document.getElementById("map), {
-    zoom: 13,
+  const myLatlng = { lat: -25.363, lng: 131.044 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
     center: myLatlng,
   });
   // Create the initial InfoWindow.
@@ -26,11 +26,10 @@ function myMap(){
     );
     infoWindow.open(map);
   });
-  //Creates marker pin
-  // var marker = new google.maps.Marker({  position: coord, map: map }); 
 }
 
-window.myMap = myMap;
+window.initMap = initMap;
+
 //Applies onButtonClick to button
 //const button = document.querySelector('button');
 /*document.getElementById("enter").addEventListener("click", grabAddress);
