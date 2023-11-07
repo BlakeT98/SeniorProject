@@ -11,6 +11,7 @@ function myMap(){
   let infoWindow = new google.maps.InfoWindow({
     content: "Click the map to get Lat/Lng!",
     position: myLatlng,
+    color: black;
   });
 
   infoWindow.open(map);
