@@ -24,7 +24,7 @@ function myMap(){
       position: mapsMouseEvent.latLng,
     });
     infoWindow.setContent(
-      JSON.stringify("<p style=\"color:black;\"><b>" + mapsMouseEvent.latLng.toJSON() + "</b></p>", null, 2),
+      JSON.stringify("<p style=\"color:black;\"><b>" mapsMouseEvent.latLng.toJSON() "</b></p>", null, 2),
     );
     infoWindow.open(map);
   });
