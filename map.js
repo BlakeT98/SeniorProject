@@ -9,14 +9,10 @@ function myMap(){
   });
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
-    content: "Click the map to get Lat/Lng!",
+    content: "<b>Click the map to get Lat/Lng!</b>",
     position: myLatlng,
     
   });
-  //removes infowindow background
-   google.maps.event.addListenerOnce(map, 'idle', function(){
-    jQuery('.gm-style-iw').prev('div').remove();
-  }); 
 
   infoWindow.open(map);
   // Configure the click listener.
