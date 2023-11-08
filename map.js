@@ -9,7 +9,7 @@ function myMap(){
   });
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
-    content: "<h2 id=\"pattern-layout\"><b>Click the map to get Lat/Lng!</b></h2>",
+    content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
     position: myLatlng,
     
   });
