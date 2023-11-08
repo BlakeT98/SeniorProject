@@ -13,6 +13,10 @@ function myMap(){
     position: myLatlng,
     
   });
+  //removes infowindow background
+   google.maps.event.addListenerOnce(map, 'idle', function(){
+    jQuery('.gm-style-iw').prev('div').remove();
+  }); 
 
   infoWindow.open(map);
   // Configure the click listener.
@@ -28,10 +32,7 @@ function myMap(){
     );
     infoWindow.open(map);
   });
-  //removes infowindow background
-  google.maps.event.addListenerOnce(map, 'idle', function(){
-    jQuery('.gm-style-iw').prev('div').remove();
-}); 
+ 
 }
 window.myMap = myMap;
 
