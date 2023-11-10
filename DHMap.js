@@ -51,7 +51,7 @@ for(let j = 0; j < interArray.length; j++){
     }
     Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   }
-  temp += Intersections[j].idNum + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
+  temp += ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
 document.getElementById("test").innerHTML = temp;
