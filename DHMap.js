@@ -36,7 +36,7 @@ for(let i = 0; i < addyArray.length; i++){
   //temp += Streets[i].Name + "<br>";
 }
 //Creating Intersections[] with interArray
-for(let j = 0; j < interArray; j++){
+for(let j = 0; j < interArray.length; j++){
   let compass = [];
   let index = 0;
   let start = 0;
