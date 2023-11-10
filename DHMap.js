@@ -32,9 +32,11 @@ for(let i = 0; i < addyArray.length; i++){
   if(addyArray[i].charAt(3) == " ")blck = addyArray[i].substring(0,3);
   else blck = addyArray[i].substring(0,4);
   n = addyArray[i].substring(5);
-  Streets[i] = new Street(blck,n);
+  //Streets[i] = new Street(blck,n);
   //temp += Streets[i].Name + "<br>";
+  
 }
+temp += interArray[0] + "<br>";
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length; j++){
   let compass = [];
@@ -43,7 +45,7 @@ for(let j = 0; j < interArray.length; j++){
   for(let k = 0; k < interArray[j].length; k++){
     if(interArray[j].charAt(k) == ","){
       compass[index] = interArray[j].substring(start,k);
-      temp += compass[index] + "<br>";
+      //temp += compass[index] + "<br>";
       start = k + 1;
       index++;
     }
