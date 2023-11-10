@@ -45,13 +45,13 @@ for(let j = 0; j < interArray.length; j++){
   for(let k = 0; k < interArray[j].length; k++){
     if(interArray[j].charAt(k) == ","){
       compass[index] = interArray[j].substring(start,k);
-      //temp += compass[index] + "<br>";
+      temp += compass[index] + "<br>";
       start = k + 1;
       index++;
     }
     Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   }
-  temp += ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
+  //temp += Intersections[j].idNum + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
 document.getElementById("test").innerHTML = temp;
