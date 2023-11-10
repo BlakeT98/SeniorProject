@@ -33,7 +33,7 @@ for(let i = 0; i < addyArray.length; i++){
   else blck = addyArray[i].substring(0,4);
   n = addyArray[i].substring(5);
   Streets[i] = new Street(blck,n);
-  temp += Streets[i].Name + "<br>";
+  //temp += Streets[i].Name + "<br>";
 }
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray; j++){
@@ -48,7 +48,7 @@ for(let j = 0; j < interArray; j++){
     }
     Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   }
-  //temp += Intersections[j].ID + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
+  temp += Intersections[j].ID + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
 document.getElementById("test").innerHTML = temp;
