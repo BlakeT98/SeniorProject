@@ -42,7 +42,7 @@ for(let j = 0; j < interArray; j++){
   let start = 0;
   for(let k = 0; k < interArray[j].length; k++){
     if(interArray[j].charAt(k) == ","){
-      compass[index] = inteArray[j].substring(start,k);
+      compass[index] = interArray[j].substring(start,k);
       start = k + 1;
       index++;
     }
