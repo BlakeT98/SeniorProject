@@ -15,7 +15,7 @@ function Intersection(id,north,east,south,west,elev){
 //Creating String of addresses seperateed by commas
 //Creating String of intersections seperated by colons
 let addresses = "100  Peter White Dr,2600  N Lakeshore Blvd,100  Hawley St,100  N 3rd St,300  E Michigan St,200  N Front St,200  N 3rd St,200  E Michigan St";
-let intersections = "100  Peter White Dr,2600  N Lakeshore Blvd,100  Hawley St,100  N 3rd St,:100  N 3rd St,300  E Michigan St,200  N 3rd St,200  E Michigan St,:null  ,null  ,100  N 3rd St,null ,:";
+let intersections = "100  Peter White Dr,2600  N Lakeshore Blvd,100  Hawley St,100  N 3rd St,:100  N 3rd St,300  E Michigan St,200  N 3rd St,200  E Michigan St,:null  ,null  ,100  N 3rd St,null  ,:";
 
 //splitting addresses into an array
 const addyArray = addresses.split(",");
