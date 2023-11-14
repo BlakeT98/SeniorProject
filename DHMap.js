@@ -38,11 +38,11 @@ for(let i = 0; i < addyArray.length; i++){
 }
 //temp += interArray[0] + "<br>";
 //Creating Intersections[] with interArray
-for(let j = 0; j < interArray.length; j++){
+for(let j = 0; j < interArray.length-1; j++){
   let compass = [];
   let index = 0;
   let start = 0;
-  for(let k = 0; k < interArray[j].length; k++){
+  for(let k = 0; k < interArray[j].length-1; k++){
     if(interArray[j].charAt(k) == ","){
       compass[index] = interArray[j].substring(start,k);
       //temp += compass[index] + "<br>";
