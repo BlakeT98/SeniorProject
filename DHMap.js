@@ -51,7 +51,15 @@ for(let j = 0; j < interArray.length-1; j++){
     }
   }
   Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
-  temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
+  //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
+
+function searchAddress(){
+  for(let i = 0; i < interArray.length-1; i++){
+      temp += Intersections[i].Id + ", North: " + Intersections[i].North + ", East: " + Intersections[i].East + ", South: " + Intersections[i].South + ", West: " + Intersections[i].West + ", Elevation: " + Intersections[i].Elevation + "<br>";
+  }
+}
+
+searchAddress();
 
 document.getElementById("test").innerHTML = temp;
