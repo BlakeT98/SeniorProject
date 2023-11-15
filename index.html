@@ -193,6 +193,8 @@
                      //alert(strtId + ' ' + endId);
                       var findS = searchAddress(start);
                       var findE = searchAddress(end);
+                      //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
+                      
                       if(findS === undefined && findE === undefined)alert("Starting and Ending addresses are not found or within range.");
                       else if(findS == undefined)alert("Starting address is not found or within range");
                       else if(findE == undefined)alert("Ending address is not found or within range");
