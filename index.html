@@ -193,7 +193,10 @@
                      //alert(strtId + ' ' + endId);
                       var findS = searchAddress(start);
                       var findE = searchAddress(end);
-                      alert(findS + ' ' + findE);
+                      if(findS === undefined && findE === undefined)alert("Starting and Ending addresses are not found or within range.");
+                      else if(findS == undefined)alert("Starting address is not found or within range");
+                      else if(findE == undefined)alert("Ending address is not found or within range");
+                      else alert(findS + ' ' + findE);
                       //alert(start + ' ' + end);
                     }
                   </script>
