@@ -89,6 +89,6 @@ function searchAddress(street){
  }
 }
 
-temp = searchAddress("123 N 3rd St");
+temp = searchAddress("325 E Michigan St");
 
 document.getElementById("test").innerHTML = temp;
