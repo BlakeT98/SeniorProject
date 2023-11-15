@@ -61,8 +61,7 @@ for(let j = 0; j < interArray.length-1; j++){
 function searchAddress(street){
   let block = 0;
   let st = "";
-  let inner = 0;
-  let outer = 0;
+  let blockNum = 0;
   for(let i = 0; i < street.length(); i++){
     if(street.charAt(3) == " "){
       block = street.substring(0,3);
@@ -75,18 +74,16 @@ function searchAddress(street){
   }
   for(let j = 0; j < Streets.length; j++){
     if(st == Streets[j].Name){
-      if(inner == 0 || outer == 0){
-        if(block >= Streets[j].Block)innner = Streets[j].Block;
-        else if(block <= Streets[j].Block)outer = Streets[j].Block;
+      if(blockNum == 0 || outer == 0){
+        if(block >= Streets[j].Block)blockNum = Streets[j].Block;
       }
       else{
-        if(inner < Streets[j].Block && Streets[j].Block < block)inner = Streets[j].Block;
-        else if(outer > Streets[j].Block && Streets[j].Block > block)outer = Streets[j].Block;
+        if(blockNum < Streets[j].Block && Streets[j].Block < block)blockNum = Streets[j].Block;
       }
     }
   }
   //inner is the correct block number for matching street name
-  let s = "" + inner + " "  + st;
+  let s = "" + blockNum + " "  + st;
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
