@@ -90,7 +90,7 @@ function searchAddress(street){
  }
 }
 //gets id index for Intersections[]
-start = searchAddress("325 E Michigan St");
-end = searchAddress("2724 N Lakeshore Blvd");
+//start = searchAddress("325 E Michigan St");
+//end = searchAddress("2724 N Lakeshore Blvd");
 
-document.getElementById("test").innerHTML = start + " " + end;
+//document.getElementById("test").innerHTML = start + " " + end;
