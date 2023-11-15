@@ -87,7 +87,7 @@ function searchAddress(street){
   }
   //inner is the correct block number for matching street name
   let s = "" + inner + " "  + st;
- for(int k = 0; k < Intersections.length; k++){
+ for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
 }
