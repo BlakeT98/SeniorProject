@@ -74,7 +74,7 @@ function searchAddress(street){
   }
   for(let j = 0; j < Streets.length; j++){
     if(st == Streets[j].Name){
-      if(blockNum == 0 || outer == 0){
+      if(blockNum == 0){
         if(block >= Streets[j].Block)blockNum = Streets[j].Block;
       }
       else{
