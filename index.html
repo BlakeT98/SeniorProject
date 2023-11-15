@@ -181,7 +181,7 @@
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-                    //button.addEventListener('click', grabAddress);
+                   // document.getElementById("enter").addEventListener("click", searchAddress);
                     //button.addEventListener('click', onButtonClick);
                     
                     //Grabs addresses from input text
@@ -191,7 +191,10 @@
                      //let strtId = searchAddress(start);
                      //let endId = searchAddress(end);
                      //alert(strtId + ' ' + endId);
-                      alert(start + ' ' + end);
+                      var findS = searchAddress(start);
+                      var findE = searchAddress(end);
+                      alert(findS + ' ' + findE);
+                      //alert(start + ' ' + end);
                     }
                   </script>
                   <script>
