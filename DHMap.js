@@ -24,7 +24,8 @@ const interArray = intersections.split(":");
 
 const Streets = [];
 const Intersections = [];
-let temp = "";
+let start = "";
+let end = "";
 let blck;
 let n;
 //Creating Streets[] with addyArray
@@ -71,7 +72,7 @@ function searchAddress(street){
       block = street.substring(0,4);
       st = street.substring(5);
     }
-  }
+  }  //Checking if starting or ending locations are a match with Streets[]
   for(let j = 0; j < Streets.length; j++){
     if(st == Streets[j].Name){
       if(blockNum == 0){
@@ -82,13 +83,14 @@ function searchAddress(street){
       }
     }
   }
-  //inner is the correct block number for matching street name
+  //blockNum is the correct block number for matching street name
   let s = "" + blockNum + " "  + st;
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
 }
+//gets id index for Intersections[]
+start = searchAddress("325 E Michigan St");
+end = searchAddress("2724 N Lakeshore Blvd");
 
-temp = searchAddress("325 E Michigan St");
-
-document.getElementById("test").innerHTML = temp;
+document.getElementById("test").innerHTML = start + " " + end;
