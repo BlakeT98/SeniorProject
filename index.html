@@ -179,7 +179,7 @@
                   <div></div>
                   <button class="button button1" id="enter"> Enter </button>
                   <!-- testing js code -->
-                  <script>
+                  <script src="DHMap.js"> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
                     //button.addEventListener('click', grabAddress);
                     //button.addEventListener('click', onButtonClick);
@@ -188,7 +188,9 @@
                     function grabAddress(){
                      var start = document.getElementById("start").value;
                      var end = document.getElementById("end").value;
-                     alert(start + ' ' + end);
+                     let strtId = searchAddress(start);
+                     let endId = searchAddress(end);
+                     alert(strtId + ' ' + endId);
                     }
                   </script>
                   <script>
@@ -221,11 +223,6 @@
 
               <!-- TESTING DHMAP ADDRESS ARRAY -->
               <p id="test"></p>
-              <script src="DHMap.js">
-                let start = searchAddress("325 E Michigan St");
-                let end = searchAddress("123 Hawley St");
-                document.getElementById("test").innerHTML = start + " " + end;
-              </script>
               
             </article>
           </div>
