@@ -33,6 +33,11 @@ function myMap(){
 }
 
 function getCoord(geocoder, latlng){
+  var latStrt;
+  var lngStrt;
+  var latEnd;
+  var lngEnd;
+                      
   
   geocoder.geocode({ location: latlng})
   .then((respoonse) => {
