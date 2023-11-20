@@ -61,6 +61,10 @@ for(let j = 0; j < interArray.length-1; j++){
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
+function test(){
+  document.getElementById("test").innerHTML = "TESTING FUNCTION IN DHMAP.JS";
+}
+
 function searchAddress(street){
   let block = 0;
   let st = "";
@@ -90,10 +94,6 @@ function searchAddress(street){
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
-}
-
-function test(){
-  document.getElementById("test").innerHTML = "TESTING FUNCTION IN DHMAP.JS";
 }
 
 function convertCoord(crd){
