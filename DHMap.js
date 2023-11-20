@@ -92,8 +92,8 @@ function searchAddress(street){
  }
 }
 
-function convertCoord(coord){
-  //geocoder.geocode({ location: coord })
+function convertCoord(crd){
+  //geocoder.geocode({ location: crd })
   //.then((respoonse) => {
    // if(response.results[0]){
       //document.getElementById("test").innerHTML = response.results[0].formatted_address;
