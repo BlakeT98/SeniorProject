@@ -31,9 +31,9 @@ function myMap(){
     infoWindow.open(map);
   });
 
-  document.getElementById("enter2").addEventListener("click", ()=>{
+  document.getElementById("enter2").addEventListener("click", function(){
     geocodeCoord(geocoder);
-  });
+  }, false);
 }
 
 function geocodeCoord(geocoder){
