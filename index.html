@@ -207,7 +207,7 @@
                         
                         start = convertCoord(latlngS);
                       }
-                      if(end.charAt(0) == '{') || end.charAt(0) == '4'){
+                      if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
                         else latEnd = latlngEnd[0].substring(6);
