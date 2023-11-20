@@ -33,6 +33,21 @@ function myMap(){
 }
 
 function getCoord(geocoder, latlng){
+
+  if(start.charAt(0) == '{' || start.charAt(0) == '4'){
+    const latlngStrt = start.split(",",2);
+    if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
+    else latStrt = latlngStrt[0].substring(8);
+    if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
+    else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
+    const latlngS = latStrt + "," + lngStrt;
+    const latlngStr = latlngS.split(",",2);
+    const startCoord = {
+      lat: parseFloat(latlngStr[0]),
+      lng: parseFloat(latlngStr[1]),
+    };
+    //document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
+                        
     
   geocoder.geocode({ location: latlng})
   .then((respoonse) => {
