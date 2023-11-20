@@ -11,6 +11,8 @@ function Intersection(id,north,east,south,west,elev){
   this.West = west;
   this.Elevation = elev;
 }
+
+let geocoder;
   
 //Creating String of addresses seperateed by commas
 //Creating String of intersections seperated by colons
@@ -88,6 +90,12 @@ function searchAddress(street){
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
+}
+
+function convertCoord(coord){
+  geocoder = new google.maps.Geocoder();
+  let latLng = coord;
+  geocoder.geocode({ location: latLng });
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
