@@ -204,12 +204,8 @@
                         else latStrt = latlngStrt[0].substring(8);
                         if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
                         else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
-                        const latlngS = {
-                          lat: parseFloat(latStrt),
-                          lng: parseFloat(lngStrt),                        
-                        };
+                        const latlngS = latStrt + "," + lngStrt;
                         document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
-                        System.out.println(latStrt + " " + lngStrt);
                         geocoder.geocode({ location: latlngS })
                         .then((respoonse) => {
                           if(response.results[0]){
@@ -224,13 +220,10 @@
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
-                        else latEnd = latlngEnd[0].substring(6);
+                        else latEnd = latlngEnd[0].substring(8);
                         if(latlngEnd[1].substring(0,2) == "-8")lngEnd = latlngEnd[1];
-                        else lngEnd = latlngEnd[1].substring(5);
-                        const latlngE = {
-                          lat: parseFloat(latEnd),
-                          lng: parseFloat(lngEnd),
-                        };
+                        else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
+                        const latlngE = latEnd + "," + lngEnd;
                         geocoder.geocode({ location: latlngE })
                         .then((respoonse) => {
                           if(response.results[0]){
