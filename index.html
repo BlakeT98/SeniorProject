@@ -189,16 +189,19 @@
 
                       var start = document.getElementById("start").value;
                       var end = document.getElementById("end").value;
+
+                      if(start.charAt(0) != '{' || start.charAt(0) != '4'){
+                        
+                        //Searches for valid street
+                        var findS = searchAddress(start);
+                        var findE = searchAddress(end);
+                        //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
-                      //Searches for valid street
-                      var findS = searchAddress(start);
-                      var findE = searchAddress(end);
-                      //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
-                      
-                      if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
-                      else if(findS == undefined)alert("Starting location is not found or within range");
-                      else if(findE == undefined)alert("Ending location is not found or within range");
-                      else alert(findS + ' ' + findE);
+                        if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
+                        else if(findS == undefined)alert("Starting location is not found or within range");
+                        else if(findE == undefined)alert("Ending location is not found or within range");
+                        else alert(findS + ' ' + findE);
+                      }else return;
                       
                       //alert(start + ' ' + end);
                     }
