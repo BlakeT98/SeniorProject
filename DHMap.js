@@ -12,7 +12,6 @@ function Intersection(id,north,east,south,west,elev){
   this.Elevation = elev;
 }
 
-let geocoder;
   
 //Creating String of addresses seperateed by commas
 //Creating String of intersections seperated by colons
