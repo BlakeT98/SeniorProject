@@ -62,7 +62,7 @@ for(let j = 0; j < interArray.length-1; j++){
 }
 
 function test(){
-  document.getElementById("test").innerHTML = "TESTING FUNCTION IN DHMAP.JS";
+  //document.getElementById("test").innerHTML = "TESTING FUNCTION IN DHMAP.JS";
 }
 
 function searchAddress(street){
