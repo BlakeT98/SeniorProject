@@ -28,6 +28,21 @@ function myMap(){
     infoWindow.open(map);
   });
 }
+
+function getCoord(geocoder, latlng){
+  
+  geocoder.geocode({ location: latlng})
+  .then((respoonse) => {
+    if(response.results[0]){
+      document.getElementById("test").innerHTML = response.results[0].formatted_address;
+      //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+    }
+    else alert("No results found");
+  })
+  .catch((e) => window.alert("Geocoder failed due to: " + e));  
+
+}
+
 window.myMap = myMap;
 
 
