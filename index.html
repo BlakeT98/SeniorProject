@@ -208,7 +208,8 @@
                           lat: parseFloat(latStrt),
                           lng: parseFloat(lngStrt),                        
                         };
-
+                        document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
+                        System.out.println(latStrt + " " + lngStrt);
                         geocoder.geocode({ location: latlngS })
                         .then((respoonse) => {
                           if(response.results[0]){
