@@ -92,17 +92,6 @@ function searchAddress(street){
  }
 }
 
-function convertCoord(crd){
-  //geocoder.geocode({ location: crd })
-  //.then((respoonse) => {
-   // if(response.results[0]){
-      //document.getElementById("test").innerHTML = response.results[0].formatted_address;
-  document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-   // }
- //   else alert("No results found");
- // })
- // .catch((e) => window.alert("Geocoder failed due to: " + e));  
-}
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
