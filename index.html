@@ -201,9 +201,9 @@
                       if(start.charAt(0) == '{' || start.charAt(0) == '4'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
-                        else latStrt = latlngStrt[0].substring(6);
+                        else latStrt = latlngStrt[0].substring(8);
                         if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
-                        else lngStrt = latlngStrt[1].substring(5);
+                        else lngStrt = latlngStrt[1].substring(7);
                         const latlngS = {
                           lat: parseFloat(latStrt),
                           lng: parseFloat(lngStrt),                        
