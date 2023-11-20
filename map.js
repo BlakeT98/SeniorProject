@@ -44,7 +44,7 @@ function geocodeCoord(geocoder){
 
   var start = document.getElementById("start2").value;
   var end = document.getElementById("end2").value;
-
+  print(start + " " + end);
   if(start.charAt(0) == '{' || start.charAt(0) == '4'){
     const latlngStrt = start.split(",",2);
     if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
