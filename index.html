@@ -205,8 +205,7 @@
                           lng: parseFloat(lngStrt),                        
                         };
                         
-                       start = convertCoord(latlngS);
-                  
+                       start = convertCoord(latlngS);                  
                       }
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
@@ -219,18 +218,9 @@
                           lng: parseFloat(lngEnd),
                         };
                         
-                        //end = convertCoord(latlngE);
-                        geocoder.geocode({ location: latlngE })
-                        .then((respoonse) => {
-                          if(response.results[0]){
-                            //document.getElementById("test").innerHTML = response.results[0].formatted_address;
-                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-                          }
-                          else alert("No results found");
-                        })
-                       .catch((e) => window.alert("Geocoder failed due to: " + e));
+                        end = convertCoord(latlngE);
                       }
-  
+                  
                       //Searches for valid street
                       var findS = searchAddress(start);
                       var findE = searchAddress(end);
