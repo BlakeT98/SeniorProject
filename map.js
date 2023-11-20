@@ -30,6 +30,10 @@ function myMap(){
     infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );
     infoWindow.open(map);
   });
+
+  document.getElementById("enter").addEventListener("click", ()=>{
+    geocodeCoord(geocoder);
+  });
 }
 
 function geocodeCoord(geocoder){
