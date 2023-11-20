@@ -188,9 +188,12 @@
                     function grabAddress(){
                      var start = document.getElementById("start").value;
                      var end = document.getElementById("end").value;
-                     //let strtId = searchAddress(start);
-                     //let endId = searchAddress(end);
-                     //alert(strtId + ' ' + endId);
+
+                      //if values are Lat/Lng, then convert them into block and street names
+                      //if(start.charAt(0).equals('{'))start = convertCoord(start);
+                      //if(end.charAt(0).equals('{'))end = convertCoord(end);
+
+                      //Searches for valid street
                       var findS = searchAddress(start);
                       var findE = searchAddress(end);
                       //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
@@ -199,6 +202,7 @@
                       else if(findS == undefined)alert("Starting location is not found or within range");
                       else if(findE == undefined)alert("Ending location is not found or within range");
                       else alert(findS + ' ' + findE);
+                      
                       //alert(start + ' ' + end);
                     }
                   </script>
