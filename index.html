@@ -186,9 +186,11 @@
                     
                     //Grabs addresses from input text
                     function grabAddress(){
+                      //Creates the Geocoder
+                      const geocoder = new google.maps.Geocoder();
                       
-                     var start = document.getElementById("start").value;
-                     var end = document.getElementById("end").value;
+                      var start = document.getElementById("start").value;
+                      var end = document.getElementById("end").value;
 
                       //if values are Lat/Lng, then convert them into block and street names
                      
