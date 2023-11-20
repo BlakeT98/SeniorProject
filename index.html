@@ -186,7 +186,8 @@
                     
                     //Grabs addresses from input text
                     function grabAddress(){
-                      let geocoder;
+                      //Creates the Geocoder
+                      const geocoder = new google.maps.Geocoder();
                       
                      var start = document.getElementById("start").value;
                      var end = document.getElementById("end").value;
