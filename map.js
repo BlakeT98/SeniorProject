@@ -32,7 +32,13 @@ function myMap(){
   });
 }
 
-function getCoord(geocoder, latlng){
+function geocodeCoord(geocoder){
+  var latStrt;
+  var lngStrt;
+  var latEnd;
+  var lngEnd;
+
+  var start = 
 
   if(start.charAt(0) == '{' || start.charAt(0) == '4'){
     const latlngStrt = start.split(",",2);
