@@ -30,6 +30,18 @@ function myMap(){
     infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );
     infoWindow.open(map);
   });
+
+  function convertCoord(crd){
+    geocoder.geocode({ location: latlngS })
+    .then((respoonse) => {
+      if(response.results[0]){
+        document.getElementById("test").innerHTML = response.results[0].formatted_address;
+        //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+      }
+      else alert("No results found");
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));  
+  }
  
 }
 window.myMap = myMap;
