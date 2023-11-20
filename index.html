@@ -205,8 +205,13 @@
                         if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
                         else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
                         const latlngS = latStrt + "," + lngStrt;
-                        document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
-                        geocoder.geocode({ location: latlngS })
+                        const latlngStr = latlngS.split(",",2);
+                        const startCoord = {
+                          lat: parseFloat(latlngStr[0]),
+                          lng: parseFloat(latlngStr[1]),
+                        };
+                        //document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
+                        geocoder.geocode({ location: startCoord})
                         .then((respoonse) => {
                           if(response.results[0]){
                             document.getElementById("test").innerHTML = response.results[0].formatted_address;
@@ -224,7 +229,12 @@
                         if(latlngEnd[1].substring(0,2) == "-8")lngEnd = latlngEnd[1];
                         else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
                         const latlngE = latEnd + "," + lngEnd;
-                        geocoder.geocode({ location: latlngE })
+                        const latlngStr = latlngS.split(",",2);
+                        const endCoord = {
+                          lat: parseFloat(latlngStr[0]),
+                          lng: parseFloat(latlngStr[1]),
+                        };
+                        geocoder.geocode({ location: endCoord})
                         .then((respoonse) => {
                           if(response.results[0]){
                             document.getElementById("test").innerHTML = response.results[0].formatted_address;
