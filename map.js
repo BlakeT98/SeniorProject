@@ -7,6 +7,9 @@ function myMap(){
     zoom: 13,
     center: myLatlng,
   });
+    //Creates the Geocoder
+  const geocoder = new google.maps.Geocoder();
+  
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
