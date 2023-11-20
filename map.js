@@ -31,7 +31,7 @@ function myMap(){
     infoWindow.open(map);
   });
 
-  document.getElementById("enter").addEventListener("click", ()=>{
+  document.getElementById("enter2").addEventListener("click", ()=>{
     geocodeCoord(geocoder);
   });
 }
@@ -42,8 +42,8 @@ function geocodeCoord(geocoder){
   var latEnd;
   var lngEnd;
 
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
+  var start = document.getElementById("start2").value;
+  var end = document.getElementById("end2").value;
 
   if(start.charAt(0) == '{' || start.charAt(0) == '4'){
     const latlngStrt = start.split(",",2);
