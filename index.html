@@ -211,17 +211,9 @@
                           lng: parseFloat(latlngStr[1]),
                         };
                         //document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
-                        geocoder.geocode({ location: startCoord})
-                        .then((respoonse) => {
-                          if(response.results[0]){
-                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
-                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-                          }
-                          else alert("No results found");
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));  
+                        
+                       //start = convertCoord(latlngS);   
                       }
-                       //start = convertCoord(latlngS);                  
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
@@ -234,17 +226,9 @@
                           lat: parseFloat(latlngStr[0]),
                           lng: parseFloat(latlngStr[1]),
                         };
-                        geocoder.geocode({ location: endCoord})
-                        .then((respoonse) => {
-                          if(response.results[0]){
-                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
-                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-                          }
-                          else alert("No results found");
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));  
-                      } 
+              
                         //end = convertCoord(latlngE);
+                      }
                   
                       //Searches for valid street
                       var findS = searchAddress(start);
