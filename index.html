@@ -188,6 +188,10 @@
                     function grabAddress(){
                       //Creates the Geocoder
                       const geocoder = new google.maps.Geocoder();
+                      var latStrt;
+                      var lngStrt;
+                      var latEnd;
+                      var lngEnd;
                       
                       var start = document.getElementById("start").value;
                       var end = document.getElementById("end").value;
@@ -204,9 +208,18 @@
                           lat: parseFloat(latStrt),
                           lng: parseFloat(lngStrt),                        
                         };
-                        
-                       start = convertCoord(latlngS);                  
+
+                        geocoder.geocode({ location: latlngS })
+                        .then((respoonse) => {
+                          if(response.results[0]){
+                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                          }
+                          else alert("No results found");
+                        })
+                        .catch((e) => window.alert("Geocoder failed due to: " + e));  
                       }
+                       //start = convertCoord(latlngS);                  
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
@@ -217,9 +230,17 @@
                           lat: parseFloat(latEnd),
                           lng: parseFloat(lngEnd),
                         };
-                        
-                        end = convertCoord(latlngE);
-                      }
+                        geocoder.geocode({ location: latlngS })
+                        .then((respoonse) => {
+                          if(response.results[0]){
+                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                          }
+                          else alert("No results found");
+                        })
+                        .catch((e) => window.alert("Geocoder failed due to: " + e));  
+                      } 
+                        //end = convertCoord(latlngE);
                   
                       //Searches for valid street
                       var findS = searchAddress(start);
