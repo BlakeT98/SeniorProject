@@ -203,7 +203,7 @@
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
                         else latStrt = latlngStrt[0].substring(8);
                         if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
-                        else lngStrt = latlngStrt[1].substring(7);
+                        else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
                         const latlngS = {
                           lat: parseFloat(latStrt),
                           lng: parseFloat(lngStrt),                        
