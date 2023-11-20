@@ -36,7 +36,7 @@ function myMap(){
     var lngStrt;
     var latEnd;
     var lngEnd;
-    geocoder.geocode({ location: latlngS })
+    geocoder.geocode({ location: crd })
     .then((respoonse) => {
       if(response.results[0]){
         document.getElementById("test").innerHTML = response.results[0].formatted_address;
