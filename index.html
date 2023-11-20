@@ -194,7 +194,7 @@
                       var lngStrt;
                       var latEnd;
                       var lngEnd;
-                      if(start.charAt(0).equals('{') || start.charAt(0).equals('4')){
+                      if(start.charAt(0) == '{') || start.charAt(0) == '4'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
                         else latStrt = latlngStrt[0].substring(6);
@@ -207,7 +207,7 @@
                         
                         start = convertCoord(latlngS);
                       }
-                      if(end.charAt(0).equals('{') || end.charAt(0).equals('4')){
+                      if(end.charAt(0) == '{') || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
                         else latEnd = latlngEnd[0].substring(6);
