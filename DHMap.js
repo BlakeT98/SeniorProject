@@ -92,6 +92,10 @@ function searchAddress(street){
  }
 }
 
+function test(){
+  document.getElementById("test").innerHTML = "TESTING FUNCTION IN DHMAP.JS";
+}
+
 function convertCoord(crd){
   //geocoder.geocode({ location: crd })
   //.then((respoonse) => {
