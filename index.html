@@ -168,16 +168,19 @@
                 <p>You can click the position on the map, copy the coordinates in the pop up window, and then paste them.</p>
   
                 <!-- Creates text and then an input for text -->
-                  <label for="start">Starting location:</label>
-                  <input type="text" id="start" name="startTxt" size="20" style="color: black" placeholder="&quot;123 N 3rd St&quot; or Lat: Lng:"/>
-    
+                  <label for="start">Starting Address:</label>
+                  <input type="text" id="start" name="startTxt" size="20" style="color: black" placeholder="&quot;123 N 3rd St&quot;"/>
+                  <label for="start2">Starting Location:</label>
+                  <input type="text" id="start2" name="start2Txt" size="20" style="color: black" placeholder="&quot;Lat: Lng:&quot;"/>
                   <div></div>
-  
-                  <label for="end">Ending location:&nbsp;&nbsp;</label>
+                  <label for="end">Ending Address:&nbsp;&nbsp;</label>
                   <input type="text" id="end" name="endTxt" size="20" style="color: black" placeholder="&quot;321 N 4th St&quot; or Lat: Lng:"/>
+                  <label for="end2">Ending Location:&nbsp;&nbsp;</label>
+                  <input type="text" id="end2" name="end2Txt" size="20" style="color: black" placeholder="&quot;Lat: Lng:&quot;"/>
                  
                   <div></div>
-                  <button class="button button1" id="enter"> Enter </button>
+                  <button class="button button1" id="enter"> Address Enter </button>
+                  <button class="button button1" id="enter2"> Location Enter </button>
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
