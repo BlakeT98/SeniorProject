@@ -207,6 +207,17 @@
                         };
                         
                        //start = convertCoord(latlngS);
+                        //function convertCoord(crd){
+                        geocoder.geocode({ location: latlngS })
+                        .then((respoonse) => {
+                          if(response.results[0]){
+                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                          }
+                          else alert("No results found");
+                        })
+                       .catch((e) => window.alert("Geocoder failed due to: " + e));  
+                  
                       }
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
@@ -220,6 +231,15 @@
                         };
                         
                         //end = convertCoord(latlngE);
+                        geocoder.geocode({ location: latlngeE })
+                        .then((respoonse) => {
+                          if(response.results[0]){
+                            //document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                          }
+                          else alert("No results found");
+                        })
+                       .catch((e) => window.alert("Geocoder failed due to: " + e));
                       }
   
                       //Searches for valid street
