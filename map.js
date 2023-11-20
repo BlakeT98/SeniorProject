@@ -38,7 +38,8 @@ function geocodeCoord(geocoder){
   var latEnd;
   var lngEnd;
 
-  var start = 
+  var start = document.getElementById("start").value;
+  var end = document.getElementById("end").value;
 
   if(start.charAt(0) == '{' || start.charAt(0) == '4'){
     const latlngStrt = start.split(",",2);
@@ -52,10 +53,24 @@ function geocodeCoord(geocoder){
       lat: parseFloat(latlngStr[0]),
       lng: parseFloat(latlngStr[1]),
     };
-    //document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
+  }
+  else if(end.charAt(0) == '{' || end.charAt(0) == '4'){
+    const latlngEnd = end.split(",",2);
+    if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
+    else latEnd = latlngEnd[0].substring(8);
+    if(latlngEnd[1].substring(0,2) == "-8") lngEnd = latlngEnd[1];
+    else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
+    const latlngE = latEnd + "," + lngEnd;
+    const latlngStr = latlngE.split(",",2);
+    const endCoord = {
+      lat: parseFloat(latlngStr[0]),
+      lng: parseFloat(latlngStr[1]),
+    };
+  }
+  else return;
                         
-    
-  geocoder.geocode({ location: latlng})
+    //START GEOCODE
+  geocoder.geocode({ location: startCoord})
   .then((respoonse) => {
     if(response.results[0]){
       document.getElementById("test").innerHTML = response.results[0].formatted_address;
@@ -64,6 +79,17 @@ function geocodeCoord(geocoder){
     else alert("No results found");
   })
   .catch((e) => window.alert("Geocoder failed due to: " + e));  
+
+    //END GEOCODE
+  geocoder.geocode({ location: endCoord})
+  .then((respoonse) => {
+    if(response.results[0]){
+      document.getElementById("test").innerHTML = response.results[0].formatted_address;
+      //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+    }
+    else alert("No results found");
+  })
+  .catch((e) => window.alert("Geocoder failed due to: " + e)); 
 
 }
 
