@@ -32,6 +32,10 @@ function myMap(){
   });
 
   function convertCoord(crd){
+    var latStrt;
+    var lngStrt;
+    var latEnd;
+    var lngEnd;
     geocoder.geocode({ location: latlngS })
     .then((respoonse) => {
       if(response.results[0]){
