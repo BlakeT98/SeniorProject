@@ -229,7 +229,7 @@
                         if(latlngEnd[1].substring(0,2) == "-8")lngEnd = latlngEnd[1];
                         else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
                         const latlngE = latEnd + "," + lngEnd;
-                        const latlngStr = latlngS.split(",",2);
+                        const latlngStr = latlngE.split(",",2);
                         const endCoord = {
                           lat: parseFloat(latlngStr[0]),
                           lng: parseFloat(latlngStr[1]),
