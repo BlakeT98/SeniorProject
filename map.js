@@ -52,6 +52,7 @@ function geocodeCoord(geocoder){
     if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
     else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
     const latlngS = latStrt + "," + lngStrt;
+    document.getElementById("test").innerHTML = latlngS;
     const latlngStr = latlngS.split(",",2);
     const startCoord = {
       lat: parseFloat(latlngStr[0]),
@@ -65,6 +66,7 @@ function geocodeCoord(geocoder){
     if(latlngEnd[1].substring(0,2) == "-8") lngEnd = latlngEnd[1];
     else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
     const latlngE = latEnd + "," + lngEnd;
+    document.getElementById("test").innerHTML = latlngE;
     const latlngStr = latlngE.split(",",2);
     const endCoord = {
       lat: parseFloat(latlngStr[0]),
