@@ -58,7 +58,7 @@ function geocodeCoord(geocoder){
       lng: parseFloat(latlngStr[1]),
     };
   }
-  else if(end.charAt(0) == '{' || end.charAt(0) == '4'){
+  if(end.charAt(0) == '{' || end.charAt(0) == '4'){
     const latlngEnd = end.split(",",2);
     if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
     else latEnd = latlngEnd[0].substring(8);
@@ -71,7 +71,6 @@ function geocodeCoord(geocoder){
       lng: parseFloat(latlngStr[1]),
     };
   }
-  else return;
                         
     //START GEOCODE
   geocoder.geocode({ location: startCoord})
