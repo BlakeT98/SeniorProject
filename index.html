@@ -206,7 +206,7 @@
                         };
                         //document.getElementById("test").innerHTML = "" + latStrt + " " + lngStrt + "";
                         
-                       //start = convertCoord(latlngS);   
+                        start = getCoord(startCoord);   
                       }
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
@@ -221,7 +221,7 @@
                           lng: parseFloat(latlngStr[1]),
                         };
               
-                        //end = convertCoord(latlngE);
+                        end = getCoord(endCoord);
                       }
                   
                       //Searches for valid street
