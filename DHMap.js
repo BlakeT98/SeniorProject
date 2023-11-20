@@ -93,9 +93,14 @@ function searchAddress(street){
 }
 
 function convertCoord(coord){
-  geocoder = new google.maps.Geocoder();
-  let latLng = coord;
-  geocoder.geocode({ location: latLng });
+  geocoder.geocode({ location: coord })
+  .then((respoonse) => {
+    if(response.results[0]){
+      document.getElementById("test").innerHTML = response.results[0].formatted_address;
+    }
+    else alert("No results found");
+  })
+  .catch((e) => window.alert("Geocoder failed due to: " + e));  
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
