@@ -194,7 +194,7 @@
                       var lngStrt;
                       var latEnd;
                       var lngEnd;
-                      if(start.charAt(0) == '{') || start.charAt(0) == '4'){
+                      if(start.charAt(0) == '{' || start.charAt(0) == '4'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
                         else latStrt = latlngStrt[0].substring(6);
@@ -235,7 +235,7 @@
                     }
                   </script>
                   <script>
-                    function customRoute(var start, var end){
+                    function customRoute(start, end){
                       //Finds Street object with matching address
                       //Uses geolocation to create marker for start location
                       //Get Elevation
