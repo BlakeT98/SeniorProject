@@ -223,7 +223,7 @@
                           console.log(startAddy);
                           startOutput = `${startAddy} `;
                           document.getElementById('test').innerHTML = startOutput;
-                          
+                          checkAddress();
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
@@ -256,6 +256,7 @@
                           console.log(endAddy);  
                           endOutput = `${endAddy}`;
                           document.getElementById('test2').innerHTML = endOutput;
+                          checkAddress();
                         })
                         .catch(function(error){
                           console.log(error);
@@ -268,7 +269,7 @@
                         document.getElementById('test2').innerHTML = end;
                       }     
                       //alert(start + ' ' + end);
-                      checkAddress();
+
                     }
                   </script>
 
