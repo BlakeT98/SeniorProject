@@ -267,11 +267,11 @@
                         document.getElementById('test').innerHTML = start;
                         document.getElementById('test2').innerHTML = end;
                       }
-                        checkStart = document.getElementById("test").value;
-                        checkEnd = document.getElementById("test2").value;
+                        checkStart = parseString(document.getElementById("test").value);
+                        checkEnd = parseString(document.getElementById("test2").value);
                         //Searches for valid street
-                        var findS = searchAddress(start);
-                        var findE = searchAddress(end);
+                        var findS = searchAddress(checkStart);
+                        var findE = searchAddress(checkEnd);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                         if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
