@@ -224,9 +224,7 @@
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;       
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           console.log(startAddy);
-                          startOutput = `
-                            <p>${startAddy}</p>
-                          `;
+                          startOutput = `Start: ${startAddy} `;
                           document.getElementById('test').innerHTML = "Start: " + startOutput;
                           
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
