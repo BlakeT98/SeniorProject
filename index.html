@@ -206,13 +206,7 @@
                         if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
                         else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
                         const latlngS = latStrt + "," + lngStrt;
-                        alert(latlngS);
-                        //document.getElementById("test").innerHTML = latlngS;
-                        /*const latlngStr = latlngS.split(",",2);
-                        const startCoord = {
-                          lat: parseFloat(latlngStr[0]),
-                          lng: parseFloat(latlngStr[1]),
-                        };*/
+                        //alert(latlngS);
                         //getGeocode(startCoord);    https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
                         axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
                           params:{
@@ -223,8 +217,10 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          console.log(response.data.results[0].address_components[0].short_name);
-                          console.log(response.data.results[0].address_components[1].short_name);
+                          //console.log(response.data.results[0].address_components[0].short_name);
+                          //console.log(response.data.results[0].address_components[1].short_name);
+                          var convert = "" + response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name + "";
+                          alert(convert);
                         })
                         .catch(function(error){
                           console.log(error);
