@@ -210,6 +210,7 @@
                           lat: parseFloat(latlngStr[0]),
                           lng: parseFloat(latlngStr[1]),
                         };
+                        getGeocode(startCoord);
                       }
                       /*if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
@@ -224,19 +225,21 @@
                           lat: parseFloat(latlngStr[0]),
                           lng: parseFloat(latlngStr[1]),
                         };
-                      }       */               
-                        //START GEOCODE
-                      geocoder.geocode({ location: startCoord})
-                      .then((respoonse) => {
-                        if(response.results[0]){
-                          document.getElementById("test").innerHTML = response.results[0].formatted_address;
-                          //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-                        }
-                        else alert("No results found");
-                      })
-                      .catch((e) => window.alert("Geocoder failed due to: " + e));                           
+                        getGeocode(endCoord);
+                      }       */                                          
                     }
-
+                    function getGeocode(coord){
+                      //START GEOCODE
+                        geocoder.geocode({ location: coord})
+                        .then((respoonse) => {
+                          if(response.results[0]){
+                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                          }
+                          else alert("No results found");
+                        })
+                        .catch((e) => window.alert("Geocoder failed due to: " + e));
+                    }
                     
                     //Grabs addresses from input text
                     function grabAddress(){
