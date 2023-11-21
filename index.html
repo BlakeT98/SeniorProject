@@ -224,8 +224,8 @@
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;       
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           console.log(startAddy);
-                          startOutput = `Start: ${startAddy} `;
-                          document.getElementById('test').innerHTML = "Start: " + startOutput;
+                          startOutput = `${startAddy} `;
+                          document.getElementById('test').innerHTML = startOutput;
                           
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
@@ -257,10 +257,8 @@
                           endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);  
-                          endOutput = `
-                            <p>${endAddy}</p>
-                          `;
-                          document.getElementById('test2').innerHTML = "End: " + endOutput;
+                          endOutput = `${endAddy}`;
+                          document.getElementById('test2').innerHTML = endOutput;
                         })
                         .catch(function(error){
                           console.log(error);
@@ -296,7 +294,9 @@
               <div id="map" style="width:100%;height:400px;"></div>
 
               <!-- TESTING DHMAP ADDRESS ARRAY -->
+              <h2>Start:&nbsp;</h2>
               <p id="test"></p>
+              <h2>End:&nbsp;</h2>
               <p id="test2"></p>
               <script src="DHMap.js"> </script>
  
