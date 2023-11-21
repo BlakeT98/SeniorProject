@@ -221,10 +221,13 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;                  
+                          //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;       
+                          startAddy = response.data.results[0].address_components[0];
                           console.log(startAddy);
                           startOutput = `
-                            <h1>${startAddy}</h1>
+                            <ul>
+                              <li>${startAddy}</li>
+                            </ul>
                           `;
                             
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
