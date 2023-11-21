@@ -199,8 +199,8 @@
                       var end = document.getElementById("end2").value;
                       var startAddy;
                       var endAddy;
-                      
-                      document.getElementById("test").innnerHTML = start + " " + end;
+
+                      //START INPUT
                       if(start.charAt(0) == '{' || start.charAt(0) == '4'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
@@ -225,6 +225,8 @@
                           console.log(error);
                         });
                       }
+                        
+                      //END INPUT
                       if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
@@ -234,7 +236,7 @@
                         const latlngE = latEnd + "," + lngEnd;
                         axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
                           params:{
-                            latlng: latlngS,
+                            latlng: latlngE,
                             key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
                           }
                         })
