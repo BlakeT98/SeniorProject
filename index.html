@@ -219,8 +219,8 @@
                         .then(function(response){
                           console.log(response);
                           //formatted address
-                          startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+                          alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           
                           //document.getElementById('test').innerHTML = startAddy;
                         })
@@ -246,16 +246,15 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          //endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+                          alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                         })
                         .catch(function(error){
                           console.log(error);
                         });
                       }
                       //var route = "" + startAddy + " " + endAddy + "";
-                      alert(startAddy);         
-                      alert(endAddy);
+                      
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
