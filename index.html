@@ -271,11 +271,13 @@
                         checkEnd = document.getElementById("test2");
                         //Searches for valid street
                         var temp = checkStart.outerHTML;
-                        console.log(temp);
-                        var street = temp.substring(17,temp.length-8);
-                        console.log("UPDATE " + street)
-                        var findS = searchAddress(checkStart.outerHTML);
-                        var findE = searchAddress(checkEnd.outerHTML);
+                        var temp2 = checkEnd.outerHTML;
+                        //console.log(temp);
+                        var st1 = temp.substring(17,temp.length-8);
+                        var st2 = temp2.substring(17,temp.length-8);
+                        //console.log("UPDATE " + st1);
+                        var findS = searchAddress(st1);
+                        var findE = searchAddress(st2);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                         if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
