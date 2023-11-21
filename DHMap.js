@@ -64,6 +64,7 @@ function searchAddress(street){
   let block = 0;
   let st = "";
   let blockNum = 0;
+  console.log(street);
   for(let i = 0; i < street.length; i++){
     if(street.charAt(3) == " "){
       block = street.substring(0,3);
