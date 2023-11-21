@@ -270,8 +270,8 @@
                         checkStart = document.getElementById("test").value;
                         checkEnd = document.getElementById("test2").value;
                         //Searches for valid street
-                        var findS = searchAddress(checkStart);
-                        var findE = searchAddress(checkEnd);
+                        var findS = searchAddress(start);
+                        var findE = searchAddress(end);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                         if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
