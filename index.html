@@ -267,8 +267,8 @@
                         document.getElementById('test').innerHTML = start;
                         document.getElementById('test2').innerHTML = end;
                       }
-                        checkStart = parseString(document.getElementById("test").value);
-                        checkEnd = parseString(document.getElementById("test2").value);
+                        checkStart = (String)document.getElementById("test").value;
+                        checkEnd = (String)document.getElementById("test2").value;
                         //Searches for valid street
                         var findS = searchAddress(checkStart);
                         var findE = searchAddress(checkEnd);
