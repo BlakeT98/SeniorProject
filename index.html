@@ -221,7 +221,8 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          startAddy = response.data.results[0].address_components[0].toString();
+                          startAddy = response.data.results[0].address_components[0];
+                          startOutput = JSON.stringify(startAddy);
                           //startAddy = JSON.stringify(response.data.results[0].address_components[0].short_name) + " " + JSON.stringify(response.data.results[0].address_components[1].short_name);
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
@@ -262,7 +263,7 @@
                         });
                       }
                       //var route = startOutput + endOutput;
-                      document.getElementById('test').innerHTML = startAddy;
+                      document.getElementById('test').innerHTML = startOutput;
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
