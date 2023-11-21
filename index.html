@@ -170,33 +170,28 @@
                 <!-- Creates text and then an input for text -->
                   <label for="start">Starting Address:</label>
                   <input type="text" id="start" name="startTxt" size="20" style="color: black" placeholder="&quot;123 N 3rd St&quot;"/>
-                  <label for="start2" style="margin-left:64px;">Starting Location:</label>
-                  <input type="text" id="start2" name="start2Txt" size="20" style="color: black" placeholder="&quot;Lat: Lng:&quot;"/>
                   <div></div>
                   <label for="end">Ending Address:&nbsp;&nbsp;</label>
                   <input type="text" id="end" name="endTxt" size="20" style="color: black" placeholder="&quot;321 N 4th St&quot;"/>
-                  <label for="end2" style="margin-left:64px;">Ending Location:&nbsp;&nbsp;</label>
-                  <input type="text" id="end2" name="end2Txt" size="20" style="color: black" placeholder="&quot;Lat: Lng:&quot;"/>
                  
                   <div></div>
                   <button class="button button1" id="enter">Enter Address</button>
-                  <button class="button button1" id="enter2" style="margin-left:178px;">Enter Location</button>
 
                   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
               
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-                    document.getElementById("enter2").addEventListener("click", geocodeCoord);
+                
+                    //Grabs addresses from input text
+                    function grabAddress(){
+                      var start = document.getElementById("start").value;
+                      var end = document.getElementById("end").value;
 
-                    //Creates the Geocoder
-                    function geocodeCoord(){
                       var latStrt;
                       var lngStrt;
                       var latEnd;
                       var lngEnd;
-                      var start = document.getElementById("start2").value;
-                      var end = document.getElementById("end2").value;
                       var startAddy;
                       var endAddy;
                       var startOutput
@@ -264,14 +259,7 @@
                           console.log(error);
                         });
                       }      
-                    }
-                    
-                    //Grabs addresses from input text
-                    function grabAddress(){
-
-                      var start = document.getElementById("start").value;
-                      var end = document.getElementById("end").value;
-                        
+                  
                         //Searches for valid street
                         var findS = searchAddress(start);
                         var findE = searchAddress(end);
