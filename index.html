@@ -188,7 +188,6 @@
 
                     //Creates the Geocoder
                     function geocodeCoord(){
-                      const geocoder = new google.maps.Geocoder();
                       var latStrt;
                       var lngStrt;
                       var latEnd;
@@ -230,15 +229,16 @@
                     }
                     function getGeocode(coord){
                       //START GEOCODE
-                        geocoder.geocode({ location: coord})
-                        .then((respoonse) => {
-                          if(response.results[0]){
-                            document.getElementById("test").innerHTML = response.results[0].formatted_address;
-                            //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
-                          }
-                          else alert("No results found");
-                        })
-                        .catch((e) => window.alert("Geocoder failed due to: " + e));
+                      const geocoder = new google.maps.Geocoder();
+                      geocoder.geocode({ location: coord})
+                      .then((respoonse) => {
+                        if(response.results[0]){
+                          document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                          //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                        }
+                        else alert("No results found");
+                      })
+                      .catch((e) => window.alert("Geocoder failed due to: " + e));
                     }
                     
                     //Grabs addresses from input text
