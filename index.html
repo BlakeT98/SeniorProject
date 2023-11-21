@@ -199,6 +199,8 @@
                       var end = document.getElementById("end2").value;
                       var startAddy;
                       var endAddy;
+                      var startOutput
+                      var endOutput;
 
                       //START INPUT
                       if(start.charAt(0) == '{' || start.charAt(0) == '4'){
@@ -219,10 +221,13 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
+                          startOutput = `
+                            <p>${startAddy}</p>
+                          `;
                         })
                         .catch(function(error){
                           console.log(error);
@@ -246,16 +251,19 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          //endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          endOutput = `
+                            <p>${endAddy}</p>
+                          `;
                         })
                         .catch(function(error){
                           console.log(error);
                         });
                       }
-                      //var route = "" + startAddy + " " + endAddy + "";
-                      
+                      var route = startOutput + endOutput;
+                      document.getElementById('test').innerHTML = route;
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
