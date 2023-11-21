@@ -197,6 +197,8 @@
                       var lngEnd;
                       var start = document.getElementById("start2").value;
                       var end = document.getElementById("end2").value;
+                      var startAddy;
+                      var endAddy;
                       
                       document.getElementById("test").innnerHTML = start + " " + end;
                       if(start.charAt(0) == '{' || start.charAt(0) == '4'){
@@ -217,31 +219,35 @@
                         .then(function(response){
                           //console.log(response);
                           //formatted address
-                          //console.log(response.data.results[0].address_components[0].short_name);
-                          //console.log(response.data.results[0].address_components[1].short_name);
-                          var convert = "" + response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name + "";
-                          alert(convert);
+                          startAddy = "" + response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name + "";
                         })
                         .catch(function(error){
                           console.log(error);
                         });
                       }
-                      /*if(end.charAt(0) == '{' || end.charAt(0) == '4'){
+                      if(end.charAt(0) == '{' || end.charAt(0) == '4'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
                         else latEnd = latlngEnd[0].substring(8);
                         if(latlngEnd[1].substring(0,2) == "-8") lngEnd = latlngEnd[1];
                         else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
                         const latlngE = latEnd + "," + lngEnd;
-                        document.getElementById("test").innerHTML = latlngE;
-                        const latlngStr = latlngE.split(",",2);
-                        const endCoord = {
-                          lat: parseFloat(latlngStr[0]),
-                          lng: parseFloat(latlngStr[1]),
-                        };
-                        getGeocode(endCoord); 
-                      }  */
-                                                                   
+                        axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
+                          params:{
+                            latlng: latlngS,
+                            key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+                          }
+                        })
+                        .then(function(response){
+                          //console.log(response);
+                          //formatted address
+                          endAddy = "" + response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name + "";
+                        })
+                        .catch(function(error){
+                          console.log(error);
+                        });
+                      }
+                      alert(startAddy + " " + endAddy);                                          
                     }
                     function getGeocode(coord){
                       //START GEOCODE
