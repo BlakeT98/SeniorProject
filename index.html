@@ -270,6 +270,8 @@
                         checkStart = document.getElementById("test");
                         checkEnd = document.getElementById("test2");
                         //Searches for valid street
+                        var temp = checkStart.outerHTML;
+                        console.log(temp);
                         var findS = searchAddress(checkStart.outerHTML);
                         var findE = searchAddress(checkEnd.outerHTML);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
