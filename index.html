@@ -225,11 +225,7 @@
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
-                          startOutput = `
-                            <ul class="list-group">
-                              <li class="list-group-item">${startAddy}</li>
-                            </ul>
-                          `;
+                          startOutput = JSON.stringify(startAddy)
                         })
                         .catch(function(error){
                           console.log(error);
