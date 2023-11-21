@@ -272,10 +272,12 @@
                         //Searches for valid street
                         var temp = checkStart.outerHTML;
                         var temp2 = checkEnd.outerHTML;
-                        //console.log(temp);
+                        console.log(temp);
+                        console.log(temp2);
                         var st1 = temp.substring(17,temp.length-8);
                         var st2 = temp2.substring(17,temp.length-8);
-                        //console.log("UPDATE " + st1);
+                        console.log("UPDATE " + st1);
+                        console.log("UPDATE " + st2);
                         var findS = searchAddress(st1);
                         var findE = searchAddress(st2);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
