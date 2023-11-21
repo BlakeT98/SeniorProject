@@ -258,12 +258,18 @@
                         .catch(function(error){
                           console.log(error);
                         });
-                      }      
-                        start = document.getElementById("test").value;
-                        end = document.getElementById("test2").value;
+                      }   
+                      if(start.charAt(0) != '{' && start.charAt(0) != '4' && end.charAt(0) == '{' || end.charAt(0) == '4') document.getElementById('test').innerHTML = start;
+                      else if(start.charAt(0) == '{' || start.charAt(0) == '4' && end.charAt(0) != '{' && end.charAt(0) != '4') document.getElementById('test2').innerHTML = end;
+                      else{
+                        document.getElementById('test').innerHTML = start;
+                        document.getElementById('test2').innerHTML = start;
+                      }
+                        var checkStart = document.getElementById("test").value;
+                        var checkEnd = document.getElementById("test2").value;
                         //Searches for valid street
-                        var findS = searchAddress(start);
-                        var findE = searchAddress(end);
+                        var findS = searchAddress(checkStart);
+                        var findE = searchAddress(checkEnd);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                         if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
