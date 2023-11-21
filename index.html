@@ -222,6 +222,9 @@
                         })
                         .then(function(response){
                           console.log(response);
+                          //formatted address
+                          console.log(response.data.results[0].address_components[0].short_name);
+                          console.log(response.data.results[0].address_components[1].short_name);
                         })
                         .catch(function(error){
                           console.log(error);
