@@ -223,9 +223,12 @@
                           //formatted address
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;                  
                           console.log(startAddy);
+                          startOutput = `
+                            <h1>${startAddy}</h1>
+                          `;
+                            
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
-                          console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
                           //startOutput = JSON.stringify(startAddy)
                         })
@@ -260,7 +263,7 @@
                         });
                       }
                       //var route = startOutput + endOutput;
-                      document.getElementById('test').innerHTML = startAddy;
+                      document.getElementById('test').innerHTML = startOutput;
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
