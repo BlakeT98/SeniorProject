@@ -222,7 +222,7 @@
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           
-                          document.getElementById('test').innerHTML = startAddy;
+                          //document.getElementById('test').innerHTML = startAddy;
                         })
                         .catch(function(error){
                           console.log(error);
@@ -253,7 +253,7 @@
                           console.log(error);
                         });
                       }
-                      //alert(startAddy + " " + endAddy);                                          
+                      alert(startAddy + " " + endAddy);                                          
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
