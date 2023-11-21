@@ -65,8 +65,8 @@ function searchAddress(s){
   let st = "";
   let blockNum = 0;
   //<label id="test">100 Hawley St</label> 
-  let street = s.substring(17,s.length-9);
-  console.log("UPDATE " + street)
+  //let street = s.substring(17,s.length-9);
+  //console.log("UPDATE " + street)
 
   for(let i = 0; i < street.length; i++){
     if(street.charAt(3) == " "){
