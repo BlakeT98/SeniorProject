@@ -185,10 +185,58 @@
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
                     document.getElementById("enter2").addEventListener("click", geocodeCoord);
-                    //button.addEventListener('click', onButtonClick);
 
                     //Creates the Geocoder
-                    const geocoder = new google.maps.Geocoder();
+                    function geocodeCoord(){
+                      const geocoder = new google.maps.Geocoder();
+                      var latStrt;
+                      var lngStrt;
+                      var latEnd;
+                      var lngEnd;
+                      var start = document.getElementById("start2").value;
+                      var end = document.getElementById("end2").value;
+                      
+                      document.getElementById("test").innnerHTML = start + " " + end;
+                      if(start.charAt(0) == '{' || start.charAt(0) == '4'){
+                        const latlngStrt = start.split(",",2);
+                        if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
+                        else latStrt = latlngStrt[0].substring(8);
+                        if(latlngStrt[1].substring(0,2) == "-8") lngStrt = latlngStrt[1];
+                        else lngStrt = latlngStrt[1].substring(7,latlngStrt[1].length-1);
+                        const latlngS = latStrt + "," + lngStrt;
+                        document.getElementById("test").innerHTML = latlngS;
+                        const latlngStr = latlngS.split(",",2);
+                        const startCoord = {
+                          lat: parseFloat(latlngStr[0]),
+                          lng: parseFloat(latlngStr[1]),
+                        };
+                      }
+                      /*if(end.charAt(0) == '{' || end.charAt(0) == '4'){
+                        const latlngEnd = end.split(",",2);
+                        if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
+                        else latEnd = latlngEnd[0].substring(8);
+                        if(latlngEnd[1].substring(0,2) == "-8") lngEnd = latlngEnd[1];
+                        else lngEnd = latlngEnd[1].substring(7,latlngEnd[1].length-1);
+                        const latlngE = latEnd + "," + lngEnd;
+                        document.getElementById("test").innerHTML = latlngE;
+                        const latlngStr = latlngE.split(",",2);
+                        const endCoord = {
+                          lat: parseFloat(latlngStr[0]),
+                          lng: parseFloat(latlngStr[1]),
+                        };
+                      }       */               
+                        //START GEOCODE
+                      geocoder.geocode({ location: startCoord})
+                      .then((respoonse) => {
+                        if(response.results[0]){
+                          document.getElementById("test").innerHTML = response.results[0].formatted_address;
+                          //document.getElementById("test").innerHTML = "TESTING CONVERTCOORD()";
+                        }
+                        else alert("No results found");
+                      })
+                      .catch((e) => window.alert("Geocoder failed due to: " + e));                           
+                    }
+
                     
                     //Grabs addresses from input text
                     function grabAddress(){
