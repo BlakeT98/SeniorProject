@@ -229,7 +229,7 @@
                               <li>${startAddy}</li>
                             </ul>
                           `;
-                            
+                          document.getElementById('test').innerHTML = startOutput;
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
@@ -266,7 +266,7 @@
                         });
                       }
                       //var route = startOutput + endOutput;
-                      document.getElementById('test').innerHTML = startOutput;
+                      //document.getElementById('test').innerHTML = startOutput;
                     }
                     /*function getGeocode(coord){
                       //START GEOCODE
