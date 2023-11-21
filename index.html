@@ -217,11 +217,11 @@
                           }
                         })
                         .then(function(response){
-                          console.log(response);
+                          //console.log(response);
                           //formatted address
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
-                          
+                          console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //document.getElementById('test').innerHTML = startAddy;
                         })
                         .catch(function(error){
@@ -248,6 +248,7 @@
                           //formatted address
                           //endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
+                          console.log(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                         })
                         .catch(function(error){
                           console.log(error);
