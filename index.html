@@ -196,6 +196,8 @@
                       var endAddy;
                       var startOutput
                       var endOutput;
+                      var checkStart = "";
+                      var checkEnd = "";
 
                       //START INPUT
                       if(start.charAt(0) == '{' || start.charAt(0) == '4'){
@@ -265,8 +267,8 @@
                         document.getElementById('test').innerHTML = start;
                         document.getElementById('test2').innerHTML = end;
                       }
-                        var checkStart = document.getElementById("test").value;
-                        var checkEnd = document.getElementById("test2").value;
+                        checkStart = document.getElementById("test").value;
+                        checkEnd = document.getElementById("test2").value;
                         //Searches for valid street
                         var findS = searchAddress(checkStart);
                         var findE = searchAddress(checkEnd);
