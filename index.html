@@ -186,6 +186,9 @@
                     document.getElementById("enter").addEventListener("click", grabAddress);
                     document.getElementById("enter2").addEventListener("click", geocodeCoord);
                     //button.addEventListener('click', onButtonClick);
+
+                    //Creates the Geocoder
+                    const geocoder = new google.maps.Geocoder();
                     
                     //Grabs addresses from input text
                     function grabAddress(){
