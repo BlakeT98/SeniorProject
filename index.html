@@ -227,7 +227,7 @@
                           startOutput = `
                             <p>${startAddy}</p>
                           `;
-                          document.getElementById('test').innerHTML = startOutput;
+                          document.getElementById('test').innerHTML = "Start: " + startOutput;
                           
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
@@ -262,7 +262,7 @@
                           endOutput = `
                             <p>${endAddy}</p>
                           `;
-                          document.getElementById('test2').innerHTML = endOutput;
+                          document.getElementById('test2').innerHTML = "End: " + endOutput;
                         })
                         .catch(function(error){
                           console.log(error);
