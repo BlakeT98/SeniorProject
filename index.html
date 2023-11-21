@@ -217,7 +217,7 @@
                           }
                         })
                         .then(function(response){
-                          //console.log(response);
+                          console.log(response);
                           //formatted address
                           startAddy = String(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
