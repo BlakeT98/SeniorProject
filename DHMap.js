@@ -60,10 +60,13 @@ for(let j = 0; j < interArray.length-1; j++){
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
-function searchAddress(street){
+function searchAddress(s){
   let block = 0;
   let st = "";
   let blockNum = 0;
+  //<label id="test">100 Hawley St</label> 
+  let street = s.substring(17,s.length-9);
+  console.log("UPDATE " + street)
 
   for(let i = 0; i < street.length; i++){
     if(street.charAt(3) == " "){
