@@ -32,6 +32,7 @@ function myMap(){
   });
 
   document.getElementById("enter2").addEventListener("click", function(){
+    alert("TEST");
     geocodeCoord(geocoder);
   }, false);
 }
