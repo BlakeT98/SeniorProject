@@ -231,9 +231,9 @@
                             var st2 = temp2.substring(18,temp2.length-8);
                             console.log("UPDATE " + st2);
                             var findE = searchAddress(st2);
-                            if(findS == undefined && findE == undefined)alert("Starting Address: (" + st + ") and Ending Address: (" + st2 + ") is not found or within range");
-                            else if(findS == undefined)alert("Starting Address: (" + st + ") is not found or within range");
-                            else if(findE == undefined)alert("Ending Address: (" + st2 + ") is not found or within range");
+                            if(findS == undefined && findE == undefined)alert("Start Address: (" + st + ") and End Address: (" + st2 + ") are not found or within range");
+                            else if(findS == undefined)alert("Start Address: (" + st + ") is not found or within range");
+                            else if(findE == undefined)alert("End Address: (" + st2 + ") is not found or within range");
                           })
                           .catch(function(error){
                             console.log(error);
@@ -244,50 +244,22 @@
                           console.log(error);
                         });
                       }
-
-                      //END INPUT
-                /*      if(end.charAt(0) == '{'){
-                        var latlngE = chop(end);
-                        axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-                          params:{
-                            latlng: latlngE,
-                            key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-                          }
-                        })
-                        .then(function(response){
-                          //console.log(response);
-                          //formatted address
-                          var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
-                          console.log("Found End LatLng :" + endAddy);  
-                          var endOutput = `${endAddy}`;
-                          document.getElementById('test2').innerHTML = endOutput;
-                          var checkEnd = document.getElementById('test2');
-                          var temp = checkEnd.outerHTML;
-                          console.log("TEST " + temp);
-                          var st = temp.substring(18,temp.length-8);
-                          console.log("UPDATE " + st);
-                          var findE = searchAddress(st);
-                          if(findE == undefined)alert("Ending Address: (" + st + ") is not found or within range");
-                          //else alert("Ending Address Found!");
-                        })
-                        .catch(function(error){
-                          console.log(error);
-                        });  
-                      }   */
+                      //if start and end are addresses, not coords
                       if(start.charAt(0) != '{' && end.charAt(0) != '{'){
                         var findS = searchAddress(start);
                         var findE = searchAddress(end);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                           
-                        if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
-                        else if(findS == undefined)alert("Starting location is not found or within range");
-                        else if(findE == undefined)alert("Ending location is not found or within range");
-
-                        document.getElementById('test').innerHTML = start;
-                        document.getElementById('test2').innerHTML = end;
+                        if(findS === undefined && findE === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+                        else if(findS == undefined)alert("Start Address: (" + start + ") is not found or within range");
+                        else if(findE == undefined)alert("End Address: (" + end + ") is not found or within range");
+                        else{
+                          document.getElementById('test').innerHTML = start;
+                          document.getElementById('test2').innerHTML = end;
+                        }
                         //else alert(findS + ' ' + findE);
-                      }              
+                      }
+                      else alert("Start and End inputs are not matching address/location types");
                       //alert(start + ' ' + end);
                     }
 
