@@ -231,14 +231,13 @@
                             var st2 = temp2.substring(18,temp2.length-8);
                             console.log("UPDATE " + st2);
                             var findE = searchAddress(st2);
+                            if(findS == undefined && findE == undefined)alert("Starting Address: (" + st + ") and Ending Address: (" + st2 + ") is not found or within range");
+                            else if(findS == undefined)alert("Starting Address: (" + st + ") is not found or within range");
+                            else if(findE == undefined)alert("Ending Address: (" + st2 + ") is not found or within range");
                           })
                           .catch(function(error){
                             console.log(error);
-                          });
-                          
-                          if(findS == undefined && findE == undefined)alert("Starting Address: (" + st + ") and Ending Address: (" + st2 + ") is not found or within range");
-                          else if(findS == undefined)alert("Starting Address: (" + st + ") is not found or within range");
-                          else if(findE == undefined)alert("Ending Address: (" + st2 + ") is not found or within range");
+                          });                    
                           //else alert("Starting Address Found!");
                         })
                         .catch(function(error){
