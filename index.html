@@ -182,7 +182,7 @@
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-  
+                    document.getElementById("enter").addEventListener("click", checkAddress);
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
@@ -262,8 +262,6 @@
                         document.getElementById('test2').innerHTML = end;
                       }     
                       //alert(start + ' ' + end);
-                      checkAddress();
-                      return;
                     }
                   </script>
                   
@@ -287,8 +285,8 @@
                     if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
                     else if(findS == undefined)alert("Starting location is not found or within range");
                     else if(findE == undefined)alert("Ending location is not found or within range");
-                    //else alert(findS + ' ' + findE);
-                    return;
+                    else alert(findS + ' ' + findE);
+
                   }
                 </script>
             
