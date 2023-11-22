@@ -203,11 +203,11 @@
                         .then(function(response){                        
                           var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           console.log("Found Start LatLng :" + startAddy);
-                          var startOutput = `${startAddy} `;
+                          var startOutput = `${startAddy}`;
                           document.getElementById('test').innerHTML = startOutput;
                           var checkStart = document.getElementById('test');
                           var temp = checkStart.outerHTML;
-                          console.log("TEST " + temp);
+                          console.log("TEST Start" + temp);
                           var st = temp.substring(17,temp.length-9);
                           console.log("UPDATE " + st + ".");
                           var findS = searchAddress(st);
@@ -227,7 +227,7 @@
                             document.getElementById('test2').innerHTML = endOutput;
                             var checkEnd = document.getElementById('test2');
                             var temp2 = checkEnd.outerHTML;
-                            console.log("TEST " + temp2);
+                            console.log("TEST End" + temp2);
                             var st2 = temp2.substring(18,temp2.length-8);
                             console.log("UPDATE " + st2 + ".");
                             var findE = searchAddress(st2);
@@ -271,10 +271,6 @@
                       lng = latlng[1].substring(7,latlng[1].length-1);
                       var chopped = lat + "," + lng;
                       return chopped;
-                    }
-
-                    function convert(){
-
                     }
 
                    /* function checkAddress(){
