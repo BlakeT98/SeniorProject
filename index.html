@@ -263,34 +263,30 @@
                       }     
                       //alert(start + ' ' + end);
                     }
-                  </script>
-                  
-                <script>
-                  function checkAddress(){
-                    //Searches for valid street
-                    checkStart = document.getElementById('test');
-                    checkEnd = document.getElementById('test2');
-                    var temp = checkStart.outerHTML;
-                    var temp2 = checkEnd.outerHTML;
-                    console.log("TEST " + temp);
-                    console.log("TEST2 " + temp2);
-                    var st1 = temp.substring(17,temp.length-8);
-                    var st2 = temp2.substring(18,temp.length-7);
-                    console.log("UPDATE " + st1);
-                    console.log("UPDATE " + st2);
-                    var findS = searchAddress(st1);
-                    var findE = searchAddress(st2);
-                    //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
-                      
-                    if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
-                    else if(findS == undefined)alert("Starting location is not found or within range");
-                    else if(findE == undefined)alert("Ending location is not found or within range");
-                    else alert(findS + ' ' + findE);
 
-                  }
-                </script>
-            
-            
+                    function checkAddress(){
+                      //Searches for valid street
+                      checkStart = document.getElementById('test');
+                      checkEnd = document.getElementById('test2');
+                      var temp = checkStart.outerHTML;
+                      var temp2 = checkEnd.outerHTML;
+                      console.log("TEST " + temp);
+                      console.log("TEST2 " + temp2);
+                      var st1 = temp.substring(17,temp.length-8);
+                      var st2 = temp2.substring(18,temp.length-7);
+                      console.log("UPDATE " + st1);
+                      console.log("UPDATE " + st2);
+                      var findS = searchAddress(st1);
+                      var findE = searchAddress(st2);
+                      //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
+                        
+                      if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
+                      else if(findS == undefined)alert("Starting location is not found or within range");
+                      else if(findE == undefined)alert("Ending location is not found or within range");
+                      else alert(findS + ' ' + findE);
+                    }
+                  </script>
+
               <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
               <!-- CREATES MAP AND ADDRESS INPUT PLUS BUTTONS -->
               <script type="module" src="map.js"> </script>
