@@ -182,7 +182,8 @@
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-  
+                    var startCoord;
+                    var endCoord;
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
@@ -193,6 +194,7 @@
                       if(start.charAt(0) == '{' && end.charAt(0) == '{'){
                         //removing {"lat": and } from pasted coord
                         var latlngS = chop(start);
+                        startCoord = latlngS;
                         //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
                         //used source for concatinating geocode api url and lat/lng with api key added at the end
                         axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
@@ -211,6 +213,7 @@
                       //END INPUT
                           //removing {"lat": and } from pasted coord
                           var latlngE = chop(end);
+                          endCoord = latlngE;
                           //used source for concatinating geocode api url and lat/lng with api key added at the end
                           axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
                             params:{
