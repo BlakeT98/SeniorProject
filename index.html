@@ -181,11 +181,8 @@
               
                   <!-- testing js code -->
                   <script> 
-                    //document.getElementById("enter").addEventListener("click", grabAddress);
-                    document.getElementById("enter").onclick = function(){
-                      grabAddress();
-                      checkAddress();
-                    };
+                    document.getElementById("enter").addEventListener("click", grabAddress);
+  
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
@@ -200,9 +197,10 @@
                       var endOutput;
                       var checkStart = "";
                       var checkEnd = "";
+                      var findS;
+                      var findE;
 
                       //START INPUT
-
                       //Check if it has a left bracket indicating the user pasted lat lng
                       if(start.charAt(0) == '{'){
                         const latlngStrt = start.split(",",2);
@@ -224,6 +222,14 @@
                           console.log("Found Start LatLng :" + startAddy);
                           startOutput = `${startAddy} `;
                           document.getElementById('test').innerHTML = startOutput;
+                          checkStart = document.getElementById('test');
+                          var temp = checkStart.outerHTML;
+                          console.log("TEST " + temp);
+                          var st = temp.substring(17,temp.length-8);
+                          console.log("UPDATE " + st);
+                          findS = searchAddress(st);
+                          if(findS == undefined)alert("Starting Address: (" + st + ") is not found or within range");
+                          else alert("Starting Address Found!");
                         })
                         .catch(function(error){
                           console.log(error);
@@ -252,22 +258,43 @@
                           console.log("Found End LatLng :" + endAddy);  
                           endOutput = `${endAddy}`;
                           document.getElementById('test2').innerHTML = endOutput;
-
+                          checkEnd = document.getElementById('test2');
+                          var temp = checkEnd.outerHTML;
+                          console.log("TEST " + temp);
+                          var st = temp.substring(18,temp.length-7);
+                          console.log("UPDATE " + st);
+                          findE = searchAddress(st);
+                          if(findE == undefined)alert("Ending Address: (" + st + ") is not found or within range");
+                          else alert("Ending Address Found!");
                         })
                         .catch(function(error){
                           console.log(error);
                         });
                       }   
-                      if(start.charAt(0) != '{' && end.charAt(0) == '{') document.getElementById('test').innerHTML = start;
-                      else if(start.charAt(0) == '{' && end.charAt(0) != '{') document.getElementById('test2').innerHTML = end;
-                      else if(start.charAt(0) != '{' && end.charAt(0) != '{'){
-                        document.getElementById('test').innerHTML = start;
-                        document.getElementById('test2').innerHTML = end;
-                      }     
+                      if(start.charAt(0) != '{' && end.charAt(0) != '{'){
+                        checkStart = document.getElementById('test');
+                        checkEnd = document.getElementById('test2');
+                        var temp = checkStart.outerHTML;
+                        var temp2 = checkEnd.outerHTML;
+                        console.log("TEST " + temp);
+                        console.log("TEST2 " + temp2);
+                        var st1 = temp.substring(17,temp.length-8);
+                        var st2 = temp2.substring(18,temp.length-7);
+                        console.log("UPDATE " + st1);
+                        console.log("UPDATE " + st2);
+                        var findS = searchAddress(st1);
+                        var findE = searchAddress(st2);
+                        //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
+                          
+                        if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
+                        else if(findS == undefined)alert("Starting location is not found or within range");
+                        else if(findE == undefined)alert("Ending location is not found or within range");
+                        else alert(findS + ' ' + findE);
+                      }              
                       //alert(start + ' ' + end);
                     }
 
-                    function checkAddress(){
+                   /* function checkAddress(){
                       //Searches for valid street
                       checkStart = document.getElementById('test');
                       checkEnd = document.getElementById('test2');
@@ -287,7 +314,7 @@
                       else if(findS == undefined)alert("Starting location is not found or within range");
                       else if(findE == undefined)alert("Ending location is not found or within range");
                       else alert(findS + ' ' + findE);
-                    }
+                    }  */
                   </script>
 
               <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
