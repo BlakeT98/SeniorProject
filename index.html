@@ -182,23 +182,25 @@
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-                    var startOutput;
-                    var endOutput;
+  
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
                       var end = document.getElementById("end").value;
-
                       var latStrt;
                       var lngStrt;
                       var latEnd;
                       var lngEnd;
                       var startAddy;
                       var endAddy;
+                      var startOutput;
+                      var endOutput;
                       var checkStart = "";
                       var checkEnd = "";
 
                       //START INPUT
+
+                      //Check if it has a left bracket indicating the user pasted lat lng
                       if(start.charAt(0) == '{'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
@@ -214,19 +216,11 @@
                             key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
                           }
                         })
-                        .then(function(response){
-                          //console.log(response);
-                          //formatted address
-                          //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;       
+                        .then(function(response){                        
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           console.log("Found Start LatLng :" + startAddy);
                           startOutput = `${startAddy} `;
-                          //document.getElementById('test').innerHTML = startOutput;
-
-                          //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
-                          //document.getElementById('test').innerHTML = startAddy;
-                          //startOutput = JSON.stringify(startAddy)
+                          document.getElementById('test').innerHTML = startOutput;
                         })
                         .catch(function(error){
                           console.log(error);
@@ -254,21 +248,21 @@
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
                           console.log("Found End LatLng :" + endAddy);  
                           endOutput = `${endAddy}`;
-                          //document.getElementById('test2').innerHTML = endOutput;
+                          document.getElementById('test2').innerHTML = endOutput;
 
                         })
                         .catch(function(error){
                           console.log(error);
                         });
                       }   
-                      if(start.charAt(0) != '{' && end.charAt(0) == '{') startOutput = `${start}`;
-                      else if(start.charAt(0) == '{' && end.charAt(0) != '{') endOutput = `${end}`;
+                      if(start.charAt(0) != '{' && end.charAt(0) == '{') document.getElementById('test').innerHTML = start;
+                      else if(start.charAt(0) == '{' && end.charAt(0) != '{') document.getElementById('test2').innerHTML = end;
                       else if(start.charAt(0) != '{' && end.charAt(0) != '{'){
-                        startOutput = `${start}`;
-                        endOutput = `${end}`;
+                        document.getElementById('test').innerHTML = start;
+                        document.getElementById('test2').innerHTML = end;
                       }     
                       //alert(start + ' ' + end);
-                      checkAddress();
+                      //checkAddress();
                     }
                   </script>
                   
