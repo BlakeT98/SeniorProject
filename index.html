@@ -181,8 +181,11 @@
               
                   <!-- testing js code -->
                   <script> 
-                    document.getElementById("enter").addEventListener("click", grabAddress);
-                    document.getElementById("enter").addEventListener("click", checkAddress);
+                    //document.getElementById("enter").addEventListener("click", grabAddress);
+                    document.getElementById("enter").onclick = function(){
+                      grabAddress();
+                      checkAddress();
+                    };
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
