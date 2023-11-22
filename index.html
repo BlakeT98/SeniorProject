@@ -281,7 +281,8 @@
                       const latlng = coord.split(",",2);
                       if(latlng[0].substring(0,1) == "4")lat = latlng[0];
                       if(latlng[1].substring(0,2) == "-8") lng = latlng[1];
-                      return lat + "," + lng;
+                      var chopped = lat + "," + lng;
+                      return chopped;
                     }
 
                    /* function checkAddress(){
