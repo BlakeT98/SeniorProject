@@ -223,9 +223,9 @@
                             var findS = searchAddress(startOutput);
                             var findE = searchAddress(endOutput);
                             
-                            if(findS == undefined && findE == undefined)alert("Start Address: (" + st + ") and End Address: (" + st2 + ") are not found or within range");
-                            else if(findS == undefined)alert("Start Address: (" + st + ") is not found or within range");
-                            else if(findE == undefined)alert("End Address: (" + st2 + ") is not found or within range");
+                            if(findS == undefined && findE == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
+                            else if(findS == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
+                            else if(findE == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
                             else{
                               //If found, add start address to html
                               document.getElementById('test').innerHTML = startOutput;
