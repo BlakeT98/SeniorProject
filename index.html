@@ -225,7 +225,7 @@
                           checkStart = document.getElementById('test');
                           var temp = checkStart.outerHTML;
                           console.log("TEST " + temp);
-                          var st = temp.substring(17,temp.length-8);
+                          var st = temp.substring(17,temp.length-9);
                           console.log("UPDATE " + st);
                           findS = searchAddress(st);
                           if(findS == undefined)alert("Starting Address: (" + st + ") is not found or within range");
@@ -261,7 +261,7 @@
                           checkEnd = document.getElementById('test2');
                           var temp = checkEnd.outerHTML;
                           console.log("TEST " + temp);
-                          var st = temp.substring(18,temp.length-7);
+                          var st = temp.substring(18,temp.length-8);
                           console.log("UPDATE " + st);
                           findE = searchAddress(st);
                           if(findE == undefined)alert("Ending Address: (" + st + ") is not found or within range");
