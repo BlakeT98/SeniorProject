@@ -95,6 +95,7 @@ function searchAddress(street){
  }
 }
 
+/*
 //variables for the literal coordinates for the selected start and end locations
 var startCoord;
 var endCoord;
@@ -192,7 +193,7 @@ function chop(coord){
   var chopped = lat + "," + lng;
   return chopped;
 }
-
+*/
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
