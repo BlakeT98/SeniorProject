@@ -246,11 +246,13 @@
                           })
                           .catch(function(error){
                             console.log(error);
+                            alert("Bad End Address input")
                           });                    
                           //else alert("Starting Address Found!");
                         })
                         .catch(function(error){
                           console.log(error);
+                          alert("Bad Start Address input");
                         });
                       }
                       //if start and end are addresses, not coords
@@ -268,6 +270,7 @@
                         }
                         //else alert(findS + ' ' + findE);
                       }
+                      else alert("Start and End addresses do not have matching input types");
                       //alert(start + ' ' + end);
                     }
 
