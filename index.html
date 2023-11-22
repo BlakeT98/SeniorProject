@@ -182,7 +182,8 @@
                   <!-- testing js code -->
                   <script> 
                     document.getElementById("enter").addEventListener("click", grabAddress);
-                
+                    var startOutput;
+                    var endOutput;
                     //Grabs addresses from input text
                     function grabAddress(){
                       var start = document.getElementById("start").value;
@@ -194,8 +195,6 @@
                       var lngEnd;
                       var startAddy;
                       var endAddy;
-                      var startOutput
-                      var endOutput;
                       var checkStart = "";
                       var checkEnd = "";
 
