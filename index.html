@@ -272,6 +272,8 @@
                         });
                       }   
                       if(start.charAt(0) != '{' && end.charAt(0) != '{'){
+                        document.getElementById('test').innerHTML = start;
+                        document.getElementById('test2').innerHTML = end;
                         var findS = searchAddress(start);
                         var findE = searchAddress(end);
                         //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
