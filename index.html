@@ -208,8 +208,8 @@
                           var checkStart = document.getElementById('test');
                           var temp = checkStart.outerHTML;
                           console.log("TEST " + temp);
-                          var st = temp.substring(17,temp.length-9);
-                          console.log("UPDATE " + st);
+                          var st = temp.substring(17,temp.length-8);
+                          console.log("UPDATE " + st + ".");
                           var findS = searchAddress(st);
 
                       //END INPUT
@@ -229,7 +229,7 @@
                             var temp2 = checkEnd.outerHTML;
                             console.log("TEST " + temp2);
                             var st2 = temp2.substring(18,temp2.length-8);
-                            console.log("UPDATE " + st2);
+                            console.log("UPDATE " + st2 + ".");
                             var findE = searchAddress(st2);
                             if(findS == undefined && findE == undefined)alert("Start Address: (" + st + ") and End Address: (" + st2 + ") are not found or within range");
                             else if(findS == undefined)alert("Start Address: (" + st + ") is not found or within range");
