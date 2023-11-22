@@ -200,7 +200,7 @@
                       var checkEnd = "";
 
                       //START INPUT
-                      if(start.charAt(0) == '{' || start.charAt(0) == '4'){
+                      if(start.charAt(0) == '{'){
                         const latlngStrt = start.split(",",2);
                         if(latlngStrt[0].substring(0,1) == "4")latStrt = latlngStrt[0];
                         else latStrt = latlngStrt[0].substring(8);
@@ -220,7 +220,7 @@
                           //formatted address
                           //startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;       
                           startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          console.log(startAddy);
+                          console.log("Found Start LatLng :" + startAddy);
                           startOutput = `${startAddy} `;
                           document.getElementById('test').innerHTML = startOutput;
 
@@ -235,7 +235,7 @@
                       }
 
                       //END INPUT
-                      if(end.charAt(0) == '{' || end.charAt(0) == '4'){
+                      if(end.charAt(0) == '{'){
                         const latlngEnd = end.split(",",2);
                         if(latlngEnd[0].substring(0,1) == "4")latEnd = latlngEnd[0];
                         else latEnd = latlngEnd[0].substring(8);
@@ -253,7 +253,7 @@
                           //formatted address
                           endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
                           //alert(response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name);
-                          console.log(endAddy);  
+                          console.log("Found End LatLng :" + endAddy);  
                           endOutput = `${endAddy}`;
                           document.getElementById('test2').innerHTML = endOutput;
 
@@ -262,14 +262,14 @@
                           console.log(error);
                         });
                       }   
-                      if(start.charAt(0) != '{' && start.charAt(0) != '4' && end.charAt(0) == '{' || end.charAt(0) == '4') document.getElementById('test').innerHTML = start;
-                      else if(start.charAt(0) == '{' || start.charAt(0) == '4' && end.charAt(0) != '{' && end.charAt(0) != '4') document.getElementById('test2').innerHTML = end;
-                      else if(start.charAt(0) != '{' || start.charAt(0) != '4' && end.charAt(0) != '{' && end.charAt(0) != '4'){
+                      if(start.charAt(0) != '{' && end.charAt(0) == '{') document.getElementById('test').innerHTML = start;
+                      else if(start.charAt(0) == '{' && end.charAt(0) != '{') document.getElementById('test2').innerHTML = end;
+                      else if(start.charAt(0) != '{' && end.charAt(0) != '{'){
                         document.getElementById('test').innerHTML = start;
                         document.getElementById('test2').innerHTML = end;
                       }     
                       //alert(start + ' ' + end);
-                      
+                      checkAddress();
                     }
                   </script>
                   
