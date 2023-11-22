@@ -95,6 +95,10 @@ function searchAddress(street){
  }
 }
 
+function grabAddress(){
+
+}
+
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
