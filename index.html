@@ -275,16 +275,16 @@
                 <script>
                   function checkAddress(){
                     //Searches for valid street
-                    //var temp = checkStart.outerHTML;
-                    //var temp2 = checkEnd.outerHTML;
-                    console.log("TEST " + startOutput);
-                    console.log("TEST2 " + endOutput);
-                   /* var st1 = temp.substring(17,temp.length-8);
+                    var temp = startOutput.outerHTML;
+                    var temp2 = endOutput.outerHTML;
+                    console.log("TEST " + temp);
+                    console.log("TEST2 " + temp2);
+                    var st1 = temp.substring(17,temp.length-8);
                     var st2 = temp2.substring(18,temp.length-7);
                     console.log("UPDATE " + st1);
-                    console.log("UPDATE " + st2);*/
-                    var findS = searchAddress(startOutput);
-                    var findE = searchAddress(endOutput);
+                    console.log("UPDATE " + st2);
+                    var findS = searchAddress(st1);
+                    var findE = searchAddress(st2);
                     //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                     if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
