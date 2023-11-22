@@ -244,6 +244,7 @@
                           console.log(error);
                         });
                       }
+                      else alert("Start and End inputs are not matching address/location types");
                       //if start and end are addresses, not coords
                       if(start.charAt(0) != '{' && end.charAt(0) != '{'){
                         var findS = searchAddress(start);
