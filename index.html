@@ -270,7 +270,7 @@
                         }
                         //else alert(findS + ' ' + findE);
                       }
-                      else alert("Start and End addresses do not have matching input types");
+                      if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
                       //alert(start + ' ' + end);
                     }
 
