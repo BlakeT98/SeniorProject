@@ -275,26 +275,25 @@
                   
                 <script>
                   function checkAddress(){
-                    checkStart = startOutput;
-                    checkEnd = endOutput;
                     //Searches for valid street
                     //var temp = checkStart.outerHTML;
                     //var temp2 = checkEnd.outerHTML;
-                    console.log("TEST " + checkStart);
-                    console.log("TEST2 " + checkEnd);
+                    console.log("TEST " + startOutput);
+                    console.log("TEST2 " + endOutput);
                    /* var st1 = temp.substring(17,temp.length-8);
                     var st2 = temp2.substring(18,temp.length-7);
                     console.log("UPDATE " + st1);
                     console.log("UPDATE " + st2);*/
-                    var findS = searchAddress(checkStart);
-                    var findE = searchAddress(checkEnd);
+                    var findS = searchAddress(startOutput);
+                    var findE = searchAddress(endOutput);
                     //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                       
                     if(findS === undefined && findE === undefined)alert("Starting and Ending locations are not found or within range.");
                     else if(findS == undefined)alert("Starting location is not found or within range");
                     else if(findE == undefined)alert("Ending location is not found or within range");
                     else alert(findS + ' ' + findE);
-              
+                    document.getElementById('test').innerHTML = startOutput;
+                    document.getElementById('test2').innnerHTML = endOutput;
                   }
                 </script>
             
