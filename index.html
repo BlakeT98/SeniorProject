@@ -179,121 +179,18 @@
 
                   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
               
-                  <!-- testing js code -->
-                  <!-- <script src="DHMap.js"> -->
-                  <script>
-                    //document.getElementById("enter").addEventListener("click", grabAddress);
-   /*                 //variables for the literal coordinates for the selected start and end locations
-                    var startCoord;
-                    var endCoord;
-                    //Grabs addresses from input text
-                    function grabAddress(){
-                      var start = document.getElementById("start").value;
-                      var end = document.getElementById("end").value;                  
-
-                      //START INPUT
-                      //Check if it has a left bracket indicating the user pasted lat lng
-                      if(start.charAt(0) == '{' && end.charAt(0) == '{'){
-                        //removing {"lat": and } from pasted coord
-                        var latlngS = chop(start);
-                        startCoord = latlngS;
-                        //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
-                        //used source for concatinating geocode api url and lat/lng with api key added at the end
-                        axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-                          params:{
-                            latlng: latlngS,
-                            key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-                          }
-                        })
-                        .then(function(response){  
-                          //combining block number and street name from geocoded results
-                          var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                          console.log("Found Start LatLng :" + startAddy);
-                          //converting JSON obj into string
-                          var startOutput = `${startAddy}`;
-                          
-                      //END INPUT
-                          //removing {"lat": and } from pasted coord
-                          var latlngE = chop(end);
-                          endCoord = latlngE;
-                          //used source for concatinating geocode api url and lat/lng with api key added at the end
-                          axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-                            params:{
-                              latlng: latlngE,
-                              key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-                            }
-                          })
-                          .then(function(response){
-                            //combining block number and street name from geocoded results
-                            var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                            console.log("Found End LatLng :" + endAddy); 
-                            //converting JSON obj into string
-                            var endOutput = `${endAddy}`;
-
-                            //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
-                            var findS = searchAddress(startOutput);
-                            var findE = searchAddress(endOutput);
-                            //Tells user if address is found
-                            if(findS == undefined && findE == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
-                            else if(findS == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
-                            else if(findE == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
-                            else{
-                              //If found, add start addresses to html
-                              document.getElementById('test').innerHTML = startOutput;
-                              document.getElementById('test2').innerHTML = endOutput;
-                            }
-                          })
-                          .catch(function(error){
-                            console.log(error);
-                            alert("Bad End Address input")
-                          });                    
-                        })
-                        .catch(function(error){
-                          console.log(error);
-                          alert("Bad Start Address input");
-                        });
-                      }
-                      //if start and end are addresses, not coords
-                      if(start.charAt(0) != '{' && end.charAt(0) != '{'){
-                        //searches array for acceptable address
-                        var findS = searchAddress(start);
-                        var findE = searchAddress(end);
-                        //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
-                          
-                        if(findS === undefined && findE === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
-                        else if(findS == undefined)alert("Start Address: (" + start + ") is not found or within range");
-                        else if(findE == undefined)alert("End Address: (" + end + ") is not found or within range");
-                        else{
-                          document.getElementById('test').innerHTML = start;
-                          document.getElementById('test2').innerHTML = end;
-                        }
-                      }
-                      if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
-                    }
-
-                    function chop(coord){
-                      var lat;
-                      var lng;
-                      const latlng = coord.split(",",2);
-                      lat = latlng[0].substring(8);
-                      lng = latlng[1].substring(7,latlng[1].length-1);
-                      var chopped = lat + "," + lng;
-                      return chopped;
-                    }    
-  */ 
-                  </script>
-
+                 
               <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
               <!-- CREATES MAP AND ADDRESS INPUT PLUS BUTTONS -->
               <script type="module" src="map.js"> </script>
-
               <div id="map" style="width:100%;height:400px;"></div>
 
-              <!-- TESTING DHMAP ADDRESS ARRAY -->
               <label>Start:&nbsp;</label>
               <label id="test"></label>
               <label style='margin-left:64px'>End:&nbsp;</label>
               <label id="test2"></label>
+              
+              <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
               <script src="DHMap.js"> </script>
  
             </article>
