@@ -81,7 +81,7 @@ function searchAddress(street){
       block = street.substring(0,4);
       st = street.substring(10);
     }
-    else if(street.charAt(4) == " "){
+    else if(street.charAt(4) == " "){      //if street is formatted "1234 Test St"
       block = street.substring(0,4);
       st = street.substring(5);
     }
