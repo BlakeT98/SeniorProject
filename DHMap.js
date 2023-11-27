@@ -69,11 +69,19 @@ function searchAddress(street){
   //console.log("UPDATE " + street)
 
   for(let i = 0; i < street.length; i++){
-    if(street.charAt(3) == " "){
+    if(street.charAt(3) == " "){            //if street is formatted "123 Test St"
       block = street.substring(0,3);
       st = street.substring(4);
     }
-    else {
+    else if(street.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+      block = street.substring(0,3);
+      st = street.substring(8)
+    }
+    else if(street.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+      block = street.substring(0,4);
+      st = street.substring(10);
+    }
+    else if(street.charAt(4) == " "){
       block = street.substring(0,4);
       st = street.substring(5);
     }
