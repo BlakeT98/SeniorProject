@@ -82,7 +82,7 @@ function searchAddress(street){
     else if(street.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
       block = street.substring(0,4);
       st = street.substring(10);
-      console.log("Format Detected " + block + " : " + st);
+      //console.log("Format Detected " + block + " : " + st);
       break;
     }
     else if(street.charAt(4) == " "){      //if street is formatted "1234 Test St"
@@ -103,7 +103,7 @@ function searchAddress(street){
   }
   //blockNum is the correct block number for matching street name
   let s = "" + blockNum + " "  + st;
-  console.log("Searching for: " + s);
+  //console.log("Searching for: " + s);
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
@@ -136,6 +136,17 @@ function grabAddress(){
      //combining block number and street name from geocoded results
      var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
      console.log("Found Start LatLng :" + startAddy);
+     if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+       var block = street.substring(0,3);
+       var st = street.substring(8);     
+       startAddy = block + st;
+    }
+    else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+      block = street.substring(0,4);
+      st = street.substring(10);
+      startAddy = block + st;
+      //console.log("Format Detected " + block + " : " + st);
+    }
      //converting JSON obj into string
      var startOutput = `${startAddy}`;
                           
@@ -154,12 +165,24 @@ function grabAddress(){
         //combining block number and street name from geocoded results
         var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
         console.log("Found End LatLng :" + endAddy); 
+        if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+          var block = street.substring(0,3);
+          var st = street.substring(8);     
+          endAddy = block + st;
+        }
+        else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+          block = street.substring(0,4);
+          st = street.substring(10);
+          endAddy = block + st;
+          //console.log("Format Detected " + block + " : " + st);
+        }
         //converting JSON obj into string
         var endOutput = `${endAddy}`;
 
         //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
         var findS = searchAddress(startOutput);
         var findE = searchAddress(endOutput);
+
         //Tells user if address is found
         if(findS == undefined && findE == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
         else if(findS == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
