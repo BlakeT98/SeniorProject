@@ -80,6 +80,7 @@ function searchAddress(street){
       break;
     }
     else if(street.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+      console.log("Format Detected: " + street);
       block = street.substring(0,4);
       st = street.substring(10);
       break;
