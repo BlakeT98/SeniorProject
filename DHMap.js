@@ -103,6 +103,7 @@ function searchAddress(street){
   }
   //blockNum is the correct block number for matching street name
   let s = "" + blockNum + " "  + st;
+  console.log("Searching for: " + s);
  for(let k = 0; k < Intersections.length; k++){
    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
  }
