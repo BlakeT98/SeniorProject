@@ -137,13 +137,13 @@ function grabAddress(){
      var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
      console.log("Found Start LatLng :" + startAddy);
      if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
-       var block = street.substring(0,3);
-       var st = street.substring(8);     
+       var block = startAddy.substring(0,3);
+       var st = startAddy.substring(8);     
        startAddy = block + st;
     }
     else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-      block = street.substring(0,4);
-      st = street.substring(10);
+      block = startAddy.substring(0,4);
+      st = startAddy.substring(10);
       startAddy = block + st;
       //console.log("Format Detected " + block + " : " + st);
     }
@@ -166,13 +166,13 @@ function grabAddress(){
         var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
         console.log("Found End LatLng :" + endAddy); 
         if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
-          var block = street.substring(0,3);
-          var st = street.substring(8);     
+          var block = endAddy.substring(0,3);
+          var st = endAddy.substring(8);     
           endAddy = block + st;
         }
         else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-          block = street.substring(0,4);
-          st = street.substring(10);
+          block = endAddy.substring(0,4);
+          st = endAddy.substring(10);
           endAddy = block + st;
           //console.log("Format Detected " + block + " : " + st);
         }
