@@ -72,18 +72,22 @@ function searchAddress(street){
     if(street.charAt(3) == " "){            //if street is formatted "123 Test St"
       block = street.substring(0,3);
       st = street.substring(4);
+      break;
     }
     else if(street.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
       block = street.substring(0,3);
-      st = street.substring(8)
+      st = street.substring(8);
+      break;
     }
     else if(street.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
       block = street.substring(0,4);
       st = street.substring(10);
+      break;
     }
     else if(street.charAt(4) == " "){      //if street is formatted "1234 Test St"
       block = street.substring(0,4);
       st = street.substring(5);
+      break;
     }
   }  //Checking if starting or ending locations are a match with Streets[]
   for(let j = 0; j < Streets.length; j++){
