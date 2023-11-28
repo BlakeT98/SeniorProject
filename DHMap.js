@@ -139,12 +139,12 @@ function grabAddress(){
      if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
        var block = startAddy.substring(0,3);
        var st = startAddy.substring(8);     
-       startAddy = block + st;
+       startAddy = block + " " + st;
     }
     else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
       block = startAddy.substring(0,4);
       st = startAddy.substring(10);
-      startAddy = block + st;
+      startAddy = block + " " + st;
       //console.log("Format Detected " + block + " : " + st);
     }
      //converting JSON obj into string
@@ -168,12 +168,12 @@ function grabAddress(){
         if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
           var block = endAddy.substring(0,3);
           var st = endAddy.substring(8);     
-          endAddy = block + st;
+          endAddy = block + " " + st;
         }
         else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
           block = endAddy.substring(0,4);
           st = endAddy.substring(10);
-          endAddy = block + st;
+          endAddy = block + " " + st;
           //console.log("Format Detected " + block + " : " + st);
         }
         //converting JSON obj into string
