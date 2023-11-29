@@ -78,8 +78,6 @@ function myMap(){
     { lat: 46.583827670092894, lng: -87.38382368725352 },
     { lat: 46.58328783907617, lng: -87.38390610957217 },
     { lat: 46.5818353910085, lng: -87.38436700340833 },
-
-
   ];
   //Creates boundary line on map
   const boundary = new google.maps.Polyline({
@@ -90,7 +88,30 @@ function myMap(){
     strokeWeight: 2,
   });  
   boundary.setMap(map);
-  
+
+  const range1 = [
+    { lat: 46.58210846895235, lng: -87.38748437622985 },
+    { lat: 46.58177653890065, lng: -87.38842407983961 },
+    { lat: 46.580404575049755, lng: -87.39053105597394 },
+    { lat: 46.578014556122625, lng: -87.39261056167977 },
+    { lat: 46.57395339079787, lng: -87.39340771529636 },
+    { lat: 46.57128868694969, lng: -87.39351922139618 },
+    { lat: 46.571272583635846, lng: -87.39907493141537 },
+    { lat: 46.57146435646196, lng: -87.40068350733807 },
+    { lat: 46.5715582321447, lng: -87.40688360052893 },
+
+
+
+
+  ];
+  const boundary1 = new google.maps.Polyline({
+    path: range,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+  });
+  boundary1.setMap(map);
 }
 window.myMap = myMap;
 
