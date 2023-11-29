@@ -12,7 +12,7 @@ function myMap(){
     { lat: 46.585592, lng: -87.402496 },
     { lat: 46.584155, lng: -87.399408 },
   ];
-  const boundary = new googlemaps.Polyline({
+  const boundary = new google.maps.Polyline({
     path: range,
     geodesic: true,
     strokeColor: "#FF0000",
