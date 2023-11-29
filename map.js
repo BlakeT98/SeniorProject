@@ -9,7 +9,7 @@ function myMap(){
   });
 
    // Create the initial InfoWindow.
-  let infoWindow = new google.maps.InfoWindow({
+ /* let infoWindow = new google.maps.InfoWindow({
     content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
     position: myLatlng,
     
@@ -26,7 +26,8 @@ function myMap(){
     });
     infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );
     infoWindow.open(map);
-  });
+  });    
+  */
   //Boundary range on map
   const range = [
     { lat: 46.585, lng: -87.402 },
