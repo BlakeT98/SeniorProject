@@ -43,6 +43,7 @@ for(let i = 0; i < addyArray.length; i++){
   //temp += Streets[i].Name + "<br>"; 
 }
 //temp += interArray[0] + "<br>";
+
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
@@ -50,6 +51,7 @@ for(let j = 0; j < interArray.length-1; j++){
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
+//Searches input addresses in our Streets array, then returns the intersection id connected to the input street.
 function searchAddress(street){
   let block = 0;
   let st = "";
@@ -103,7 +105,7 @@ function searchAddress(street){
 //variables for the literal coordinates for the selected start and end locations
 var startCoord;
 var endCoord;
-//Grabs addresses from input text
+//Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
   var end = document.getElementById("end").value;                  
