@@ -9,8 +9,8 @@ function myMap(){
   });
 
   const range = [
-    { lat: 46.585592, lng: -87.402496 },
-    { lat: 46.584155, lng: -87.399408 },
+    { lat: 46.585, lng: -87.402 },
+    { lat: 46.584, lng: -87.399 },
   ];
   const boundary = new google.maps.Polyline({
     path: range,
