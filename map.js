@@ -34,6 +34,9 @@ function myMap(){
     { lat: 46.585011681092425, lng: -87.40104803985909 },
     { lat: 46.58437761621512, lng: -87.39985920987138 },
     { lat: 46.584071468490485, lng: -87.39910100171252 },
+    { lat: 46.58398469674265, lng: -87.39797301043937 },
+
+
   ];
   //Creates boundary line on map
   const boundary = new google.maps.Polyline({
