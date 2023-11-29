@@ -160,12 +160,12 @@
                 
                 
                 <h1>Google Maps API Web App</h1>
-                <p>This project is designed to create a custom map route that will find the most <u>consistant downhill</u> route, avoiding as much uphill travel as possible. Custom routes are decided by inputting the desired starting and ending addresses within the given range. The idea is to calculate a route that will provide the best cruising experience while getting the user to the requested destination.</p>
+                <p>This project is designed to create a custom map route that will find the most <u>consistant downhill</u> route, avoiding as much uphill travel as possible. The custom routes are decided by inputting the desired starting and ending addresses within the given range. The idea is to calculate a route that will provide the best cruising experience while getting the user to the requested destination.</p>
                 <p>APIs Used: Google - Maps JavaScript, Maps Elevation, and Geocoding</p>
                 <h2 id="pattern-layout">Enter Data:</h2>
-                <p>You can either manually type address in the format: <b><q>123 N Something St</q>.</b></p>
+                <p>You can either manually type the address in this format: <b><q>123 N Something St</q>.</b></p>
                 <p><b>OR</b></p> 
-                <p>You can click the position on the map, copy the coordinates in the pop up window, and then paste them.</p>
+                <p>You can click the position on the map, copy the <u>full coordinates</u> (including - <b>{"lat":... , "lng":...}</b> ) in the pop up window, then paste them into Start/End boxes.</p>
   
                 <!-- Creates text and then an input for text -->
                   <label for="start">Starting Address:</label>
@@ -175,7 +175,7 @@
                   <input type="text" id="end" name="endTxt" size="20" style="color: black" placeholder="&quot;321 N 4th St&quot;"/>
                  
                   <div></div>
-                  <button class="button button1" id="enter" onclick="grabAddress()">Enter Address</button>
+                  <button class="button button1" id="enter" onclick="grabAddress()">Enter</button>
 
                   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
               
