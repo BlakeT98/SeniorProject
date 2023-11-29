@@ -46,7 +46,7 @@ for(let i = 0; i < addyArray.length; i++){
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   //let compass = [];
-  const compass = interArray[i].split(",");
+  const compass = interArray[j].split(",");
   //let index = 0;
   //let start = 0;
   //for(let k = 0; k < interArray[j].length; k++){
