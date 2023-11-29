@@ -8,20 +8,6 @@ function myMap(){
     center: myLatlng,
   });
 
-  const range = [
-    { lat: 46.585, lng: -87.402 },
-    { lat: 46.584, lng: -87.399 },
-    { lat: 46.584, lng: -87.398 },
-    { lat: 46.583, lng: -87.397 },
-  ];
-  const boundary = new google.maps.Polyline({
-    path: range,
-    geodesic: true,
-    strokeColor: "#FF0000",
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
-  });
-  
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
@@ -41,8 +27,23 @@ function myMap(){
     infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );
     infoWindow.open(map);
   });
-  
+  //Boundary range on map
+  const range = [
+    { lat: 46.585, lng: -87.402 },
+    { lat: 46.584, lng: -87.399 },
+    { lat: 46.584, lng: -87.398 },
+    { lat: 46.583, lng: -87.397 },
+  ];
+  //Creates boundary line on map
+  const boundary = new google.maps.Polyline({
+    path: range,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+  });  
   boundary.setMap(map);
+  
 }
 window.myMap = myMap;
 
