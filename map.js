@@ -7,7 +7,19 @@ function myMap(){
     zoom: 13,
     center: myLatlng,
   });
-  
+
+  const range = [
+    { lat: 46.585592, lng: -87.402496 },
+    { lat: 46.584155, lng: -87.399408 },
+  ];
+  const boundary = new googlemaps.Polyline({
+    path: range,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
+  });
+  boundary.setMap(map);
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
