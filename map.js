@@ -19,7 +19,7 @@ function myMap(){
     strokeOpacity: 1.0,
     strokeWeight: 2,
   });
-  boundary.setMap(map);
+  
    // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
     content: "<p style=\"color:black;\"><b>Click the map to get Lat/Lng!</b></p>",
@@ -39,7 +39,8 @@ function myMap(){
     infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );
     infoWindow.open(map);
   });
-
+  
+  boundary.setMap(map);
 }
 window.myMap = myMap;
 
