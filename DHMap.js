@@ -45,17 +45,18 @@ for(let i = 0; i < addyArray.length; i++){
 //temp += interArray[0] + "<br>";
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
-  let compass = [];
-  let index = 0;
-  let start = 0;
-  for(let k = 0; k < interArray[j].length; k++){
-    if(interArray[j].charAt(k) == ","){
-      compass[index] = interArray[j].substring(start,k);
+  //let compass = [];
+  const compass = interArray[i].split(",");
+  //let index = 0;
+  //let start = 0;
+  //for(let k = 0; k < interArray[j].length; k++){
+   // if(interArray[j].charAt(k) == ","){
+      //compass[index] = interArray[j].substring(start,k);
       //temp += compass[index] + "<br>";
-      start = k + 1;
-      index++;
-    }
-  }
+     // start = k + 1;
+     // index++;
+    //}
+  //}
   Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
