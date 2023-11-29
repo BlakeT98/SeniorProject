@@ -30,10 +30,10 @@ function myMap(){
 
   //Boundary range on map
   const range = [
-    { lat: 46.585, lng: -87.402 },
-    { lat: 46.584, lng: -87.399 },
-    { lat: 46.584, lng: -87.398 },
-    { lat: 46.583, lng: -87.397 },
+    { lat: 46.585291, lng: -87.401704 },
+    { lat: 46.584170, lng: -87.399428 },
+    { lat: 46.584030, lng: -87.398343 },
+    { lat: 46.583875, lng: -87.397427 },
   ];
   //Creates boundary line on map
   const boundary = new google.maps.Polyline({
