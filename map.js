@@ -11,6 +11,8 @@ function myMap(){
   const range = [
     { lat: 46.585, lng: -87.402 },
     { lat: 46.584, lng: -87.399 },
+    { lat: 46.584, lng: -87.398 },
+    { lat: 46.583, lng: -87.397 },
   ];
   const boundary = new google.maps.Polyline({
     path: range,
