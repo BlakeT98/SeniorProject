@@ -3,7 +3,7 @@ function Street(blck,name){
   this.Name = name;
 }
 
-function Intersection(id,north,east,south,west,elev){
+function Intersection(id,north,east,south,west,elev,){
   this.Id = id;
   this.North = north;
   this.East = east;
@@ -11,7 +11,6 @@ function Intersection(id,north,east,south,west,elev){
   this.West = west;
   this.Elevation = elev;
 }
-
   
 //Creating String of addresses seperateed by commas
 //Creating String of intersections seperated by colons
@@ -109,6 +108,7 @@ var startOutput;
 var endOutput;
 var sInterID;
 var eInterID;
+var path;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -234,6 +234,8 @@ function chop(coord){
 function find(){    //Testing global variables
   console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
   console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
+  path = "" + sInterID;
+  
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
