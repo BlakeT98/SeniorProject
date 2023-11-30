@@ -105,6 +105,8 @@ function searchAddress(street){
 //variables for the literal coordinates for the selected start and end locations
 var startCoord;
 var endCoord;
+var startOutput;
+var endOutput;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -140,7 +142,7 @@ function grabAddress(){
       //console.log("Format Detected " + block + " : " + st);
     }
      //converting JSON obj into string
-     var startOutput = `${startAddy}`;
+     startOutput = `${startAddy}`;
                           
      //END INPUT
      //removing {"lat": and } from pasted coord
@@ -169,7 +171,7 @@ function grabAddress(){
           //console.log("Format Detected " + block + " : " + st);
         }
         //converting JSON obj into string
-        var endOutput = `${endAddy}`;
+        endOutput = `${endAddy}`;
 
         //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
         var findS = searchAddress(startOutput);
