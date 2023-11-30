@@ -35,7 +35,7 @@ function myMap(){
     path: range,
     geodesic: true,
     strokeColor: "#FF0000",
-    strokeOpacity: 0.5,
+    strokeOpacity: 0.25,
     strokeWeight: 2,
   });  
   boundary.setMap(map);
