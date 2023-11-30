@@ -231,7 +231,7 @@ function chop(coord){
   return chopped;
 }
 
-function find(){
+function find(){    //Testing global variables
   console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
   console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
 }
