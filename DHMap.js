@@ -49,7 +49,7 @@ for(let i = 0; i < addyArray.length; i++){
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
   //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
-  String c = compass[4].replace(';',',');
+  var c = "" + compass[4].replace(';',',');
   console.log("ID " + j + " " + c);
   Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],c);
   
