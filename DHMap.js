@@ -10,7 +10,7 @@ function Intersection(id,north,east,south,west,elev,coord){
   this.South = south;
   this.West = west;
   this.Elevation = elev;
-  this.Coord = coord;
+  this.Coord = "" + coord;
 }
   
 //Creating String of addresses seperateed by commas
