@@ -241,8 +241,8 @@ function find(){    //Testing global variables
   console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
   console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
   path = "" + sInterID;
-  console.log("STARTING INTERSECTION ID: " + sInterID + " " + Intersections[0].Coord);
-  console.log("ENDING INTERSECTION ID: " + eInterID + " " + Intersections[0].Coord);
+  console.log("STARTING INTERSECTION ID: " + sInterID + " " + Intersections[sInterID].Coord);  //Coord is undefined
+  console.log("ENDING INTERSECTION ID: " + eInterID + " " + Intersections[eInterID].Coord);
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
