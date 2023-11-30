@@ -107,6 +107,8 @@ var startCoord;
 var endCoord;
 var startOutput;
 var endOutput;
+var sInterID;
+var eInterID;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -174,17 +176,18 @@ function grabAddress(){
         endOutput = `${endAddy}`;
 
         //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
-        var findS = searchAddress(startOutput);
-        var findE = searchAddress(endOutput);
+        sInterID = searchAddress(startOutput);
+        eInterID = searchAddress(endOutput);
 
         //Tells user if address is found
-        if(findS == undefined && findE == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
-        else if(findS == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
-        else if(findE == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
+        if(sInterID == undefined && eInterID == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
+        else if(sInterID == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
+        else if(eInterID == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
         else{
           //If found, add start addresses to html
           document.getElementById('test').innerHTML = startOutput;
           document.getElementById('test2').innerHTML = endOutput;
+          find();
          }
        })
        .catch(function(error){
@@ -200,16 +203,19 @@ function grabAddress(){
   //if start and end are addresses, not coords
   if(start.charAt(0) != '{' && end.charAt(0) != '{'){
     //searches array for acceptable address
-    var findS = searchAddress(start);
-    var findE = searchAddress(end);
+    startOutput = start;
+    endOutput = end;
+    sInterID = searchAddress(startOutput);
+    eInterID = searchAddress(endOutput);
     //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
                           
-    if(findS === undefined && findE === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
-    else if(findS == undefined)alert("Start Address: (" + start + ") is not found or within range");
-    else if(findE == undefined)alert("End Address: (" + end + ") is not found or within range");
+    if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+    else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
+    else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
     else{
       document.getElementById('test').innerHTML = start;
       document.getElementById('test2').innerHTML = end;
+      find();
     }
   }
   if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
@@ -225,6 +231,10 @@ function chop(coord){
   return chopped;
 }
 
+function find(){
+  console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
+  console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
+}
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
