@@ -51,21 +51,8 @@ for(let j = 0; j < interArray.length-1; j++){
   //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   var c = "" + compass[4].replace(';',',') + "";
   //console.log("ID " + j + " " + c);
-  axios.get('https://maps.googleapis.com/maps/api/elevation/json',{
-      params:{
-        latlng: c,
-        key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-      }
-    })
-   .then(function(response){  
-     var interElev = "" + response.data.results[0].elevation + "";
-     console.log("Found Elevation :" + interElev);
-     Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
-   })
-   .catch(function(error){
-     console.log(error);
-     alert("Bad Start Address input");
-   });
+  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
+  
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
@@ -255,7 +242,21 @@ function findRoute(){
   //Now I need to search for connected intersections
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
-  
+
+  axios.get('https://maps.googleapis.com/maps/api/elevation/json',{
+      params:{
+        latlng: Intersections[sInterID].Coord,
+        key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+      }
+    })
+   .then(function(response){  
+     var interElev = "" + response.data.results[0].elevation + "";
+     console.log("Found Elevation :" + interElev);
+   })
+  .catch(function(error){
+    console.log(error);
+    alert("Bad Start Address input");
+  });
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
