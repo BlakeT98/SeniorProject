@@ -257,7 +257,7 @@ function findRoute(){
     }
   })
   .catch((e) =>
-    console.log(e);
+    console.log(e)
   );
   /*let response = fetch(url,{
      headers: {
