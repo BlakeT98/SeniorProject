@@ -51,7 +51,7 @@ for(let j = 0; j < interArray.length-1; j++){
   //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   var c = "" + compass[4].replace(';',',') + "";
   console.log("ID " + j + " " + c);
-  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],c);
+  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
   
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
