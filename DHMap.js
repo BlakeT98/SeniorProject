@@ -245,8 +245,8 @@ function findRoute(){
   let url = "https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&locations=" + Intersections[sInterID].Coord + "";
   let response = fetch(url,{
     headers: {
-      //"Access-Control-Allow-Origin": "http://euclid.nmu.edu'"    //198.110.204.9
-      "Access-Control-Allow-Origin": "198.110.204.9"
+      "Access-Control-Allow-Origin": "http://euclid.nmu.edu"    //198.110.204.9
+      //"Access-Control-Allow-Origin": "198.110.204.9"
     }
   })  
     .then(response =>{  
