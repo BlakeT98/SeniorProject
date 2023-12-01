@@ -243,10 +243,10 @@ function findRoute(){
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
   let url = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&locations=" + Intersections[sInterID].Coord + "";
-
+  var location = new google.maps.LatLng(Intersections[sInterID].Coord);
   const elevator = new google.maps.ElevationService();
   elevator.getElevationForLocations({
-    locations: [Intersections[sInterID].Coord],
+    locations: [location],
   })
   .then(({ results }) => {
     if(results[0]){
