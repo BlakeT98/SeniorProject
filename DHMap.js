@@ -243,7 +243,21 @@ function findRoute(){
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
   let url = "https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&locations=" + Intersections[sInterID].Coord + "";
-  let response = fetch(url,{
+  let proxy = "https://maps.googleapis.com/maps/api/elevation";
+  var axios = require('axios');
+  var config = {
+    method: 'get',
+    url: '/json?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&locations=' + Intersections[sInterID].Coord,
+    secure: false
+  };
+  axios(config)
+  .then(function (response){
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error){
+    console.log(error);
+  });
+/*  let response = fetch(url,{
     headers: {
       "Access-Control-Allow-Origin": "http://euclid.nmu.edu"    //198.110.204.9
       //"Access-Control-Allow-Origin": "198.110.204.9"
@@ -256,7 +270,8 @@ function findRoute(){
     .catch(function(error){
       console.log(error);
       alert("Bad Start Address input");
-    });
+    });    
+    */
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
