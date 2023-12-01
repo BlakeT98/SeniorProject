@@ -193,7 +193,7 @@ function grabAddress(){
           //If found, add start addresses to html
           document.getElementById('test').innerHTML = startOutput;
           document.getElementById('test2').innerHTML = endOutput;
-          find();
+          findRoute();
          }
        })
        .catch(function(error){
@@ -221,7 +221,7 @@ function grabAddress(){
     else{
       document.getElementById('test').innerHTML = start;
       document.getElementById('test2').innerHTML = end;
-      find();
+      findRoute();
     }
   }
   if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
@@ -237,11 +237,11 @@ function chop(coord){
   return chopped;
 }
 
-function find(){    //Testing global variables
+function findRoute(){    //Testing global variables
   console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
   console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
-  path = "" + sInterID;
-  console.log("STARTING INTERSECTION ID: " + sInterID + " " + Intersections[sInterID].Coord);  //Coord is undefined
+  path = "" + sInterID + "";
+  console.log("STARTING INTERSECTION ID: " + path + " " + Intersections[sInterID].Coord);  //Coord is undefined
   console.log("ENDING INTERSECTION ID: " + eInterID + " " + Intersections[eInterID].Coord);
 }
 //gets id index for Intersections[]
