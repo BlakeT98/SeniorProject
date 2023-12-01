@@ -50,9 +50,22 @@ for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
   //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   var c = "" + compass[4].replace(';',',') + "";
-  console.log("ID " + j + " " + c);
-  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
-  
+  //console.log("ID " + j + " " + c);
+  axios.get('https://maps.googleapis.com/maps/api/elevation/json',{
+      params:{
+        latlng: c,
+        key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+      }
+    })
+   .then(function(response){  
+     var interElev = "" + response.data.results[0].elevation + "";
+     console.log("Found Elevation :" + interElev);
+     Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
+   })
+   .catch(function(error){
+     console.log(error);
+     alert("Bad Start Address input");
+   });
   //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
 }
 
@@ -142,64 +155,64 @@ function grabAddress(){
        var block = startAddy.substring(0,3);
        var st = startAddy.substring(8);     
        startAddy = block + " " + st;
-    }
-    else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-      block = startAddy.substring(0,4);
-      st = startAddy.substring(10);
-      startAddy = block + " " + st;
-      //console.log("Format Detected " + block + " : " + st);
-    }
-     //converting JSON obj into string
-     startOutput = `${startAddy}`;
+      }
+      else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+        block = startAddy.substring(0,4);
+        st = startAddy.substring(10);
+        startAddy = block + " " + st;
+        //console.log("Format Detected " + block + " : " + st);
+      }
+       //converting JSON obj into string
+       startOutput = `${startAddy}`;
                           
-     //END INPUT
-     //removing {"lat": and } from pasted coord
-     var latlngE = chop(end);
-     endCoord = latlngE;
-     //used source for concatinating geocode api url and lat/lng with api key added at the end
-     axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-       params:{
-         latlng: latlngE,
-         key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-       }
-      })
-      .then(function(response){
-        //combining block number and street name from geocoded results
-        var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-        console.log("Found End LatLng :" + endAddy); 
-        if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
-          var block = endAddy.substring(0,3);
-          var st = endAddy.substring(8);     
-          endAddy = block + " " + st;
-        }
-        else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-          block = endAddy.substring(0,4);
-          st = endAddy.substring(10);
-          endAddy = block + " " + st;
-          //console.log("Format Detected " + block + " : " + st);
-        }
-        //converting JSON obj into string
-        endOutput = `${endAddy}`;
-
-        //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
-        sInterID = searchAddress(startOutput);
-        eInterID = searchAddress(endOutput);
-
-        //Tells user if address is found
-        if(sInterID == undefined && eInterID == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
-        else if(sInterID == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
-        else if(eInterID == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
-        else{
-          //If found, add start addresses to html
-          document.getElementById('test').innerHTML = startOutput;
-          document.getElementById('test2').innerHTML = endOutput;
-          findRoute();
+       //END INPUT
+       //removing {"lat": and } from pasted coord
+       var latlngE = chop(end);
+       endCoord = latlngE;
+       //used source for concatinating geocode api url and lat/lng with api key added at the end
+       axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
+         params:{
+           latlng: latlngE,
+           key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
          }
-       })
-       .catch(function(error){
-         console.log(error);
-         alert("Bad End Address input")
-       });                    
+        })
+        .then(function(response){
+          //combining block number and street name from geocoded results
+          var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+          console.log("Found End LatLng :" + endAddy); 
+          if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+            var block = endAddy.substring(0,3);
+            var st = endAddy.substring(8);     
+            endAddy = block + " " + st;
+          }
+          else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+            block = endAddy.substring(0,4);
+            st = endAddy.substring(10);
+            endAddy = block + " " + st;
+            //console.log("Format Detected " + block + " : " + st);
+          }
+          //converting JSON obj into string
+          endOutput = `${endAddy}`;
+
+          //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
+          sInterID = searchAddress(startOutput);
+          eInterID = searchAddress(endOutput);
+
+          //Tells user if address is found
+          if(sInterID == undefined && eInterID == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
+          else if(sInterID == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
+          else if(eInterID == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
+          else{
+            //If found, add start addresses to html
+            document.getElementById('test').innerHTML = startOutput;
+            document.getElementById('test2').innerHTML = endOutput;
+            findRoute();
+           }
+         })
+         .catch(function(error){
+           console.log(error);
+           alert("Bad End Address input")
+         });                    
       })
       .catch(function(error){
         console.log(error);
@@ -237,13 +250,12 @@ function chop(coord){
   return chopped;
 }
 
-function findRoute(){    //Testing global variables
-  console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
-  console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
-  path = "" + sInterID + "";
-  console.log("STARTING COORD: " + startCoord + " , " + "ENDING COORD: " + endCoord);
-  console.log("STARTING INTERSECTION ID: " + path + " " + Intersections[sInterID].Coord);  //Coord is undefined
-  console.log("ENDING INTERSECTION ID: " + eInterID + " " + Intersections[eInterID].Coord);
+function findRoute(){   
+  path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+  //Now I need to search for connected intersections
+  //Then check their elevation, and decided which two to visit
+  //After visiting, check their connected
+  
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
