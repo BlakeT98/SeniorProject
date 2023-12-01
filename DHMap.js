@@ -241,6 +241,7 @@ function findRoute(){    //Testing global variables
   console.log("FIND FUNCTION START: " + sInterID + " " + startOutput + " " + startCoord);
   console.log("FIND FUNCTION END: " + eInterID + " " + endOutput + " " + endCoord);
   path = "" + sInterID + "";
+  console.log("STARTING COORD: " + startCoord + " , " + "ENDING COORD: " + endCoord);
   console.log("STARTING INTERSECTION ID: " + path + " " + Intersections[sInterID].Coord);  //Coord is undefined
   console.log("ENDING INTERSECTION ID: " + eInterID + " " + Intersections[eInterID].Coord);
 }
