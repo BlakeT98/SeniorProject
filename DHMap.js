@@ -243,7 +243,11 @@ function findRoute(){
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
   let url = "https://maps.googleapis.com/maps/api/elevation/json?key=AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg&locations=" + Intersections[sInterID].Coord + "";
-  let response = fetch(url)
+  let response = fetch(url,{
+    headers: {
+      "Access-Control-Allow-Origin": "http://euclid.nmu.edu'"
+    }
+  })  
     .then(response =>{  
        var interElev = "" + response.data.results[0].elevation + "";
        console.log("Found Elevation :" + interElev);
