@@ -250,7 +250,7 @@ function findRoute(){
   })
   .then(({ results }) => {
     if(results[0]){
-
+      console.log(results[0]);
     }
     else{ 
       alert("No results found");
