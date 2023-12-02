@@ -252,8 +252,8 @@ function findRoute(){
   ids.push(north,east,south,west);
   for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
-    ele[i] = getE(ltlg);
-    console.log("Elevation: " + i + ele[i]);
+    ele.push(getE(ltlg));
+    console.log("Elevation: " + i + " " +ele[i]);
   }
   let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
   console.log("FOUND MIN: " + found);
