@@ -242,7 +242,8 @@ function findRoute(){
   //Now I need to search for connected intersections
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
-  var location = new google.maps.LatLng(Intersections[sInterID].Coord);
+  const latlng = Intersections[sInterID].Coord.split(',');
+  var location = new google.maps.LatLng(latlng[0],latlng[1]);
   const elevator = new google.maps.ElevationService();
   elevator.getElevationForLocations({
     locations: [location],
