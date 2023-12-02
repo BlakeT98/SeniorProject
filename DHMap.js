@@ -239,11 +239,30 @@ function chop(coord){
 
 function findRoute(){   
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+
+  const latlng = Intersections[sInterID].Coord.split(',');
+  var current = getE(latlng);
   //Now I need to search for connected intersections
+  let north = searchAddress(Intersections[sInterID].North);
+  let east = searchAddress(Intersections[sInterID].East);
+  let south = searchAddress(Intersections[sInterID].South);
+  let west = searchAddress(Intersections[sInterID].West);
+  const ids = [];
+  const ele = [];
+  ids.push(north,east,south,west);
+  for(let i = 0; i < ids.length; i++){
+    const ltlg = Intersections[ids[i]].Coord.split(',');
+    ele[i] = getE(ltlg);
+    console.log("Elevation: " + ele[i]);
+  }
+  let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+  console.log("FOUND MIN: " + found);
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
-  const latlng = Intersections[sInterID].Coord.split(',');
-  var location = new google.maps.LatLng(latlng[0],latlng[1]);
+}
+
+function getE(c){
+  var location = new google.maps.LatLng(c[0],c[1]);
   const elevator = new google.maps.ElevationService();
   elevator.getElevationForLocations({
     locations: [location],
@@ -251,6 +270,7 @@ function findRoute(){
   .then(({ results }) => {
     if(results[0]){
       console.log(results[0].elevation);
+      return results[0].elevation;
     }
     else{ 
       alert("No results found");
@@ -259,22 +279,6 @@ function findRoute(){
   .catch((e) =>
     console.log("ERROR: " + e)
   );
-  /*let response = fetch(url,{
-     headers: {
-      "Access-Control-Allow-Origin": "http://euclid.nmu.edu"    //198.110.204.9
-      //"Access-Control-Allow-Origin": "198.110.204.9"
-    }  
-  })  */
-  /* let response = fetch(url)
-    .then(response =>{  
-       var interElev = "" + response.data.results[0].elevation + "";
-       console.log("Found Elevation :" + interElev);
-     })
-    .catch(function(error){
-      console.log(error);
-      alert("Bad Start Address input");
-    });    
-    */
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
