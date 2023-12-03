@@ -249,13 +249,34 @@ function findRoute(){
   let west = searchAddress(Intersections[sInterID].West);
   const ids = { north,east,south,west };
   const ele = { 0,0,0,0 };
-  for(let i = 0; i < ids.length; i++){
+  let index = north;
+  /*for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
-    ele[i] = getE(ltlg);
-    console.log("Elevation: " + i + " " +ele[i]);
-  }
-  let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
-  console.log("FOUND MIN: " + found);
+   // ele[i] = getE(ltlg);
+    //console.log("Elevation: " + i + " " +ele[i]);
+  }*/
+  const ltlg = Intersections[index].Coord.split(',');
+  var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+  const elevator = new google.maps.ElevationService();
+  elevator.getElevationForLocations({
+    locations: [location],
+  })
+  .then(({ results }) => {
+    if(results[0]){
+      console.log(results[0].elevation);
+      ele[0] = results[0].elevation;
+      console.log("Eleveation: " + ele[0]);
+    }
+    else{ 
+      alert("No results found");
+    }
+  })
+  .catch((e) =>
+    console.log("ERROR: " + e)
+  );
+ // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+  //console.log("FOUND MIN: " + found);
+  
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
 }
