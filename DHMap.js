@@ -247,8 +247,8 @@ function findRoute(){
   let east = searchAddress(Intersections[sInterID].East);
   let south = searchAddress(Intersections[sInterID].South);
   let west = searchAddress(Intersections[sInterID].West);
-  const ids = { north,east,south,west };
-  const ele = { 0,0,0,0, };
+  const ids = [ north,east,south,west ];
+  const ele = [ 0,0,0,0 ];
   let index = north;
   /*for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
