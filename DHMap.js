@@ -325,7 +325,7 @@ function getElevs(ids){
               .then(({ results }) => {
                 if(results[0]){
                   console.log(results[0].elevation);
-                  ele[3] results[0].elevation;
+                  ele[3] = results[0].elevation;
                   return ele;
                 }
                 else{ 
