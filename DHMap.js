@@ -248,32 +248,15 @@ function findRoute(){
   let south = searchAddress(Intersections[sInterID].South);
   let west = searchAddress(Intersections[sInterID].West);
   const ids = [ north,east,south,west ];
-  const ele = [ 0,0,0,0 ];
-  let index = north;
   /*for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
    // ele[i] = getE(ltlg);
     //console.log("Elevation: " + i + " " +ele[i]);
   }*/
-  const ltlg = Intersections[index].Coord.split(',');
-  var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
-  const elevator = new google.maps.ElevationService();
-  elevator.getElevationForLocations({
-    locations: [location],
-  })
-  .then(({ results }) => {
-    if(results[0]){
-      console.log(results[0].elevation);
-      ele[0] = results[0].elevation;
-      console.log("Eleveation: " + ele[0]);
-    }
-    else{ 
-      alert("No results found");
-    }
-  })
-  .catch((e) =>
-    console.log("ERROR: " + e)
-  );
+  const directionalElevations = getElevs(ids);
+  for(let i = 0; i < directionalElevations.length; i++){
+    console.log("Elevation: " + i + " " + directionalElevations[i]);
+  }
  // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
   //console.log("FOUND MIN: " + found);
   
@@ -291,6 +274,83 @@ function getE(c){
     if(results[0]){
       console.log(results[0].elevation);
       return results[0].elevation;
+    }
+    else{ 
+      alert("No results found");
+    }
+  })
+  .catch((e) =>
+    console.log("ERROR: " + e)
+  );
+}
+
+function getElevs(ids){
+  const ele = [ 0,0,0,0 ];
+  const ltlg = Intersections[ids[0]].Coord.split(',');
+  var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+  const elevator = new google.maps.ElevationService();
+  elevator.getElevationForLocations({
+    locations: [location],
+  })
+  .then(({ results }) => {
+    if(results[0]){
+      console.log(results[0].elevation);
+      ele[0] = results[0].elevation;
+      const ltlg2 = Intersections[ids[1]].Coord.split(',');
+      var location2 = new google.maps.LatLng(ltlg2[0],ltlg2[1]);
+      const elevator = new google.maps.ElevationService();
+      elevator.getElevationForLocations({
+        locations: [location2],
+      })
+      .then(({ results }) => {
+        if(results[0]){
+          console.log(results[0].elevation);
+          ele[1] = results[0].elevation;
+          const ltlg3 = Intersections[ids[2]].Coord.split(',');
+          var location3 = new google.maps.LatLng(ltlg3[0],ltlg3[1]);
+          const elevator = new google.maps.ElevationService();
+          elevator.getElevationForLocations({
+            locations: [location3],
+          })
+          .then(({ results }) => {
+            if(results[0]){
+              console.log(results[0].elevation);
+              ele[2] = results[0].elevation;
+              const ltlg4 = Intersections[ids[3]].Coord.split(',');    
+              var location4 = new google.maps.LatLng(ltlg4[0],ltlg4[1]);
+              const elevator = new google.maps.ElevationService();
+              elevator.getElevationForLocations({
+                locations: [location4],
+              })
+              .then(({ results }) => {
+                if(results[0]){
+                  console.log(results[0].elevation);
+                  ele[3] results[0].elevation;
+                  return ele;
+                }
+                else{ 
+                  alert("No results found");
+                }
+              })
+              .catch((e) =>
+                console.log("ERROR: " + e)
+              );
+            }
+            else{ 
+              alert("No results found");
+            }
+          })
+          .catch((e) =>
+            console.log("ERROR: " + e)
+          );
+        }
+        else{ 
+          alert("No results found");
+        }
+      })
+      .catch((e) =>
+         console.log("ERROR: " + e)
+      );
     }
     else{ 
       alert("No results found");
