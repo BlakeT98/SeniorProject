@@ -280,7 +280,7 @@ function findRoute(){
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
 }
-
+/*
 function getE(c){
   var location = new google.maps.LatLng(c[0],c[1]);
   const elevator = new google.maps.ElevationService();
@@ -299,7 +299,7 @@ function getE(c){
   .catch((e) =>
     console.log("ERROR: " + e)
   );
-}
+}*/
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
