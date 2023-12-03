@@ -254,7 +254,7 @@ function findRoute(){
     //console.log("Elevation: " + i + " " +ele[i]);
   }*/
   const directionalElevations = getElevs(ids);
-  for(let i = 0; i < directionalElevations.length; i++){
+  for(let i = 0; i < 4; i++){
     console.log("Elevation: " + i + " " + directionalElevations[i]);
   }
  // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
