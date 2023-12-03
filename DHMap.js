@@ -249,7 +249,7 @@ function findRoute(){
   let west = searchAddress(Intersections[sInterID].West);
   const ids = [];
   const ele = [];
-  ids.push(north,east,south,west);
+  ids = { north,east,south,west };
   for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
     ele.push(getE(ltlg));
