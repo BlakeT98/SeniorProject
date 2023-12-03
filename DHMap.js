@@ -247,12 +247,11 @@ function findRoute(){
   let east = searchAddress(Intersections[sInterID].East);
   let south = searchAddress(Intersections[sInterID].South);
   let west = searchAddress(Intersections[sInterID].West);
-  const ids = [];
-  const ele = [];
-  ids = { north,east,south,west };
+  const ids = { north,east,south,west };
+  const ele = { 0,0,0,0 };
   for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
-    ele.push(getE(ltlg));
+    ele[i] = getE(ltlg);
     console.log("Elevation: " + i + " " +ele[i]);
   }
   let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
