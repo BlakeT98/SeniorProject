@@ -275,7 +275,7 @@ function findRoute(){
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
       
       for(let i = 0; i < 4; i++){
-        if(ids[i] == undefined)ids.splice(i,1);
+        if(ids[i] == undefined)ids.splice(i,1);      //REMOVING ids[0] then skipping other one because array length changes
       }
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
