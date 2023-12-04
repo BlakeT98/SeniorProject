@@ -274,7 +274,7 @@ function findRoute(){
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
       
-      for(let i = 0; i < ids.length; i++){
+      for(let i = 0; i < 4; i++){
         if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids[0] then skipping other one because array length changes
 
       }
