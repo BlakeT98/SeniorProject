@@ -258,6 +258,7 @@ function findRoute(){
   catch (error){
     console.log(error);
   }
+  console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
   const directionalElevations = getElevs(ids);
   for(let i = 0; i < 4; i++){
     console.log("Elevation: " + i + " " + directionalElevations[0]);
