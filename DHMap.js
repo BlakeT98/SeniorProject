@@ -267,8 +267,8 @@ function findRoute(){
       for(let i = 0; i < Intersections.length; i++){
         if(north == Intersections[i].South)nextN = Intersections[i].Id;
         if(east == Intersections[i].West)nextE = Intersections[i].Id;
-        if(south == Intersections[i].North)nextS = Intersections.Id;
-        if(west == Intersections[i].East)nextW = Intersections.Id;
+        if(south == Intersections[i].North)nextS = Intersections[i].Id;
+        if(west == Intersections[i].East)nextW = Intersections[i].Id;
       }
       ids.push(nextN,nextE,nextS,nextW);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
