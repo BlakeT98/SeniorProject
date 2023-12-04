@@ -264,6 +264,9 @@ function findRoute(){
     console.log(error);
   }
   console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
+  for(let i = 0; i < 4; i++){
+    if(ids[i] == undefined)ids.splice(i,1);
+  }
   const directionalElevations = getElevs(ids);
   for(let i = 0; i < 4; i++){
     console.log("Elevation: " + i + " " + directionalElevations[0]);
