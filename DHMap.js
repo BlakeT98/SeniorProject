@@ -241,18 +241,23 @@ function findRoute(){
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
 
   const latlng = Intersections[sInterID].Coord.split(',');
-  var current = getE(latlng);
-  //Now I need to search for connected intersections
-  let north = Intersections[sInterID].North;
-  let east = Intersections[sInterID].East;
-  let south = Intersections[sInterID].South;
-  let west = Intersections[sInterID].West;
-  const ids = [ north,east,south,west ];
-  /*for(let i = 0; i < ids.length; i++){
-    const ltlg = Intersections[ids[i]].Coord.split(',');
-   // ele[i] = getE(ltlg);
-    //console.log("Elevation: " + i + " " +ele[i]);
-  }*/
+  try{
+    var current = getE(latlng);
+    //Now I need to search for connected intersections
+    let north = Intersections[sInterID].North;
+    let east = Intersections[sInterID].East;
+    let south = Intersections[sInterID].South;
+    let west = Intersections[sInterID].West;
+    const ids = [ north,east,south,west ];
+    /*for(let i = 0; i < ids.length; i++){
+      const ltlg = Intersections[ids[i]].Coord.split(',');
+       // ele[i] = getE(ltlg);
+      //console.log("Elevation: " + i + " " +ele[i]);
+    }*/
+  }
+  catch (error){
+    console.log(error);
+  }
   const directionalElevations = getElevs(ids);
   for(let i = 0; i < 4; i++){
     console.log("Elevation: " + i + " " + directionalElevations[0]);
@@ -286,6 +291,7 @@ function getE(c){
 
 function getElevs(ids){
   const ele = [ 0,0,0,0 ];
+  console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
   const ltlg = Intersections[ids[0]].Coord.split(',');
   var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
   const elevator = new google.maps.ElevationService();
