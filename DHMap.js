@@ -263,7 +263,7 @@ function findRoute(){
   catch (error){
     console.log(error);
   }
-  console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
+  console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
   const directionalElevations = getElevs(ids);
   for(let i = 0; i < 4; i++){
     console.log("Elevation: " + i + " " + directionalElevations[0]);
@@ -297,7 +297,7 @@ function getE(c){
 
 function getElevs(ids){
   const ele = [ 0,0,0,0 ];
-  console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
+  //console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
   const ltlg = Intersections[ids[0]].Coord.split(',');
   var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
   const elevator = new google.maps.ElevationService();
