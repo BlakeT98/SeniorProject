@@ -272,7 +272,7 @@ function getE(c){
   })
   .then(({ results }) => {
     if(results[0]){
-      console.log(results[0].elevation);
+      console.log("Starting Intersection: " + results[0].elevation);
       return results[0].elevation;
     }
     else{ 
