@@ -246,13 +246,24 @@ function findRoute(){
   var nextW;
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
   const latlng = Intersections[sInterID].Coord.split(',');
-  try{
-    current = getE(latlng);
-  }
-  catch(error){
-    console.log("findRoute Error: " + error);
-  }
-  console.log("FOUND Starting Intersection Elevation: " + current);
+  var location = new google.maps.LatLng(latlng[0],latlng[1]);
+  const elevator = new google.maps.ElevationService();
+  elevator.getElevationForLocations({
+    locations: [location],
+  })
+  .then(({ results }) => {
+    if(results[0]){
+      current = results[0].elevation;
+      console.log("FOUND Starting Intersection Elevation: " + current);
+    }
+    else{ 
+      alert("No results found");
+    }
+  })
+  .catch((e) =>
+    console.log("ERROR: " + e)
+  );
+  console.log("Checking outside of promise: " + current);
   try{
     //Now I need to search for connected intersections
     let north = Intersections[sInterID].North;
