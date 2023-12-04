@@ -265,10 +265,10 @@ function findRoute(){
       let west = Intersections[sInterID].West;
       //I want my north to be the next intersections south, my east to be the next intersections west, my south the be the next intersections north and my west to be the next intersections east
       for(let i = 0; i < Intersections.length; i++){
-        if(north == Intersections[i].South && north != null)nextN = Intersections[i].Id;
-        if(east == Intersections[i].West && east != null)nextE = Intersections[i].Id;
-        if(south == Intersections[i].North && south != null)nextS = Intersections[i].Id;
-        if(west == Intersections[i].East && west != null)nextW = Intersections[i].Id;
+        if(north == Intersections[i].South && north != "null")nextN = Intersections[i].Id;
+        if(east == Intersections[i].West && east != "null")nextE = Intersections[i].Id;
+        if(south == Intersections[i].North && south != "null")nextS = Intersections[i].Id;
+        if(west == Intersections[i].East && west != "null")nextW = Intersections[i].Id;
       }
       ids.push(nextN,nextE,nextS,nextW);
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
