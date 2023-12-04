@@ -271,8 +271,9 @@ function findRoute(){
         if(west == Intersections[i].East)nextW = Intersections[i].Id;
       }
       ids.push(nextN,nextE,nextS,nextW);
+      console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-
+      
       for(let i = 0; i < 4; i++){
         if(ids[i] == undefined)ids.splice(i,1);
       }
