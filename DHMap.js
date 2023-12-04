@@ -294,7 +294,7 @@ function getElevs(ids){
   })
   .then(({ results }) => {
     if(results[0]){
-      console.log(results[0].elevation);
+      console.log("ELE[0] " + results[0].elevation);
       ele[0] = results[0].elevation;
       const ltlg2 = Intersections[ids[1]].Coord.split(',');
       var location2 = new google.maps.LatLng(ltlg2[0],ltlg2[1]);
@@ -304,7 +304,7 @@ function getElevs(ids){
       })
       .then(({ results }) => {
         if(results[0]){
-          console.log(results[0].elevation);
+          console.log("ELE[1] " + results[0].elevation);
           ele[1] = results[0].elevation;
           const ltlg3 = Intersections[ids[2]].Coord.split(',');
           var location3 = new google.maps.LatLng(ltlg3[0],ltlg3[1]);
@@ -314,7 +314,7 @@ function getElevs(ids){
           })
           .then(({ results }) => {
             if(results[0]){
-              console.log(results[0].elevation);
+              console.log("ELE[2] " + results[0].elevation);
               ele[2] = results[0].elevation;
               const ltlg4 = Intersections[ids[3]].Coord.split(',');    
               var location4 = new google.maps.LatLng(ltlg4[0],ltlg4[1]);
@@ -324,7 +324,7 @@ function getElevs(ids){
               })
               .then(({ results }) => {
                 if(results[0]){
-                  console.log(results[0].elevation);
+                  console.log("ELE[3] " + results[0].elevation);
                   ele[3] = results[0].elevation;
                   return ele;
                 }
