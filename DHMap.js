@@ -273,7 +273,8 @@ function findRoute(){
       ids.push(nextN,nextE,nextS,nextW);
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-      
+      console.log("DEBUGGING: " + Intersections[ids[2]].North + " " + Intersections[ids[2]].East + " " + Intersections[ids[2]].South + " " + Intersections[ids[2]].West);
+      console.log("DEBUGGING: " + Intersections[ids[3]].North + " " + Intersections[ids[3]].East + " " + Intersections[ids[3]].South + " " + Intersections[ids[3]].West);
       for(let i = 0; i < 4; i++){
         if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids[0] then skipping other one because array length changes
 
