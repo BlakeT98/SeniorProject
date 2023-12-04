@@ -238,6 +238,7 @@ function chop(coord){
 }
 
 function findRoute(){   
+  var ids = [];
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
 
   const latlng = Intersections[sInterID].Coord.split(',');
@@ -248,7 +249,7 @@ function findRoute(){
     let east = Intersections[sInterID].East;
     let south = Intersections[sInterID].South;
     let west = Intersections[sInterID].West;
-    const ids = push(north,east,south,west);
+    ids.push(north,east,south,west);
     /*for(let i = 0; i < ids.length; i++){
       const ltlg = Intersections[ids[i]].Coord.split(',');
        // ele[i] = getE(ltlg);
