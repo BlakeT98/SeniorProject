@@ -239,21 +239,36 @@ function chop(coord){
 
 function findRoute(){   
   var ids = [];
+  var current;
+  var nextN;
+  var nextE;
+  var nextS;
+  var nextW;
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-
   const latlng = Intersections[sInterID].Coord.split(',');
   try{
-    var current = getE(latlng);
+    current = getE(latlng);
+  }
+  catch(error){
+    console.log("findRoute Error: " + error);
+  }
+  console.log("FOUND Starting Intersection Elevation: " + current);
+  try{
     //Now I need to search for connected intersections
     let north = Intersections[sInterID].North;
     let east = Intersections[sInterID].East;
     let south = Intersections[sInterID].South;
     let west = Intersections[sInterID].West;
-    let nID = searchAddress(north);
-    let eID = searchAddress(east);
-    let sID = searchAddress(south);
-    let wID = searchAddress(west);
-    ids.push(nID,eID,sID,wID);
+    //I want my north to be the next intersections south, my east to be the next intersections west, my south the be the next intersections north and my west to be the next intersections east
+    //search 
+    for(let i = 0; i < Intersections.length; i++){
+      if(north == Intersections[i].South)nextN = Intersections[i].Id;
+      if(east == Intersections[i].West)nextE = Intersections[i].Id;
+      if(south == Intersections[i].North)nextS = Intersections.Id;
+      if(west == Intersections[i].East)nextW = Intersections.Id;
+    }
+    
+    ids.push(nextN,nextE,nextS,nextW);
     /*for(let i = 0; i < ids.length; i++){
       const ltlg = Intersections[ids[i]].Coord.split(',');
        // ele[i] = getE(ltlg);
@@ -267,16 +282,19 @@ function findRoute(){
   for(let i = 0; i < 4; i++){
     if(ids[i] == undefined)ids.splice(i,1);
   }
-  const directionalElevations = getElevs(ids);    //May not have all 4 ids
+ // const directionalElevations = getElevs(ids);    //May not have all 4 ids
   for(let i = 0; i < 4; i++){
-    console.log("Elevation: " + i + " " + directionalElevations[0]);
-  }
+    //console.log("Elevation: " + i + " " + directionalElevations[0]);
+    console.log("NEW IDS[" + i + "]: " + ids[i];
+  }  
  // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
   //console.log("FOUND MIN: " + found);
   
   //Then check their elevation, and decided which two to visit
   //After visiting, check their connected
 }
+
+
 
 function getE(c){
   var location = new google.maps.LatLng(c[0],c[1]);
@@ -298,7 +316,7 @@ function getE(c){
   );
 }
 
-function getElevs(ids){    //Check for number of ids
+/*function getElevs(ids){    //Check for number of ids
   const ele = [ 0,0,0,0 ];
   let len = ids.length;
   var index = 0;
@@ -378,7 +396,7 @@ function getElevs(ids){    //Check for number of ids
       console.log("ERROR: " + e)
     );
   }
-}
+}  */
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
