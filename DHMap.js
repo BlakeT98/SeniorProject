@@ -243,10 +243,10 @@ function findRoute(){
   const latlng = Intersections[sInterID].Coord.split(',');
   var current = getE(latlng);
   //Now I need to search for connected intersections
-  let north = searchAddress(Intersections[sInterID].North);
-  let east = searchAddress(Intersections[sInterID].East);
-  let south = searchAddress(Intersections[sInterID].South);
-  let west = searchAddress(Intersections[sInterID].West);
+  let north = Intersections[sInterID].North;
+  let east = Intersections[sInterID].East;
+  let south = Intersections[sInterID].South;
+  let west = sIntersections[sInterID].West;
   const ids = [ north,east,south,west ];
   /*for(let i = 0; i < ids.length; i++){
     const ltlg = Intersections[ids[i]].Coord.split(',');
