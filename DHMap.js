@@ -244,17 +244,50 @@ function findRoute(){
   var nextE;
   var nextS;
   var nextW;
+  //creating the start of the path
   path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+  //Getting the elevation of the starting intersection
   const latlng = Intersections[sInterID].Coord.split(',');
   var location = new google.maps.LatLng(latlng[0],latlng[1]);
   const elevator = new google.maps.ElevationService();
   elevator.getElevationForLocations({
     locations: [location],
   })
-  .then(({ results }) => {
-    if(results[0]){
+  .then(({ results }) => {  
+    if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
       current = results[0].elevation;
       console.log("FOUND Starting Intersection Elevation: " + current);
+
+      //Now I need to search for connected intersections
+      let north = Intersections[sInterID].North;
+      let east = Intersections[sInterID].East;
+      let south = Intersections[sInterID].South;
+      let west = Intersections[sInterID].West;
+      //I want my north to be the next intersections south, my east to be the next intersections west, my south the be the next intersections north and my west to be the next intersections east
+      for(let i = 0; i < Intersections.length; i++){
+        if(north == Intersections[i].South)nextN = Intersections[i].Id;
+        if(east == Intersections[i].West)nextE = Intersections[i].Id;
+        if(south == Intersections[i].North)nextS = Intersections.Id;
+        if(west == Intersections[i].East)nextW = Intersections.Id;
+      }
+      ids.push(nextN,nextE,nextS,nextW);
+      console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
+
+      for(let i = 0; i < 4; i++){
+        if(ids[i] == undefined)ids.splice(i,1);
+      }
+      
+     // const directionalElevations = getElevs(ids);    //May not have all 4 ids
+      for(let i = 0; i < ids.length; i++){
+        //console.log("Elevation: " + i + " " + directionalElevations[0]);
+        console.log("NEW IDS[" + i + "]: " + ids[i]);
+      }  
+     // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+      //console.log("FOUND MIN: " + found);
+      
+      //Then check their elevation, and decided which two to visit
+      //After visiting, check their connected
+
     }
     else{ 
       alert("No results found");
@@ -263,46 +296,8 @@ function findRoute(){
   .catch((e) =>
     console.log("ERROR: " + e)
   );
-  console.log("Checking outside of promise: " + current);
-  try{
-    //Now I need to search for connected intersections
-    let north = Intersections[sInterID].North;
-    let east = Intersections[sInterID].East;
-    let south = Intersections[sInterID].South;
-    let west = Intersections[sInterID].West;
-    //I want my north to be the next intersections south, my east to be the next intersections west, my south the be the next intersections north and my west to be the next intersections east
-    //search 
-    for(let i = 0; i < Intersections.length; i++){
-      if(north == Intersections[i].South)nextN = Intersections[i].Id;
-      if(east == Intersections[i].West)nextE = Intersections[i].Id;
-      if(south == Intersections[i].North)nextS = Intersections.Id;
-      if(west == Intersections[i].East)nextW = Intersections.Id;
-    }
-    
-    ids.push(nextN,nextE,nextS,nextW);
-    /*for(let i = 0; i < ids.length; i++){
-      const ltlg = Intersections[ids[i]].Coord.split(',');
-       // ele[i] = getE(ltlg);
-      //console.log("Elevation: " + i + " " +ele[i]);
-    }*/
-  }
-  catch (error){
-    console.log(error);
-  }
-  console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-  for(let i = 0; i < 4; i++){
-    if(ids[i] == undefined)ids.splice(i,1);
-  }
- // const directionalElevations = getElevs(ids);    //May not have all 4 ids
-  for(let i = 0; i < 4; i++){
-    //console.log("Elevation: " + i + " " + directionalElevations[0]);
-    console.log("NEW IDS[" + i + "]: " + ids[i]);
-  }  
- // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
-  //console.log("FOUND MIN: " + found);
-  
-  //Then check their elevation, and decided which two to visit
-  //After visiting, check their connected
+  //THIS NEEDS TO BE THE END OF findRoute()
+
 }
 
 
