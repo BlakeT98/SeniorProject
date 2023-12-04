@@ -239,6 +239,7 @@ function chop(coord){
 
 function findRoute(){   
   var ids = [];
+  var elevs = [];
   var current;
   var nextN;
   var nextE;
@@ -275,15 +276,18 @@ function findRoute(){
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
 
       for(let i = 0; i < 4; i++){
-        if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids[0] then skipping other one because array length changes
-
+        if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids did not match with a next intersection
       }
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
         console.log("NEW IDS[" + i + "]: " + ids[i]);
+        let ltlg = Intersections[ids[i]].Coord.split(",",2);
+        elevs.push(getE(ltlg));
+        console.log("ELEVATION ID[" + i + "]: " + elevs[i]);
       }  
+      
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
       //console.log("FOUND MIN: " + found);
       
