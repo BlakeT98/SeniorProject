@@ -300,7 +300,7 @@ function findRoute(){
           if(results[0]){
             elevs[0] = results[0].elevation;
             console.log("Elevs[0] : " + elevs[0]);
-            console.log(ids[0] + " Coord = " + coords[0];
+            console.log(ids[0] + " Coord = " + coords[0]);
             if(index >= 1){
               let ltlg = coords[1].split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
