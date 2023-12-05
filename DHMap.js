@@ -287,7 +287,7 @@ function findRoute(){
       }  
 
       let index = ids.length - 1;
-      console.log("ID LENGTH = " + index);
+      //console.log("ID LENGTH = " + index);
       if(index >= 0){
         let ltlg = Intersections[ids[0]].Coord.split(",",2);
         let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -299,6 +299,7 @@ function findRoute(){
           if(results[0]){
             elevs[0] = results[0].elevation;
             console.log("Elevs[0] : " + elevs[0]);
+            console.log(ids[1] + " Coord = " + Intersections[ids[1]].Coord);
             if(index >= 1){
               let ltlg = Intersections[ids[1]].Coord.split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
