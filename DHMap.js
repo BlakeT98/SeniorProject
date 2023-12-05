@@ -286,7 +286,8 @@ function findRoute(){
         let ltlg = Intersections[ids[i]].Coord.split(",",2);
         elevs.push(getE(ltlg));
       }  
-      console.log("ELEVATION ID[" + 0 + "]: " + ids[0] + " " + elevs[0]);
+      sleep(2000).then(() => { console.log("ELEVATION ID[" + 0 + "]: " + ids[0] + " " + elevs[0]); });
+      
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
       //console.log("FOUND MIN: " + found);
       
@@ -303,6 +304,10 @@ function findRoute(){
   );
   //THIS NEEDS TO BE THE END OF findRoute()
 
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 //Not sure if I can use since this needs to run asyncronously and the compiler tries to run next command before this completes
