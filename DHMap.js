@@ -341,7 +341,7 @@ function findElevations(){
                               console.log("Elevs[3] : " + elevs[3]);
                               console.log(ids[3] + " Coord = " + coords[3]);
                               console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2] + " " + elevs[3]);
-                              findFinish(elevs);
+                              findFinish(ids,elevs);
                             }
                             else{ 
                               alert("No results found");
@@ -353,7 +353,7 @@ function findElevations(){
                         }
                         else {
                           console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2]);    
-                          findFinish(elevs);
+                          findFinish(ids,elevs);
                         }
                       }
                       else{ 
@@ -366,7 +366,7 @@ function findElevations(){
                   }
                   else {
                     console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1]);   
-                    findFinish(elevs);
+                    findFinish(ids,elevs);
                   }
                 }
                 else{ 
@@ -379,7 +379,7 @@ function findElevations(){
             }
             else {
               console.log("FOUND ELEVATIONS: " + elevs[0]); 
-              findFinish(elevs);
+              findFinish(ids,elevs);
             }
           }
           else{ 
@@ -405,8 +405,10 @@ function findElevations(){
   //THIS NEEDS TO BE THE END OF findRoute()
 }
 
-function findFinish(e){
-  //let len = e.length;
+function findFinish(i,e){  //Parameters are array of ids and elevations
+  let len = e.length;
+  let leni = i.length;
+  console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   let found = Math.min(e[0], e[1]);
   console.log("FOUND MIN: " + found);
 }
