@@ -407,6 +407,7 @@ function findElevations(){
 function findFinish(i,e){  //Parameters are array of ids and elevations
   let len = e.length;
   let leni = i.length;
+  let foundID;
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
     path += Intersections[i[0]].Coord;
@@ -415,23 +416,32 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   if(len == 2){
     let found = Math.min(e[0], e[1]);
     for(let j = 0; i < len; i++){
-      if(e[j] == found) path += Intersections[i[j]].Coord;
+      if(e[j] == found) {
+        path += Intersections[i[j]].Coord;
+        foundID = i[j];
+      }
     }
-    console.log("PATH: " + i[j] + " " + path);
+    console.log("PATH: " + i[foundID] + " " + path);
   }
   if(len == 3){
     let found = Math.min(e[0], e[1], e[2]);
     for(let j = 0; i < len; i++){
-      if(e[j] == found) path += Intersections[i[j]].Coord;
+      if(e[j] == found) {
+        path += Intersections[i[j]].Coord;
+        foundID = i[j];
+      }
     }
-    console.log("PATH: " + i[j] + " " + path);
+    console.log("PATH: " + i[foundID] + " " + path);
   }
   if(len == 4){
     let found = Math.min(e[0], e[1],e[2],e[3]);
     for(let j = 0; i < len; i++){
-      if(e[j] == found) path += Intersections[i[j]].Coord;
+      if(e[j] == found) {
+        path += Intersections[i[j]].Coord;
+        foundID = i[j];
+      }
     }
-    console.log("PATH: " + i[j] + " " + path);
+    console.log("PATH: " + i[foundID] + " " + path);
   }
   
   //console.log("FOUND MIN: " + found);
