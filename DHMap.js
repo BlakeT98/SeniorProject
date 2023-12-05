@@ -393,7 +393,6 @@ function findElevations(){
       
       //Then check their elevation, and decided which two to visit
       //After visiting, check their connected
-      ids = [];
     }
     else{ 
       alert("No results found");
