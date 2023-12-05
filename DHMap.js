@@ -407,7 +407,7 @@ function findElevations(){
 
 function findFinish(e){
   //let len = e.length;
-  let found = Math.min(e[0], e[1], e[2], e[3]);
+  let found = Math.min(e[0], e[1]);
   console.log("FOUND MIN: " + found);
 }
 //gets id index for Intersections[]
