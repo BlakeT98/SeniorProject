@@ -237,10 +237,9 @@ function chop(coord){
   return chopped;
 }
 
-async function findRoute(){   
+function findRoute(){   
   var ids = [];
   var elevs = [];
-  var promises = [];
   var current;
   var nextN;
   var nextE;
@@ -285,16 +284,90 @@ async function findRoute(){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
         console.log("NEW IDS[" + i + "]: " + ids[i]);
         let ltlg = Intersections[ids[i]].Coord.split(",",2);
-        promises.push(getE(ltlg));
       }  
-      let result = await Promise.all(promises);
-      for(let i = 0; i < ids.length; i++){
-        elev.push(result[i]);
-        console.log("ID[" + i + "] " + ids[i] + " " + elev[i]);
+
+      let index = ids.length - 1;
+      if(index >= 0){
+        let ltlg = Intersections[ids[0]].Coord.split(",",2);
+        let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+        let elevator = new google.maps.ElevationService();
+        elevator.getElevationForLocations({
+          locations: [location],
+        })
+        .then(({ results }) => {
+          if(results[0]){
+            elev[0] = results[0].elevation;
+            console.log("Elev[0] : " + elev[0]);
+            if(index >= 1){
+              let ltlg = Intersections[ids[1]].Coord.split(",",2);
+              let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+              let elevator = new google.maps.ElevationService();
+              elevator.getElevationForLocations({
+                locations: [location],
+              })
+              .then(({ results }) => {
+                if(results[0]){
+                  elev[1] = results[0].elevation;
+                  console.log("Elev[1] : " + elev[1]);
+                  if(index >= 2){
+                    let ltlg = Intersections[ids[2]].Coord.split(",",2);
+                    let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+                    let elevator = new google.maps.ElevationService();
+                    elevator.getElevationForLocations({
+                      locations: [location],
+                    })
+                    .then(({ results }) => {
+                      if(results[0]){
+                        elev[2] = results[0].elevation;
+                        console.log("Elev[2] : " + elev[2]);
+                        if(index == 3){
+                          let ltlg = Intersections[ids[3]].Coord.split(",",2);
+                          let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
+                          let elevator = new google.maps.ElevationService();
+                          elevator.getElevationForLocations({
+                            locations: [location],
+                          })
+                          .then(({ results }) => {
+                            if(results[0]){
+                              elev[3] = results[0].elevation;
+                              console.log("Elev[3] : " + elev[3]);
+                            }
+                            else{ 
+                              alert("No results found");
+                            }
+                          })
+                          .catch((e) =>
+                            console.log("ERROR: " + e)
+                          );
+                        }
+                      }
+                      else{ 
+                        alert("No results found");
+                      }
+                    })
+                    .catch((e) =>
+                      console.log("ERROR: " + e)
+                    );
+                  }
+                }
+                else{ 
+                  alert("No results found");
+                }
+              })
+              .catch((e) =>
+                console.log("ERROR: " + e)
+              );
+            }
+          }
+          else{ 
+            alert("No results found");
+          }
+        })
+        .catch((e) =>
+          console.log("ERROR: " + e)
+        );
       }
-        
-      //sleep(2000).then(() => { console.log("ELEVATION ID[" + 0 + "]: " + ids[0] + " " + elevs[0]); });
-      
+
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
       //console.log("FOUND MIN: " + found);
       
