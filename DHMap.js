@@ -195,12 +195,7 @@ function grabAddress(){
             document.getElementById('test2').innerHTML = endOutput;
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-            let e = findElevations();
-            console.log("e[] length = " + e.length);
-            //pick which intersection
-            let found = Math.min(e[0],e[1],e[2],e[3]);
-            console.log("FOUND MIN: " + found);
-            //then call findElevations on that intersection
+            findElevations();        
            }
          })
          .catch(function(error){
@@ -230,12 +225,7 @@ function grabAddress(){
       document.getElementById('test2').innerHTML = end;
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-      let e = findElevations();
-      console.log("e[] length = " + e.length);
-      //pick which intersection
-      let found = Math.min(e[0],e[1],e[2],e[3]);
-      console.log("FOUND MIN: " + found);
-      //then call findElevations on that intersection
+      findElevations();
     }
   }
   if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
@@ -351,7 +341,7 @@ function findElevations(){
                               console.log("Elevs[3] : " + elevs[3]);
                               console.log(ids[3] + " Coord = " + coords[3]);
                               console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2] + " " + elevs[3]);
-                              return elevs;
+                              findFinish(elevs);
                             }
                             else{ 
                               alert("No results found");
@@ -363,7 +353,7 @@ function findElevations(){
                         }
                         else {
                           console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2]);    
-                          return elevs;
+                          findFinish(elevs);
                         }
                       }
                       else{ 
@@ -376,7 +366,7 @@ function findElevations(){
                   }
                   else {
                     console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1]);   
-                    return elevs;
+                    findFinish(elevs);
                   }
                 }
                 else{ 
@@ -389,7 +379,7 @@ function findElevations(){
             }
             else {
               console.log("FOUND ELEVATIONS: " + elevs[0]); 
-              return elevs;
+              findFinish(elevs);
             }
           }
           else{ 
@@ -413,9 +403,13 @@ function findElevations(){
     console.log("ERROR: " + e)
   );
   //THIS NEEDS TO BE THE END OF findRoute()
-
 }
 
+function findFinish(e){
+  //let len = e.length;
+  let found = Math.min(e[0], e[1], e[2], e[3]);
+  console.log("FOUND MIN: " + found);
+}
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
