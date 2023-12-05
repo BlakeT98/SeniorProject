@@ -283,7 +283,6 @@ function findRoute(){
       for(let i = 0; i < ids.length; i++){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
         console.log("NEW IDS[" + i + "]: " + ids[i]);
-        let ltlg = Intersections[ids[i]].Coord.split(",",2);
       }  
 
       let index = ids.length - 1;
