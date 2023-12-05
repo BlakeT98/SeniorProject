@@ -195,9 +195,9 @@ function grabAddress(){
             document.getElementById('test2').innerHTML = endOutput;
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-            findElevations();
+            let e = findElevations();
             //pick which intersection
-            let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+            let found = Math.min(e[0],e[1],e[2],e[3]);
             console.log("FOUND MIN: " + found);
             //then call findElevations on that intersection
            }
@@ -229,9 +229,9 @@ function grabAddress(){
       document.getElementById('test2').innerHTML = end;
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-      findElevations();
+      let e = findElevations();
       //pick which intersection
-      let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+      let found = Math.min(e[0],e[1],e[2],e[3]);
       console.log("FOUND MIN: " + found);
       //then call findElevations on that intersection
     }
@@ -349,6 +349,7 @@ function findElevations(){
                               console.log("Elevs[3] : " + elevs[3]);
                               console.log(ids[3] + " Coord = " + coords[3]);
                               console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2] + " " + elevs[3]);
+                              return elevs;
                             }
                             else{ 
                               alert("No results found");
@@ -358,7 +359,10 @@ function findElevations(){
                             console.log("ERROR: " + e)
                           );
                         }
-                        else console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2]);                      
+                        else {
+                          console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2]);    
+                          return elevs;
+                        }
                       }
                       else{ 
                         alert("No results found");
@@ -368,7 +372,10 @@ function findElevations(){
                       console.log("ERROR: " + e)
                     );
                   }
-                  else console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1]);                  
+                  else {
+                    console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1]);   
+                    return elevs;
+                  }
                 }
                 else{ 
                   alert("No results found");
@@ -378,7 +385,10 @@ function findElevations(){
                 console.log("ERROR: " + e)
               );
             }
-            else console.log("FOUND ELEVATIONS: " + elevs[0]);           
+            else {
+              console.log("FOUND ELEVATIONS: " + elevs[0]); 
+              return elevs;
+            }
           }
           else{ 
             alert("No results found");
