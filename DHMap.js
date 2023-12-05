@@ -276,7 +276,7 @@ function findRoute(){
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
 
       for(let i = 0; i < 4; i++){
-        if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids did not match with a next intersection
+        if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids that did not match with a next intersection
       }
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
@@ -306,8 +306,7 @@ function findRoute(){
 
 }
 
-
-
+//Not sure if I can use since this needs to run asyncronously and the compiler tries to run next command before this completes
 function getE(c){
   var location = new google.maps.LatLng(c[0],c[1]);
   const elevator = new google.maps.ElevationService();
@@ -328,87 +327,6 @@ function getE(c){
   );
 }
 
-/*function getElevs(ids){    //Check for number of ids
-  const ele = [ 0,0,0,0 ];
-  let len = ids.length;
-  var index = 0;
-  //console.log("IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-  if(len > index){                                                                                //LEFT OFF HERE, Needs to get elevation for however many ids came in
-    const ltlg = Intersections[ids[0]].Coord.split(',');
-    var location = new google.maps.LatLng(ltlg[0],ltlg[1]);
-    const elevator = new google.maps.ElevationService();
-    elevator.getElevationForLocations({
-      locations: [location],
-    })
-    .then(({ results }) => {
-      if(results[0]){
-        console.log("ELE[0] " + results[0].elevation);
-        ele[0] = results[0].elevation;
-        const ltlg2 = Intersections[ids[1]].Coord.split(',');
-        var location2 = new google.maps.LatLng(ltlg2[0],ltlg2[1]);
-        const elevator = new google.maps.ElevationService();
-        elevator.getElevationForLocations({
-          locations: [location2],
-        })
-        .then(({ results }) => {
-          if(results[0]){
-            console.log("ELE[1] " + results[0].elevation);
-            ele[1] = results[0].elevation;
-            const ltlg3 = Intersections[ids[2]].Coord.split(',');
-            var location3 = new google.maps.LatLng(ltlg3[0],ltlg3[1]);
-            const elevator = new google.maps.ElevationService();
-            elevator.getElevationForLocations({
-              locations: [location3],
-            })
-            .then(({ results }) => {
-              if(results[0]){
-                console.log("ELE[2] " + results[0].elevation);
-                ele[2] = results[0].elevation;
-                const ltlg4 = Intersections[ids[3]].Coord.split(',');    
-                var location4 = new google.maps.LatLng(ltlg4[0],ltlg4[1]);
-                const elevator = new google.maps.ElevationService();
-                elevator.getElevationForLocations({
-                  locations: [location4],
-                })
-                .then(({ results }) => {
-                  if(results[0]){
-                    console.log("ELE[3] " + results[0].elevation);
-                    ele[3] = results[0].elevation;
-                    return ele;
-                  }
-                  else{ 
-                    alert("No results found");
-                  }
-                })
-                .catch((e) =>
-                  console.log("ERROR: " + e)
-                );
-              }
-              else{ 
-                alert("No results found");
-              }
-            })
-            .catch((e) =>
-              console.log("ERROR: " + e)
-            );
-          }
-          else{ 
-            alert("No results found");
-          }
-        })
-        .catch((e) =>
-           console.log("ERROR: " + e)
-        );
-      }
-      else{ 
-        alert("No results found");
-      }
-    })
-    .catch((e) =>
-      console.log("ERROR: " + e)
-    );
-  }
-}  */
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
