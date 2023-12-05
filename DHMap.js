@@ -312,7 +312,7 @@ function findRoute(){
                 if(results[0]){
                   elevs[1] = results[0].elevation;
                   console.log("Elevs[1] : " + elevs[1]);
-                  console.log(ids[1] + " Coord = " + coords[1];
+                  console.log(ids[1] + " Coord = " + coords[1]);
                   if(index >= 2){
                     let ltlg = coords[2].split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -324,7 +324,7 @@ function findRoute(){
                       if(results[0]){
                         elevs[2] = results[0].elevation;
                         console.log("Elevs[2] : " + elevs[2]);
-                        console.log(ids[2] + " Coord = " + coords[2];
+                        console.log(ids[2] + " Coord = " + coords[2]);
                         if(index == 3){
                           let ltlg = coords[3].split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -336,7 +336,7 @@ function findRoute(){
                             if(results[0]){
                               elevs[3] = results[0].elevation;
                               console.log("Elevs[3] : " + elevs[3]);
-                              console.log(ids[3] + " Coord = " + coords[3];
+                              console.log(ids[3] + " Coord = " + coords[3]);
                             }
                             else{ 
                               alert("No results found");
