@@ -373,6 +373,8 @@ function findRoute(){
           console.log("ERROR: " + e)
         );
       }
+      console.log("FOUND ELEVATIONS: " + elevs[0]);
+      
 
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
       //console.log("FOUND MIN: " + found);
