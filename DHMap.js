@@ -341,11 +341,13 @@ function findRoute(){
                             else{ 
                               alert("No results found");
                             }
+                            else console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2] + " " elevs[3]);
                           })
                           .catch((e) =>
                             console.log("ERROR: " + e)
                           );
                         }
+                        else console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2]);
                       }
                       else{ 
                         alert("No results found");
@@ -355,6 +357,7 @@ function findRoute(){
                       console.log("ERROR: " + e)
                     );
                   }
+                  else console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1]);
                 }
                 else{ 
                   alert("No results found");
@@ -364,6 +367,7 @@ function findRoute(){
                 console.log("ERROR: " + e)
               );
             }
+            else console.log("FOUND ELEVATIONS: " + elevs[0]);
           }
           else{ 
             alert("No results found");
@@ -373,7 +377,7 @@ function findRoute(){
           console.log("ERROR: " + e)
         );
       }
-      console.log("FOUND ELEVATIONS: " + elevs[0]);
+      
       
 
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
