@@ -193,7 +193,13 @@ function grabAddress(){
             //If found, add start addresses to html
             document.getElementById('test').innerHTML = startOutput;
             document.getElementById('test2').innerHTML = endOutput;
-            findRoute();
+            //creating the start of the path
+            path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+            findElevations();
+            //pick which intersection
+            let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+            console.log("FOUND MIN: " + found);
+            //then call findElevations on that intersection
            }
          })
          .catch(function(error){
@@ -221,7 +227,13 @@ function grabAddress(){
     else{
       document.getElementById('test').innerHTML = start;
       document.getElementById('test2').innerHTML = end;
-      findRoute();
+      //creating the start of the path
+      path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+      findElevations();
+      //pick which intersection
+      let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
+      console.log("FOUND MIN: " + found);
+      //then call findElevations on that intersection
     }
   }
   if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
@@ -237,7 +249,7 @@ function chop(coord){
   return chopped;
 }
 
-function findRoute(){   
+function findElevations(){   
   var ids = [];
   var elevs = [];
   var coords = [];
@@ -246,8 +258,7 @@ function findRoute(){
   var nextE;
   var nextS;
   var nextW;
-  //creating the start of the path
-  path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+  
   //Getting the elevation of the starting intersection
   const latlng = Intersections[sInterID].Coord.split(',');
   var location = new google.maps.LatLng(latlng[0],latlng[1]);
@@ -378,11 +389,6 @@ function findRoute(){
         );
       }
       
-      
-
-     // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
-      //console.log("FOUND MIN: " + found);
-      
       //Then check their elevation, and decided which two to visit
       //After visiting, check their connected
       ids = [];
@@ -396,27 +402,6 @@ function findRoute(){
   );
   //THIS NEEDS TO BE THE END OF findRoute()
 
-}
-
-//Not sure if I can use since this needs to run asyncronously and the compiler tries to run next command before this completes
-function getE(c){
-  var location = new google.maps.LatLng(c[0],c[1]);
-  const elevator = new google.maps.ElevationService();
-  elevator.getElevationForLocations({
-    locations: [location],
-  })
-  .then(({ results }) => {
-    if(results[0]){
-      console.log("Starting Intersection: " + results[0].elevation);
-      return results[0].elevation;
-    }
-    else{ 
-      alert("No results found");
-    }
-  })
-  .catch((e) =>
-    console.log("ERROR: " + e)
-  );
 }
 
 //gets id index for Intersections[]
