@@ -240,6 +240,7 @@ function chop(coord){
 function findRoute(){   
   var ids = [];
   var elevs = [];
+  var coords = [];
   var current;
   var nextN;
   var nextE;
@@ -282,13 +283,14 @@ function findRoute(){
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
+        coords[i] = Intersections[ids[i]].Coord;
         console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
       }  
 
       let index = ids.length - 1;
       //console.log("ID LENGTH = " + index);
       if(index >= 0){
-        let ltlg = Intersections[ids[0]].Coord.split(",",2);
+        let ltlg = coords[0].split(",",2);
         let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
         let elevator = new google.maps.ElevationService();
         elevator.getElevationForLocations({
@@ -298,9 +300,9 @@ function findRoute(){
           if(results[0]){
             elevs[0] = results[0].elevation;
             console.log("Elevs[0] : " + elevs[0]);
-            console.log(ids[1] + " Coord = " + Intersections[ids[1]].Coord);
+            console.log(ids[0] + " Coord = " + coords[0];
             if(index >= 1){
-              let ltlg = Intersections[ids[1]].Coord.split(",",2);
+              let ltlg = coords[1].split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
               let elevator = new google.maps.ElevationService();
               elevator.getElevationForLocations({
@@ -310,8 +312,9 @@ function findRoute(){
                 if(results[0]){
                   elevs[1] = results[0].elevation;
                   console.log("Elevs[1] : " + elevs[1]);
+                  console.log(ids[1] + " Coord = " + coords[1];
                   if(index >= 2){
-                    let ltlg = Intersections[ids[2]].Coord.split(",",2);
+                    let ltlg = coords[2].split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
                     let elevator = new google.maps.ElevationService();
                     elevator.getElevationForLocations({
@@ -321,8 +324,9 @@ function findRoute(){
                       if(results[0]){
                         elevs[2] = results[0].elevation;
                         console.log("Elevs[2] : " + elevs[2]);
+                        console.log(ids[2] + " Coord = " + coords[2];
                         if(index == 3){
-                          let ltlg = Intersections[ids[3]].Coord.split(",",2);
+                          let ltlg = coords[3].split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
                           let elevator = new google.maps.ElevationService();
                           elevator.getElevationForLocations({
@@ -332,6 +336,7 @@ function findRoute(){
                             if(results[0]){
                               elevs[3] = results[0].elevation;
                               console.log("Elevs[3] : " + elevs[3]);
+                              console.log(ids[3] + " Coord = " + coords[3];
                             }
                             else{ 
                               alert("No results found");
