@@ -287,6 +287,7 @@ function findRoute(){
       }  
 
       let index = ids.length - 1;
+      console.log("ID LENGTH = " + index);
       if(index >= 0){
         let ltlg = Intersections[ids[0]].Coord.split(",",2);
         let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
