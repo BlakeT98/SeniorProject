@@ -196,6 +196,7 @@ function grabAddress(){
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
             let e = findElevations();
+            console.log("e[] length = " + e.length);
             //pick which intersection
             let found = Math.min(e[0],e[1],e[2],e[3]);
             console.log("FOUND MIN: " + found);
@@ -230,6 +231,7 @@ function grabAddress(){
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
       let e = findElevations();
+      console.log("e[] length = " + e.length);
       //pick which intersection
       let found = Math.min(e[0],e[1],e[2],e[3]);
       console.log("FOUND MIN: " + found);
