@@ -284,7 +284,7 @@ function findRoute(){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
         console.log("NEW IDS[" + i + "]: " + ids[i]);
         let ltlg = Intersections[ids[i]].Coord.split(",",2);
-        //elevs.push(getE(ltlg));
+        elevs.push(getE(ltlg));
         console.log("ELEVATION ID[" + i + "]: " + elevs[i]);
       }  
       
