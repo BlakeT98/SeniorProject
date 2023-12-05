@@ -240,6 +240,7 @@ function chop(coord){
 function findRoute(){   
   var ids = [];
   var elevs = [];
+  var promises = [];
   var current;
   var nextN;
   var nextE;
@@ -284,11 +285,14 @@ function findRoute(){
         //console.log("Elevation: " + i + " " + directionalElevations[0]);
         console.log("NEW IDS[" + i + "]: " + ids[i]);
         let ltlg = Intersections[ids[i]].Coord.split(",",2);
-        var e = getE(ltlg).then(() => { 
-          elevs[i].push(e);
-          console.log("ELEVATION ID[" + 0 + "]: " + ids[0] + " " + elevs[0]); 
-        });
+        promises.push(getE(ltlg));
       }  
+      let result = await Promise.all(promises);
+      for(let i = 0; i < ids.length; i++){
+        elev.push(result[i]);
+        console.log("ID[" + i + "] " + ids[i] + " " + elev[i]);
+      }
+        
       //sleep(2000).then(() => { console.log("ELEVATION ID[" + 0 + "]: " + ids[0] + " " + elevs[0]); });
       
      // let found = Math.min(ele[0],ele[1],ele[2],ele[3]);
@@ -307,10 +311,6 @@ function findRoute(){
   );
   //THIS NEEDS TO BE THE END OF findRoute()
 
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 //Not sure if I can use since this needs to run asyncronously and the compiler tries to run next command before this completes
