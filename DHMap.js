@@ -296,8 +296,8 @@ function findRoute(){
         })
         .then(({ results }) => {
           if(results[0]){
-            elev[0] = results[0].elevation;
-            console.log("Elev[0] : " + elev[0]);
+            elevs[0] = results[0].elevation;
+            console.log("Elevs[0] : " + elevs[0]);
             if(index >= 1){
               let ltlg = Intersections[ids[1]].Coord.split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -307,8 +307,8 @@ function findRoute(){
               })
               .then(({ results }) => {
                 if(results[0]){
-                  elev[1] = results[0].elevation;
-                  console.log("Elev[1] : " + elev[1]);
+                  elevs[1] = results[0].elevation;
+                  console.log("Elevs[1] : " + elevs[1]);
                   if(index >= 2){
                     let ltlg = Intersections[ids[2]].Coord.split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -318,8 +318,8 @@ function findRoute(){
                     })
                     .then(({ results }) => {
                       if(results[0]){
-                        elev[2] = results[0].elevation;
-                        console.log("Elev[2] : " + elev[2]);
+                        elevs[2] = results[0].elevation;
+                        console.log("Elevs[2] : " + elevs[2]);
                         if(index == 3){
                           let ltlg = Intersections[ids[3]].Coord.split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -329,8 +329,8 @@ function findRoute(){
                           })
                           .then(({ results }) => {
                             if(results[0]){
-                              elev[3] = results[0].elevation;
-                              console.log("Elev[3] : " + elev[3]);
+                              elevs[3] = results[0].elevation;
+                              console.log("Elevs[3] : " + elevs[3]);
                             }
                             else{ 
                               alert("No results found");
