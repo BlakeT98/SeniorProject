@@ -237,7 +237,7 @@ function chop(coord){
   return chopped;
 }
 
-function findRoute(){   
+async function findRoute(){   
   var ids = [];
   var elevs = [];
   var promises = [];
