@@ -290,9 +290,10 @@ function findElevations(){
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
 
-      for(let i = 0; i < 4; i++){
-        if(ids[i] == undefined)ids.splice(i,1);       //REMOVING ids that did not match with a next intersection
-      }
+      if(ids[0] == undefined)ids.splice(0,1);
+      if(ids[1] == undefined)ids.splice(1,1);
+      if(ids[2] == undefined)ids.splice(2,1);
+      if(ids[3] == undefined)ids.splice(3,1);
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
