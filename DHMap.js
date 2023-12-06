@@ -115,6 +115,7 @@ var endOutput;
 var sInterID;
 var eInterID;
 var path;
+var searches = 0;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -456,7 +457,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   else{
     sInterID = foundID;
-    findElevations();                                                //TEST WITH RANDY PRESENT
+    if(searches > Intersections.length){
+      alert("There is no way to go downhill from your start and end positions");
+    }
+    else{  
+      searches++;
+      findElevations();       //TEST WITH RANDY PRESENT
+    }                            
   }
 }
 //gets id index for Intersections[]
