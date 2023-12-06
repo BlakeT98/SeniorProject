@@ -424,7 +424,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   var leni = i.length;
   let foundID;
   let index = 0;
-
+  console.log("PREVID IS " + prevID);
   for(let n = 0; n < leni; n++){
     if(prevID == i[n]){
       i.splice(n,1);
@@ -542,7 +542,6 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     else{  
-      prevID = foundID;
       sInterID = foundID;
       searches++;
       findElevations();      
