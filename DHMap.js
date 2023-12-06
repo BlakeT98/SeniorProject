@@ -30,6 +30,7 @@ let start = "";
 let end = "";
 let blck;
 let n;
+var closestCoord = 0;
 //Creating Streets[] with addyArray
 for(let i = 0; i < addyArray.length; i++){
   if(addyArray[i].charAt(3) == " "){
@@ -102,7 +103,7 @@ function searchAddress(street){
   let s = "" + blockNum + " "  + st;
   //console.log("Searching for: " + s);
  for(let k = 0; k < Intersections.length; k++){
-   if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West)return Intersections[k].Id;
+   if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West) return Intersections[k].Id;
  }
 }
 
