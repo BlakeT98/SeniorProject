@@ -202,6 +202,7 @@ function grabAddress(){
             document.getElementById('test2').innerHTML = endOutput;
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+            prevID = sInterID;
             startingPath = path;
             searches++;
             findElevations();        
