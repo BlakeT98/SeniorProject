@@ -294,6 +294,10 @@ function findElevations(){
       if(ids[1] == undefined)ids.splice(1,1);
       if(ids[2] == undefined)ids.splice(2,1);
       if(ids[3] == undefined)ids.splice(3,1);
+
+      for(let i = 0; i < ids.length; i++){
+        console.log("TEST IDS : " + ids[i]);
+      }
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
