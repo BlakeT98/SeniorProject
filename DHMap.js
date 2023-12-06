@@ -491,6 +491,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
+      totalDH = 0;
       if(secondChance.length == 1){
         path += startingPath + ":" + Intersections[secondChance[0]].Coord;
         sInterID = secondChance[0];
