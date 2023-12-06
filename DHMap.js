@@ -410,18 +410,18 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   let foundID;
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
-    path += Intersections[i[0]].Coord;
+    path += ":" + Intersections[i[0]].Coord;
     console.log("PATH: " + i[0] + " " + path);
   }
   if(len == 2){
     let found = Math.min(e[0], e[1]);
-    console.log("TEST2 " + e[0] + " " + e[1]);
-    console.log("TEST3: " + found);
+    //console.log("TEST2 " + e[0] + " " + e[1]);
+    //console.log("TEST3: " + found);
     for(let j = 0; j < len; j++){
-      console.log("TEST4 " + j);
+      //console.log("TEST4 " + j);
       if(e[j] == found) {
         console.log("TEST: " + e[j] + " AND " + found);
-        path += Intersections[i[j]].Coord;
+        path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
     }
@@ -431,7 +431,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     let found = Math.min(e[0], e[1], e[2]);
     for(let j = 0; j < len; j++){
       if(e[j] == found) {
-        path += Intersections[i[j]].Coord;
+        path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
     }
@@ -441,14 +441,22 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     let found = Math.min(e[0], e[1],e[2],e[3]);
     for(let j = 0; j < len; j++){
       if(e[j] == found) {
-        path += Intersections[i[j]].Coord;
+        path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
     }
     console.log("PATH: " + foundID + " " + path);
   }
   
-  //console.log("FOUND MIN: " + found);
+  //Check if foundID is the ID of the end Intersection
+  if(foundID == eInterID) {                                           //FOUND THE END!!!!!!!!
+    path += ":" + Intersections[i[foundID]].Coord + ":" + endCoord;
+    console.log("FOUND THE FUCKING END, FINALLY");
+  }
+  else{
+    sInterID = foundID;
+    findElevations();
+  }
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
