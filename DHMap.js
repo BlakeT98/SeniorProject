@@ -116,6 +116,8 @@ var sInterID;
 var eInterID;
 var path;
 var searches = 0;
+var startingPath;
+var startID;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -196,6 +198,8 @@ function grabAddress(){
             document.getElementById('test2').innerHTML = endOutput;
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+            startingPath = path;
+            startID = sInterID;
             findElevations();        
            }
          })
@@ -226,6 +230,8 @@ function grabAddress(){
       document.getElementById('test2').innerHTML = end;
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+      startingPath = path;
+      startID = sInterID;
       findElevations();
     }
   }
@@ -458,14 +464,22 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     searches = 0;
   }
   else{
-    sInterID = foundID;
     if(searches > (Intersections.length * 2)){
-      alert("There is no way to go downhill from your start and end positions");
+      alert("There is no way to get to your destination going downhill.");
       searches = 0;
+      path = 0;
+      let i1;
+      let i2;
+      let i3;
+      //sInterID = startID;
+      
+      path = startingPath;
+      
     }
     else{  
+      sInterID = foundID;
       searches++;
-      findElevations();       //TEST WITH RANDY PRESENT
+      findElevations();      
     }                            
   }
 }
