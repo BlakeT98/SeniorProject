@@ -450,7 +450,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   
   //Check if foundID is the ID of the end Intersection
   if(foundID == eInterID) {                                           //FOUND THE END!!!!!!!!
-    path += ":" + Intersections[i[foundID]].Coord + ":" + endCoord;
+    path += ":" + Intersections[foundID].Coord + ":" + endCoord;
     console.log("FOUND THE FUCKING END, FINALLY");
   }
   else{
