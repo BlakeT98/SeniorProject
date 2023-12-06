@@ -237,7 +237,7 @@ function chop(coord){
   var lng;
   const latlng = coord.split(",",2);
   lat = latlng[0].substring(8);
-  lng = latlng[1].substring(7,latlng[1].length-1);
+  lng = latlng[1].substring(7,latlng[1].length-2);
   var chopped = lat + "," + lng;
   return chopped;
 }
