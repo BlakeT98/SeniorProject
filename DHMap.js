@@ -121,6 +121,7 @@ var totalDH = 0;
 var neighborsI = [];
 var neighborsE = [];
 var first = true;
+var prevID;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -233,6 +234,7 @@ function grabAddress(){
       document.getElementById('test2').innerHTML = end;
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+      prevID = sInterID;
       startingPath = path;
       startID = sInterID;
       searches++;
@@ -272,7 +274,7 @@ function findElevations(){
     if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
       if(totalDH == 0) totalDH = results[0].elevation;                   //Do I need to store the current elevation????
       else totalDH -= results[0].elevation;
-      console.log("FOUND Starting Intersection Elevation: " + results[0].elevation);
+      console.log("Start Intersection Elevation: " + results[0].elevation);
 
       //Now I need to search for connected intersections
       let north = Intersections[sInterID].North;
@@ -296,13 +298,9 @@ function findElevations(){
       if(ids[1] == undefined)ids.splice(1,1);
       if(ids[0] == undefined)ids.splice(0,1);
 
-      for(let i = 0; i < ids.length; i++){
-        console.log("TEST IDS : " + ids[i]);
-      }
-      
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
-        console.log("TESTING : ID LENGTH = " + ids.length);
+        //console.log("TESTING : ID LENGTH = " + ids.length);
         coords[i] = Intersections[ids[i]].Coord;
         console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
       }  
@@ -422,10 +420,19 @@ function findElevations(){
 }
 
 function findFinish(i,e){  //Parameters are array of ids and elevations
-  let len = e.length;
-  let leni = i.length;
+  var len = e.length;
+  var leni = i.length;
   let foundID;
   let index = 0;
+
+  for(let n = 0; n < leni; n++){
+    if(prevID == i[n]){
+      i.splice(n,1);
+      e.splice(n,1);
+      leni = i.length;
+      len = e.length;
+    }
+  }
 
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
@@ -535,11 +542,12 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     else{  
+      prevID = foundID;
       sInterID = foundID;
       searches++;
       findElevations();      
     }                            
-  }
+  }  
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
