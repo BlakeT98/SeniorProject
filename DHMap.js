@@ -414,8 +414,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   let len = e.length;
   let leni = i.length;
   let foundID;
-  let secondChance[];
-  let otherE[];
+  let secondChance = [];
+  let otherE = [];
   let index = 0;
 
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
