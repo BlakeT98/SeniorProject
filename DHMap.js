@@ -521,7 +521,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
-    finalStage();
+    finalStage();                                                                //CONTIUE HERE
   }
   else{
     if(searches > (Intersections.length * 2)){
@@ -563,6 +563,10 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       findElevations();      
     }                            
   }  
+}
+
+function getPath(){
+  return path;
 }
 
 function finalStage(){
