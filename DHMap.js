@@ -444,6 +444,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     console.log("PATH: " + foundID + " " + path);
+     console.log("SECOND CHANCE: " + secondChance.length);
   }
   if(len == 3){
     let found = Math.min(e[0], e[1], e[2]);
@@ -459,6 +460,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     console.log("PATH: " + foundID + " " + path);
+     console.log("SECOND CHANCE: " + secondChance.length);
   }
   if(len == 4){
     let found = Math.min(e[0], e[1],e[2],e[3]);
@@ -474,6 +476,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     console.log("PATH: " + foundID + " " + path);
+     console.log("SECOND CHANCE: " + secondChance.length);
   }
   
   //Check if foundID is the ID of the end Intersection
