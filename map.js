@@ -44,7 +44,7 @@ function myMap(){
   var directinosDisplay = new goodle.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
 
-  var coordArray = 
+  var coordArray = finalPath;
   function calcRoute(){
     var request = {
       origin: 
