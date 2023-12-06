@@ -441,6 +441,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
   }
 
+  if(len == 0)alert("There is no way to get to your destination going downhill.");
+
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
     path += ":" + Intersections[i[0]].Coord;
