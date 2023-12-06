@@ -296,7 +296,7 @@ function findElevations(){
       
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
       for(let i = 0; i < ids.length; i++){
-        //console.log("Elevation: " + i + " " + directionalElevations[0]);
+        console.log("TESTING : ID LENGTH = " + ids.length);
         coords[i] = Intersections[ids[i]].Coord;
         console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
       }  
