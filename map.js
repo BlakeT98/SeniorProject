@@ -44,10 +44,10 @@ function myMap(){
   var directinosDisplay = new goodle.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
 
-  var pathStr = 
+  var pathStr = path;
   var coordArray = finalPath;
   
-  console.log("FINAL PATH: " + 
+  console.log("FINAL PATH: " + path);
   function calcRoute(){
     var request = {
       origin: 
