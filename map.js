@@ -40,7 +40,7 @@ function myMap(){
   });  
   boundary.setMap(map);
 
-  var directionsService = new google.maps.DirectionService();
+  var directionsService = new google.maps.DirectionsService();
   var directinosDisplay = new goodle.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
 
