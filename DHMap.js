@@ -418,6 +418,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     console.log("TEST2 " + e[0] + " " + e[1]);
     console.log("TEST3: " + found);
     for(let j = 0; i < len; i++){
+      console.log("TEST4 " + j);
       if(e[j] == found) {
         console.log("TEST: " + e[j] + " AND " + found);
         path += Intersections[i[j]].Coord;
