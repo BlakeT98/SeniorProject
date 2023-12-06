@@ -275,7 +275,7 @@ function findElevations(){
     if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
       if(totalDH == 0) totalDH = results[0].elevation;                   //Do I need to store the current elevation????
       else totalDH -= results[0].elevation;
-      console.log("Start Intersection Elevation: " + results[0].elevation);
+      //console.log("Start Intersection Elevation: " + results[0].elevation);
 
       //Now I need to search for connected intersections
       let north = Intersections[sInterID].North;
@@ -303,7 +303,7 @@ function findElevations(){
       for(let i = 0; i < ids.length; i++){
         //console.log("TESTING : ID LENGTH = " + ids.length);
         coords[i] = Intersections[ids[i]].Coord;
-        console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
+        //console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
       }  
 
       let index = ids.length - 1;
@@ -318,7 +318,7 @@ function findElevations(){
         .then(({ results }) => {
           if(results[0]){
             elevs[0] = results[0].elevation;
-            console.log("Elevs[0] : " + elevs[0]);
+            //console.log("Elevs[0] : " + elevs[0]);
             console.log(ids[0] + " Coord = " + coords[0]);
             if(index >= 1){
               let ltlg = coords[1].split(",",2);
@@ -330,8 +330,8 @@ function findElevations(){
               .then(({ results }) => {
                 if(results[0]){
                   elevs[1] = results[0].elevation;
-                  console.log("Elevs[1] : " + elevs[1]);
-                  console.log(ids[1] + " Coord = " + coords[1]);
+                  //console.log("Elevs[1] : " + elevs[1]);
+                  //console.log(ids[1] + " Coord = " + coords[1]);
                   if(index >= 2){
                     let ltlg = coords[2].split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -342,8 +342,8 @@ function findElevations(){
                     .then(({ results }) => {
                       if(results[0]){
                         elevs[2] = results[0].elevation;
-                        console.log("Elevs[2] : " + elevs[2]);
-                        console.log(ids[2] + " Coord = " + coords[2]);
+                        //console.log("Elevs[2] : " + elevs[2]);
+                        //console.log(ids[2] + " Coord = " + coords[2]);
                         if(index == 3){
                           let ltlg = coords[3].split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -354,10 +354,10 @@ function findElevations(){
                           .then(({ results }) => {
                             if(results[0]){
                               elevs[3] = results[0].elevation;
-                              console.log("Elevs[3] : " + elevs[3]);
-                              console.log(ids[3] + " Coord = " + coords[3]);
+                              //console.log("Elevs[3] : " + elevs[3]);
+                              //console.log(ids[3] + " Coord = " + coords[3]);
                               console.log("FOUND ELEVATIONS: " + elevs[0] + " " + elevs[1] + " " + elevs[2] + " " + elevs[3]);
-                              findFinish(ids,elevs);
+                              findFinish(ids,elevs);                          
                             }
                             else{ 
                               alert("No results found");
@@ -439,7 +439,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   if(len == 1){
     path += ":" + Intersections[i[0]].Coord;
     foundID = i[0];
-    console.log("PATH: " + i[0] + " " + path);
+    //console.log("PATH: " + i[0] + " " + path);
   }
   if(len == 2){
     let found = Math.min(e[0], e[1]);
@@ -459,8 +459,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         first = false;
       }
     }
-    console.log("PATH: " + foundID + " " + path);
-     console.log("SECOND CHANCE: " + neighborsI.length);
+    //console.log("PATH: " + foundID + " " + path);
+     //console.log("SECOND CHANCE: " + neighborsI.length);
   }
   if(len == 3){
     let found = Math.min(e[0], e[1], e[2]);
@@ -476,8 +476,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         first = false;
       }
     }
-    console.log("PATH: " + foundID + " " + path);
-    console.log("SECOND CHANCE: " + neighborsI.length);
+    //console.log("PATH: " + foundID + " " + path);
+    //console.log("SECOND CHANCE: " + neighborsI.length);
   }
   if(len == 4){
     let found = Math.min(e[0], e[1],e[2],e[3]);
@@ -493,8 +493,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         first = false;
       }
     }
-    console.log("PATH: " + foundID + " " + path);
-     console.log("SECOND CHANCE: " + neighborsI.length);
+    //console.log("PATH: " + foundID + " " + path);
+    //console.log("SECOND CHANCE: " + neighborsI.length);
   }
   
   //Check if foundID is the ID of the end Intersection
@@ -543,7 +543,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     else{  
-      prevID = foundID;
+      prevID = sInterID;
       sInterID = foundID;
       searches++;
       findElevations();      
