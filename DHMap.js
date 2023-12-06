@@ -543,6 +543,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       }
     }
     else{  
+      prevID = foundID;
       sInterID = foundID;
       searches++;
       findElevations();      
