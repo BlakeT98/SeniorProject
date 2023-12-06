@@ -41,7 +41,7 @@ function myMap(){
   boundary.setMap(map);
 
   var directionsService = new google.maps.DirectionsService();
-  var directinosDisplay = new goodle.maps.DirectionsRenderer();
+  var directinosDisplay = new google.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
 
   var pathStr = path;
