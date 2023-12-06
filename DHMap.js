@@ -117,11 +117,13 @@ var eInterID;
 var path;
 var searches = 0;
 var startingPath;
-var totalDH = 0;
+var lastE = 0;
 var neighborsI = [];
 var neighborsE = [];
 var first = true;
 var prevID;
+var finalPath = [];
+var distance = 0;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -273,8 +275,11 @@ function findElevations(){
   })
   .then(({ results }) => {  
     if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
-      if(totalDH == 0) totalDH = results[0].elevation;                   //Do I need to store the current elevation????
-      else totalDH -= results[0].elevation;
+      if(lastE == 0) lastE = results[0].elevation;                   //Do I need to store the current elevation????
+      else {
+        distance += lastE - results[0].elevation;
+        lastE = results[0].elevation;
+      }
       //console.log("Start Intersection Elevation: " + results[0].elevation);
 
       //Now I need to search for connected intersections
@@ -503,8 +508,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     console.log("FOUND THE FUCKING END, FINALLY");
     console.log("PATH: " + path);
     console.log("SEARCHES " + searches);
+    finalPath = path.split(":",2)
+    let n = finalPath.length - 1;
+    finalPath[n] = endCoord;
     for(let k = 0; k < len.length; k++){
-      if(i[k] == eInterID)totalDH -= e[k];
+      if(i[k] == eInterID){
+        distance += lastE - e[k];
+      }
     }
     console.log("TOTAL DOWNHILL = " + totalDH);
     searches = 0;
