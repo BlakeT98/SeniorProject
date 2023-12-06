@@ -199,6 +199,7 @@ function grabAddress(){
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
             startingPath = path;
+            searches++;
             findElevations();        
            }
          })
@@ -231,6 +232,7 @@ function grabAddress(){
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
       startingPath = path;
       startID = sInterID;
+      searches++;
       findElevations();
     }
   }
