@@ -48,10 +48,10 @@ function myMap(){
   var coordArray = finalPath;
   
   console.log("FINAL PATH: " + path);
-  function calcRoute(){
-    var request = {
-      origin: 
-  }
+  //function calcRoute(){
+    
+  //}
+  
 }
 window.myMap = myMap;
 
