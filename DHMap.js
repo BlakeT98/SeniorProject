@@ -455,11 +455,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     console.log("FOUND THE FUCKING END, FINALLY");
     console.log("PATH: " + path);
     console.log("SEARCHES " + searches);
+    searches = 0;
   }
   else{
     sInterID = foundID;
     if(searches > (Intersections.length * 2)){
       alert("There is no way to go downhill from your start and end positions");
+      searches = 0;
     }
     else{  
       searches++;
