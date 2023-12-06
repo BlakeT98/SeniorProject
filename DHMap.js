@@ -457,7 +457,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   else{
     sInterID = foundID;
-    if(searches > Intersections.length){
+    if(searches > (Intersections.length * 2)){
       alert("There is no way to go downhill from your start and end positions");
     }
     else{  
