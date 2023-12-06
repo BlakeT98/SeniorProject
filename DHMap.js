@@ -415,8 +415,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   if(len == 2){
     let found = Math.min(e[0], e[1]);
-    //console.log("TEST2 " + e[0] + " " + e[1]);
-    //console.log("TEST3: " + found);
+    console.log("TEST2 " + e[0] + " " + e[1]);
+    console.log("TEST3: " + found);
     for(let j = 0; i < len; i++){
       if(e[j].equals(found)) {
         console.log("TEST: " + e[j] + " AND " + found);
