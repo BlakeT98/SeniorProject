@@ -421,7 +421,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         foundID = i[j];
       }
     }
-    console.log("PATH: " + i[foundID] + " " + path);
+    console.log("PATH: " + foundID + " " + path);
   }
   if(len == 3){
     let found = Math.min(e[0], e[1], e[2]);
@@ -431,7 +431,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         foundID = i[j];
       }
     }
-    console.log("PATH: " + i[foundID] + " " + path);
+    console.log("PATH: " + foundID + " " + path);
   }
   if(len == 4){
     let found = Math.min(e[0], e[1],e[2],e[3]);
@@ -441,7 +441,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         foundID = i[j];
       }
     }
-    console.log("PATH: " + i[foundID] + " " + path);
+    console.log("PATH: " + foundID + " " + path);
   }
   
   //console.log("FOUND MIN: " + found);
