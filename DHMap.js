@@ -516,7 +516,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         distance += lastE - e[k];
       }
     }
-    console.log("TOTAL DOWNHILL = " + distance);
+    console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
   }
   else{
