@@ -495,6 +495,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       path = 0;
       totalDH = 0;
       if(secondChance.length == 1){
+       alert("TESTING SECOND CHANCE");
         path += startingPath + ":" + Intersections[secondChance[0]].Coord;
         sInterID = secondChance[0];
         findElevations();
