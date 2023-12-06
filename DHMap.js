@@ -117,7 +117,7 @@ var eInterID;
 var path;
 var searches = 0;
 var startingPath;
-var startID;
+var totalDH;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -199,7 +199,6 @@ function grabAddress(){
             //creating the start of the path
             path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
             startingPath = path;
-            startID = sInterID;
             findElevations();        
            }
          })
@@ -267,8 +266,9 @@ function findElevations(){
   })
   .then(({ results }) => {  
     if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
-      current = results[0].elevation;
+      current = results[0].elevation;                                                //Do I need to store the current elevation????
       console.log("FOUND Starting Intersection Elevation: " + current);
+      totalDH = current;
 
       //Now I need to search for connected intersections
       let north = Intersections[sInterID].North;
@@ -415,9 +415,15 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   let len = e.length;
   let leni = i.length;
   let foundID;
+  let secondChance[];
+  let otherE[];
+  let index = 0;
+
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
     path += ":" + Intersections[i[0]].Coord;
+    totalDH -= e[0];
+    foundID = i[0];
     console.log("PATH: " + i[0] + " " + path);
   }
   if(len == 2){
@@ -430,6 +436,12 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         console.log("TEST: " + e[j] + " AND " + found);
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
+        totalDH -= found;
+      }
+      else {
+        secondChance[index] = i[j];
+        otherE[index] = e[j];
+        index++;
       }
     }
     console.log("PATH: " + foundID + " " + path);
@@ -440,6 +452,12 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       if(e[j] == found) {
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
+        totalDH -= found;
+      }
+      else {
+        secondChance[index] = i[j];
+        otherE[index] = e[j];
+        index++;
       }
     }
     console.log("PATH: " + foundID + " " + path);
@@ -450,6 +468,12 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       if(e[j] == found) {
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
+        totalDH -= found;
+      }
+      else {
+        secondChance[index] = i[j];
+        otherE[index] = e[j];
+        index++;
       }
     }
     console.log("PATH: " + foundID + " " + path);
@@ -457,7 +481,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   
   //Check if foundID is the ID of the end Intersection
   if(foundID == eInterID) {                                           //FOUND THE END!!!!!!!!
-    path += ":" + Intersections[foundID].Coord + ":" + endCoord;
+    //path += ":" + Intersections[foundID].Coord + ":" + endCoord;
     console.log("FOUND THE FUCKING END, FINALLY");
     console.log("PATH: " + path);
     console.log("SEARCHES " + searches);
@@ -468,13 +492,31 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
-      let i1;
-      let i2;
-      let i3;
-      //sInterID = startID;
-      
-      path = startingPath;
-      
+      if(secondChance.length == 1){
+        path += startingPath + ":" + Intersections[secondChance[0]].Coord;
+        sInterID = secondChance[0];
+        findElevations();
+      }
+      else if(secondChance.length == 2){
+        let f = Math.min(otherE[0],otherE[1]);
+        for(let i = 0; i < otherE.length; i++){
+          if(f == otherE[i]){
+            path += startingPath + ":" + Intersections[secondChance[i]].Coord;
+            sInterID = secondChance[i];
+          }
+        }
+        findElevations();
+      }
+      else if (secondChance.length == 3){
+        let f = Math.min(otherE[0],otherE[1],otherE[2]);
+        for(let i = 0; i < otherE.length; i++){
+          if(f == otherE[i]){
+            path += startingPath + ":" + Intersections[secondChance[i]].Coord;
+            sInterID = secondChance[i];
+          }
+        }
+        findElevations();
+      }
     }
     else{  
       sInterID = foundID;
