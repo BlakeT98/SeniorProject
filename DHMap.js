@@ -140,7 +140,7 @@ function grabAddress(){
    .then(function(response){  
      //combining block number and street name from geocoded results
      var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-     console.log("Found Start LatLng :" + startAddy);
+     //console.log("Found Start LatLng :" + startAddy);
      if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
        var block = startAddy.substring(0,3);
        var st = startAddy.substring(8);     
@@ -169,7 +169,7 @@ function grabAddress(){
         .then(function(response){
           //combining block number and street name from geocoded results
           var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-          console.log("Found End LatLng :" + endAddy); 
+          //console.log("Found End LatLng :" + endAddy); 
           if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
             var block = endAddy.substring(0,3);
             var st = endAddy.substring(8);     
