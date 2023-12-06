@@ -39,6 +39,16 @@ function myMap(){
     strokeWeight: 2,
   });  
   boundary.setMap(map);
+
+  var directionsService = new google.maps.DirectionService();
+  var directinosDisplay = new goodle.maps.DirectionsRenderer();
+  directionsDisplay.setMap(map);
+
+  var coordArray = 
+  function calcRoute(){
+    var request = {
+      origin: 
+  }
 }
 window.myMap = myMap;
 
