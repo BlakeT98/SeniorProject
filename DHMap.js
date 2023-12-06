@@ -455,7 +455,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   else{
     sInterID = foundID;
-    findElevations();                                                //TEST WITH RANDY PRESENT
+    //findElevations();                                                //TEST WITH RANDY PRESENT
   }
 }
 //gets id index for Intersections[]
