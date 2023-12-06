@@ -44,7 +44,7 @@ function myMap(){
   var directionsDisplay = new google.maps.DirectionsRenderer();
   directionsDisplay.setMap(map);
 
-  var pathStr = path;
+  var pathStr = getPath();
   var coordArray = finalPath;
   
   console.log("FINAL PATH: " + path);
