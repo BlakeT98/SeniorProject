@@ -311,6 +311,7 @@ function grabAddress(){
       findElevations();
     }                  
   }
+ }
 }
 
 function findElevations(){   
