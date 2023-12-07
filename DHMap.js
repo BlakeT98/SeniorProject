@@ -131,15 +131,13 @@ function grabAddress(){
 
   //START INPUT
   //Check if it has a left bracket indicating the user pasted lat lng
-  if(start.charAt(0) == '{' && end.charAt(0) == '{'){
-    //removing {"lat": and } from pasted coord
-    var latlngS = chop(start);
-    startCoord = latlngS;
+  if(start.charAt(2) == '.'){
+    startCoord = start;
     //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
     //used source for concatinating geocode api url and lat/lng with api key added at the end
     axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
       params:{
-        latlng: latlngS,
+        latlng: start,
         key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
       }
     })
@@ -151,84 +149,152 @@ function grabAddress(){
        var block = startAddy.substring(0,3);
        var st = startAddy.substring(8);     
        startAddy = block + " " + st;
-      }
-      else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-        block = startAddy.substring(0,4);
-        st = startAddy.substring(10);
-        startAddy = block + " " + st;
-        //console.log("Format Detected " + block + " : " + st);
-      }
-       //converting JSON obj into string
-       startOutput = `${startAddy}`;
+     }
+     else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+       block = startAddy.substring(0,4);
+       st = startAddy.substring(10);
+       startAddy = block + " " + st;
+       //console.log("Format Detected " + block + " : " + st);
+     }
+     //converting JSON obj into string
+     startOutput = `${startAddy}`;
                           
-       //END INPUT
-       //removing {"lat": and } from pasted coord
-       var latlngE = chop(end);
-       endCoord = latlngE;
+     //END INPUT
+     if(end.charAt(2) == '.'){
+       endCoord = end;
        //used source for concatinating geocode api url and lat/lng with api key added at the end
        axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
          params:{
-           latlng: latlngE,
+           latlng: end,
            key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
          }
-        })
-        .then(function(response){
-          //combining block number and street name from geocoded results
-          var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-          //console.log("Found End LatLng :" + endAddy); 
-          if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
-            var block = endAddy.substring(0,3);
-            var st = endAddy.substring(8);     
-            endAddy = block + " " + st;
-          }
-          else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-            block = endAddy.substring(0,4);
-            st = endAddy.substring(10);
-            endAddy = block + " " + st;
-            //console.log("Format Detected " + block + " : " + st);
-          }
-          //converting JSON obj into string
-          endOutput = `${endAddy}`;
-
-          //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
-          sInterID = searchAddress(startOutput);
-          eInterID = searchAddress(endOutput);
-
-          //Tells user if address is found
-          if(sInterID == undefined && eInterID == undefined)alert("Start Address: (" + startOutput + ") and End Address: (" + endOutput + ") are not found or within range");
-          else if(sInterID == undefined)alert("Start Address: (" + startOutput + ") is not found or within range");
-          else if(eInterID == undefined)alert("End Address: (" + endOutput + ") is not found or within range");
-          else{
-            //If found, add start addresses to html
-            document.getElementById('test').innerHTML = startOutput;
-            document.getElementById('test2').innerHTML = endOutput;
-            //creating the start of the path
-            path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-            prevID = sInterID;
-            startingPath = path;
-            searches++;
-            findElevations();        
-           }
-         })
-         .catch(function(error){
-           console.log(error);
-           alert("Bad End Address input")
-         });                    
+       })
+       .then(function(response){
+         //combining block number and street name from geocoded results
+         var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+         //console.log("Found End LatLng :" + endAddy); 
+         if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+           var block = endAddy.substring(0,3);
+           var st = endAddy.substring(8);     
+           endAddy = block + " " + st;
+         }
+         else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+           block = endAddy.substring(0,4);
+           st = endAddy.substring(10);
+           endAddy = block + " " + st;
+           //console.log("Format Detected " + block + " : " + st);
+         }
+         //converting JSON obj into string
+         endOutput = `${endAddy}`;
+         
+         sInterID = searchAddress(startOutput);
+         eInterID = searchAddress(endOutput);
+         if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+         else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
+         else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
+         else{
+           document.getElementById('test').innerHTML = start;
+           document.getElementById('test2').innerHTML = end;
+           //creating the start of the path
+           path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+           prevID = sInterID;
+           startingPath = path;
+           startID = sInterID;
+           searches++;
+           findElevations();
+         }                  
       })
       .catch(function(error){
         console.log(error);
-        alert("Bad Start Address input");
-      });
+        alert("Bad End Address input")
+      }); 
+     }
+     else if(end.charAt(2) != '.'){
+       endOutput = end;
+       //Searches readable address from my array of acceptable streets, returns id number for intersection the street is a part of 
+       sInterID = searchAddress(startOutput);
+       eInterID = searchAddress(endOutput);    
+       endCoord = Intersections[eInterID].Coord;
+       if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+       else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
+       else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
+       else{
+         document.getElementById('test').innerHTML = start;
+         document.getElementById('test2').innerHTML = end;
+         //creating the start of the path
+         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+         prevID = sInterID;
+         startingPath = path;
+         startID = sInterID;
+         searches++;
+         findElevations();
+       }                  
+     }
+   });
+   .catch(function(error){
+     console.log(error);
+     alert("Bad Start Address input");
+   });
+ }
+ else if(start.charAt(2) != '.'){
+   startOutput = start;
+  
+   //END INPUT
+   if(end.charAt(2) == '.'){
+     endCoord = end;
+     //used source for concatinating geocode api url and lat/lng with api key added at the end
+     axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
+       params:{
+         latlng: end,
+         key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+       }
+     })
+     .then(function(response){
+       //combining block number and street name from geocoded results
+       var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+       //console.log("Found End LatLng :" + endAddy); 
+       if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+         var block = endAddy.substring(0,3);
+         var st = endAddy.substring(8);     
+         endAddy = block + " " + st;
+       }
+       else if(endAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+         block = endAddy.substring(0,4);
+         st = endAddy.substring(10);
+         endAddy = block + " " + st;
+         //console.log("Format Detected " + block + " : " + st);
+       }
+       //converting JSON obj into string
+       endOutput = `${endAddy}`;
+       sInterID = searchAddress(startOutput);
+       eInterID = searchAddress(endOutput);
+       startCoord = Intersections[sInterID].Coord;
+       if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+       else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
+       else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
+       else{
+         document.getElementById('test').innerHTML = start;
+         document.getElementById('test2').innerHTML = end;
+         //creating the start of the path
+         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+         prevID = sInterID;
+         startingPath = path;
+         startID = sInterID;
+         searches++;
+         findElevations();
+       }                  
+    })
+    .catch(function(error){
+      console.log(error);
+      alert("Bad End Address input")
+    }); 
   }
-  //if start and end are addresses, not coords
-  if(start.charAt(0) != '{' && end.charAt(0) != '{'){
-    //searches array for acceptable address
-    startOutput = start;
+  else if(end.charAt(2) != '.'){
     endOutput = end;
     sInterID = searchAddress(startOutput);
     eInterID = searchAddress(endOutput);
-    //NEED TO CONVERT INTERSECTIONS[] ID TO FULL BLOCK ST NAME
-                          
+    startCoord = Intersections[sInterID].Coord;
+    endCoord = Intersections[eInterID].Coord;
     if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
     else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
     else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
@@ -242,19 +308,8 @@ function grabAddress(){
       startID = sInterID;
       searches++;
       findElevations();
-    }
+    }                  
   }
-  if(start.charAt(0) != '{' && end.charAt(0) == '{' || start.charAt(0) == '{' && end.charAt(0) != '{')alert("Start and End addresses do not have matching input types");
-}
-
-function chop(coord){
-  var lat;
-  var lng;
-  const latlng = coord.split(",",2);
-  lat = latlng[0].substring(8);
-  lng = latlng[1].substring(7,latlng[1].length-2);
-  var chopped = lat + "," + lng;
-  return chopped;
 }
 
 function findElevations(){   
