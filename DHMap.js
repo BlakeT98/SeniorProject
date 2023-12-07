@@ -528,11 +528,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
-      totalDH = 0;
+      lastE = 0;
+      distance = 0;
       if(neighborsI.length == 1){
        alert("TESTING SECOND CHANCE");
         path += startingPath + ":" + Intersections[neighborsI[0]].Coord;
         sInterID = neighborsI[0];
+        prevID = sInterID;
         findElevations();
       }
       else if(neighborsI.length == 2){
@@ -541,6 +543,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           if(f == neighborsE[i]){
             path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
             sInterID = neighborsI[i];
+            prevID = sInterID;
           }
         }
         findElevations();
@@ -551,6 +554,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           if(f == neighborsE[i]){
             path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
             sInterID = neighborsI[i];
+            prevID = sInterID;
           }
         }
         findElevations();
