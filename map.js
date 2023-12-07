@@ -17,18 +17,18 @@ function myMap(){
 
   infoWindow.open(map);
   // Configure the click listener.
-  //map.addListener("click", (mapsMouseEvent) => {
-    map.addListener("click", function(evnt){
+  map.addListener("click", (mapsMouseEvent) => {
+    //map.addListener("click", function(evnt){
     // Close the current InfoWindow.
     infoWindow.close();
     // Create a new InfoWindow.
     infoWindow = new google.maps.InfoWindow({
-      position: evnt.latLng,
+      position: mapsMouseEvent.latLng,
     });
-    var lat = evnt.latlng.lat();
-    var lng = evnt.latlng.lng();
-    console.log("TEST COORD " + lat + " " + lng);
-    //infoWindow.setContent("<p style=\"color:black;\"><b>" + lat + lng, + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    //var lat = evnt.latlng.lat();
+    //var lng = evnt.latlng.lng();
+    //console.log("TEST COORD " + lat + " " + lng);
+    infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2), + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     infoWindow.open(map);
   });    
 
