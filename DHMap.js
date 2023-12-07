@@ -525,8 +525,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
-    document.getElementById('path').innerHTML = newPath;
-    finalStage();                                                                //CONTIUE HERE
+    document.getElementById('path').innerHTML = path;
+                                                               //CONTIUE HERE
   }
   else{
     if(searches > (Intersections.length * 2)){
@@ -574,17 +574,6 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }  
 }
 
-function finalStage(){
-  var directionsService = new google.maps.DirectionsService();
-  var directionsDisplay = new google.maps.DirectionsRenderer();
-  callMap();
-  //directionsDisplay.setMap(map);
-  console.log("THIS IS THE FINAL PATH!!!!!!!!!!!!!!!! " + path);
-  
-  //function calcRoute(){
-    
-  //}
-}
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
 //end = searchAddress("2724 N Lakeshore Blvd");
