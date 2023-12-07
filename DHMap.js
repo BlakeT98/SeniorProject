@@ -514,7 +514,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     finalPath = path.split(":",2)
     let n = finalPath.length - 1;
     finalPath[n] = endCoord;
-    var newPath;
+    var newPath = "";
     for(let j = 0; j < finalPath.length; j++){
       newPath += finalPath[j];
     }
