@@ -24,7 +24,8 @@ function myMap(){
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
-    var str = mapsMouseEvent.latlng.toString();
+    var coord = mapsMouseEvent.latlng
+    var str = coord.toString();
     infoWindow.setContent("<p style=\"color:black;\"><b>" + str, + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     infoWindow.open(map);
   });    
