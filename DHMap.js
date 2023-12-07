@@ -514,6 +514,10 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     finalPath = path.split(":",2)
     let n = finalPath.length - 1;
     finalPath[n] = endCoord;
+    var newPath;
+    for(let j = 0; j < finalPath.length; j++){
+      newPath += finalPath[j];
+    }
     for(let k = 0; k < len.length; k++){
       if(i[k] == eInterID){
         distance += lastE - e[k];
@@ -521,6 +525,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
+    document.getElementById('path').innerHTML = newPath;
     finalStage();                                                                //CONTIUE HERE
   }
   else{
