@@ -40,18 +40,6 @@ function myMap(){
   });  
   boundary.setMap(map);
 
-  var directionsService = new google.maps.DirectionsService();
-  var directionsDisplay = new google.maps.DirectionsRenderer();
-  directionsDisplay.setMap(map);
-
-  var pathStr = getPath();
-  var coordArray = finalPath;
-  
-  console.log("FINAL PATH: " + path);
-  //function calcRoute(){
-    
-  //}
-  
 }
 window.myMap = myMap;
 
