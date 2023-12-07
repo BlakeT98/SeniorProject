@@ -25,8 +25,8 @@ function myMap(){
       position: mapsMouseEvent.latLng,
     });
     var coord = mapsMouseEvent.latlng
-    var lat = coord.getString("lat");
-    var lng = coord.getString("lng");
+    var lat = mapsMouseEvent.latlng.lat();
+    var lng = mapsMouseEvent.latlng.lng();
     infoWindow.setContent("<p style=\"color:black;\"><b>" + lat + lng, + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     infoWindow.open(map);
   });    
