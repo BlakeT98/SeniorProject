@@ -230,12 +230,13 @@ function grabAddress(){
          findElevations();
        }                  
      }
-   });
+   })
    .catch(function(error){
      console.log(error);
      alert("Bad Start Address input");
    });
  }
+ //IF START IS NOT COORDINATES
  else if(start.charAt(2) != '.'){
    startOutput = start;
   
