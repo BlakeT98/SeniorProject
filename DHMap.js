@@ -193,8 +193,8 @@ function grabAddress(){
          else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
          else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
          else{
-           document.getElementById('test').innerHTML = start;
-           document.getElementById('test2').innerHTML = end;
+           document.getElementById('test').innerHTML = startOutput;
+           document.getElementById('test2').innerHTML = endOutput;
            //creating the start of the path
            path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
            prevID = sInterID;
@@ -219,8 +219,8 @@ function grabAddress(){
        else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
        else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
        else{
-         document.getElementById('test').innerHTML = start;
-         document.getElementById('test2').innerHTML = end;
+         document.getElementById('test').innerHTML = startOutput;
+         document.getElementById('test2').innerHTML = endOutput;
          //creating the start of the path
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
@@ -274,8 +274,8 @@ function grabAddress(){
        else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
        else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
        else{
-         document.getElementById('test').innerHTML = start;
-         document.getElementById('test2').innerHTML = end;
+         document.getElementById('test').innerHTML = startOutput;
+         document.getElementById('test2').innerHTML = endOutput;
          //creating the start of the path
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
@@ -300,8 +300,8 @@ function grabAddress(){
     else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
     else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
     else{
-      document.getElementById('test').innerHTML = start;
-      document.getElementById('test2').innerHTML = end;
+      document.getElementById('test').innerHTML = startOutput;
+      document.getElementById('test2').innerHTML = endOutput;
       //creating the start of the path
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
       prevID = sInterID;
