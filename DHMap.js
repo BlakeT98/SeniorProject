@@ -565,12 +565,15 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }  
 }
 
-function getPath(){
-  return path;
-}
-
 function finalStage(){
-
+  var directionsService = new google.maps.DirectionsService();
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay.setMap(map);
+  console.log("THIS IS THE FINAL PATH!!!!!!!!!!!!!!!!);
+  
+  //function calcRoute(){
+    
+  //}
 }
 //gets id index for Intersections[]
 //start = searchAddress("325 E Michigan St");
