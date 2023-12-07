@@ -123,7 +123,6 @@ var neighborsI = [];
 var neighborsE = [];
 var first = true;
 var prevID;
-var finalPath = [];
 var distance = 0;
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
