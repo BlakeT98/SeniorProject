@@ -572,7 +572,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
 function finalStage(){
   var directionsService = new google.maps.DirectionsService();
   var directionsDisplay = new google.maps.DirectionsRenderer();
-  directionsDisplay.setMap(map);
+  callMap();
+  //directionsDisplay.setMap(map);
   console.log("THIS IS THE FINAL PATH!!!!!!!!!!!!!!!! " + path);
   
   //function calcRoute(){
