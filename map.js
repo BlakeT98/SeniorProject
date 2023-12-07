@@ -25,10 +25,10 @@ function myMap(){
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
-    //var lat = evnt.latlng.lat();
-    //var lng = evnt.latlng.lng();
+    var lat = JSON.stringify(mapsMouseEvent.latLng.lat()
+    var lng = mapsMouseEvent.latLng.lng()
     //console.log("TEST COORD " + lat + " " + lng);
-    infoWindow.setContent("<p style=\"color:black;\"><b>" + JSON.stringify(mapsMouseEvent.latLng.lat() + ", " + mapsMouseEvent.latLng.lng(), null, 2), + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    infoWindow.setContent("<p style=\"color:black;\"><b>" + lat + "," + lng, null, 2), + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     infoWindow.open(map);
   });    
 
