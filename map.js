@@ -25,7 +25,7 @@ function myMap(){
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
-    var coord = JSON.stringify(mapsMouseEvent.latLng.lat() + ", " + , null, 2);
+    var coord = JSON.stringify(mapsMouseEvent.latLng.lat() + ", " + mapsMouseEvent.latLng.lng(), null, 2);
     //console.log("TEST COORD " + lat + " " + lng);
     infoWindow.setContent("<p style=\"color:black;\"><b>" + coord + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     infoWindow.open(map);
