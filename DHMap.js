@@ -630,6 +630,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       sInterID = foundID;
       searches++;
       console.log("DISTANCE: " + distance);
+      console.log("CHECK IF ID IS GOOD " + sInterID);
       findElevations();      
     }                            
   }  
