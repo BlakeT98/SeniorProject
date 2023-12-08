@@ -583,7 +583,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
                                                                //CONTIUE HERE
   }
   else{
-    if(searches > (Intersections.length){
+    if(searches > Intersections.length){
       alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
