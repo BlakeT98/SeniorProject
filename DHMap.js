@@ -507,8 +507,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   if(len == 2){
     console.log("TEST1");
     let found = Math.min(e[0], e[1]);
-    //console.log("TEST2 " + e[0] + " " + e[1]);
-    //console.log("TEST3: " + found);
+    console.log("Choices " + e[0] + " " + e[1]);
+    console.log("Picked: " + found);
     for(let j = 0; j < len; j++){
       //console.log("TEST4 " + j);
       if(e[j] == found) {
