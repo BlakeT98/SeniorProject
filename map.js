@@ -47,8 +47,8 @@ function myMap(){
 }
 window.myMap = myMap;
 
-function callMap(){
-  alert("callMap( ) WORKING!");
+function createRoute(){
+  alert("createRoute( ) WORKING!");
   //directionsDisplay.setMap(map);
 }
 //window.myMap = myMap;
