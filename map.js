@@ -48,7 +48,8 @@ function myMap(){
 window.myMap = myMap;
 
 function callMap(){
-  directionsDisplay.setMap(map);
+  alert("callMap( ) WORKING!");
+  //directionsDisplay.setMap(map);
 }
 //window.myMap = myMap;
 
