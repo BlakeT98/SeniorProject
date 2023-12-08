@@ -354,7 +354,6 @@ function findElevations(){
       ids.push(nextN,nextE,nextS,nextW);
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
       console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-
       
       if(ids[3] == undefined)ids.splice(3,1);
       if(ids[2] == undefined)ids.splice(2,1);
@@ -362,11 +361,11 @@ function findElevations(){
       if(ids[0] == undefined)ids.splice(0,1);
 
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
-      /*for(let i = 0; i < ids.length; i++){
+      for(let i = 0; i < ids.length; i++){
         //console.log("TESTING : ID LENGTH = " + ids.length);
-        //coords[i] = Intersections[ids[i]].Coord;
+        coords[i] = Intersections[ids[i]].Coord;
         //console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
-      }  */
+      }  
 
       let index = ids.length - 1;
       //console.log("ID LENGTH = " + index);
