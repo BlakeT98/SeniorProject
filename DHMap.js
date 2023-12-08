@@ -512,7 +512,10 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     for(let j = 0; j < len; j++){
       //console.log("TEST4 " + j);
       if(e[j] == found) {
-        if(i[j] == eInterID)break;
+        if(i[j] == eInterID){
+          foundID = i[j];
+          break;
+        }
         console.log("DEBUG: " + e[j] + " AND " + i[j]);
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
@@ -554,7 +557,10 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     let found = Math.min(e[0], e[1],e[2],e[3]);
     for(let j = 0; j < len; j++){
       if(e[j] == found) {
-        if(i[j] == eInterID)break;
+        if(i[j] == eInterID){
+          foundID = i[j];
+          break;
+        }
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
