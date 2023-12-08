@@ -179,6 +179,11 @@
                   <!-- <button class="button button1" id="enter" onclick="grabAddress()">Enter</button> -->
                   </div>
 
+                  <script>
+                    document.getElementById("enter").addEventListener("click",grabAddress(),true);
+                    document.getElementById("enter").addEventListener("click",callMap(),true);
+                  </script>
+
                   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
                <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
@@ -188,11 +193,6 @@
 
               <!-- ADDS JAVASCRIPT FILE TO INDEX.HTML -->
               <script src="DHMap.js"> </script>
-
-              <script>
-                  document.getElementById("enter").addEventListener("click",grabAddress(),true);
-                  document.getElementById("enter").addEventListener("click",callMap(),true);
-              </script>
 
               <label>Start:&nbsp;</label>
               <label id="test"></label>
