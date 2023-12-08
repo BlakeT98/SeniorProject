@@ -173,16 +173,8 @@
                   <div></div>
                   <label for="end">Ending Address:&nbsp;&nbsp;</label>
                   <input type="text" id="end" name="endTxt" size="20" style="color: black" placeholder="&quot;321 N 4th St&quot;"/>
-                 
-                  <div>
-                  <button class="button button1" id="enter">Enter</button>
-                  <!-- <button class="button button1" id="enter" onclick="grabAddress()">Enter</button> -->
-                  </div>
 
-                  <script>
-                    document.getElementById("enter").addEventListener("click",grabAddress(),true);
-                    document.getElementById("enter").addEventListener("click",callMap(),true);
-                  </script>
+                  <button class="button button1" id="enter" onclick="grabAddress()">Enter</button>
 
                   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
