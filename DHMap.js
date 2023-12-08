@@ -487,8 +487,6 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   let foundID;
   let index = 0;
   console.log("PREVID IS " + prevID);
-  console.log("I[92] " + Intersections[92].Coord);
-  console.log("I[89] " + Intersections[89].Coord);
   for(let n = 0; n < leni; n++){
     if(prevID == i[n]){
       i.splice(n,1);
@@ -506,7 +504,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     foundID = i[0];
     //console.log("PATH: " + i[0] + " " + path);
   }
-  match: if(len == 2){
+  if(len == 2){
     console.log("TEST1");
     let found = Math.min(e[0], e[1]);
     //console.log("TEST2 " + e[0] + " " + e[1]);
@@ -514,8 +512,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     for(let j = 0; j < len; j++){
       //console.log("TEST4 " + j);
       if(e[j] == found) {
-        if(i[j] == eInterID)break match;
-        //console.log("TEST: " + e[j] + " AND " + found);
+        if(i[j] == eInterID)break;
+        console.log("DEBUG: " + e[j] + " AND " + i[j]);
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
