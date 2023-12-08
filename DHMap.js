@@ -362,11 +362,11 @@ function findElevations(){
       if(ids[0] == undefined)ids.splice(0,1);
 
      // const directionalElevations = getElevs(ids);    //May not have all 4 ids
-      for(let i = 0; i < ids.length; i++){
+      /*for(let i = 0; i < ids.length; i++){
         //console.log("TESTING : ID LENGTH = " + ids.length);
-        coords[i] = Intersections[ids[i]].Coord;
+        //coords[i] = Intersections[ids[i]].Coord;
         //console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
-      }  
+      }  */
 
       let index = ids.length - 1;
       //console.log("ID LENGTH = " + index);
@@ -381,7 +381,7 @@ function findElevations(){
           if(results[0]){
             elevs[0] = results[0].elevation;
             //console.log("Elevs[0] : " + elevs[0]);
-            console.log(ids[0] + " Coord = " + coords[0]);
+            //console.log(ids[0] + " Coord = " + coords[0]);
             if(index >= 1){
               let ltlg = coords[1].split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -393,7 +393,7 @@ function findElevations(){
                 if(results[0]){
                   elevs[1] = results[0].elevation;
                   //console.log("Elevs[1] : " + elevs[1]);
-                  console.log(ids[1] + " Coord = " + coords[1]);
+                  //console.log(ids[1] + " Coord = " + coords[1]);
                   if(index >= 2){
                     let ltlg = coords[2].split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -405,7 +405,7 @@ function findElevations(){
                       if(results[0]){
                         elevs[2] = results[0].elevation;
                         //console.log("Elevs[2] : " + elevs[2]);
-                        console.log(ids[2] + " Coord = " + coords[2]);
+                        //console.log(ids[2] + " Coord = " + coords[2]);
                         if(index == 3){
                           let ltlg = coords[3].split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
@@ -630,6 +630,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       prevID = sInterID;
       sInterID = foundID;
       searches++;
+      console.log("DISTANCE: " + distance);
       findElevations();      
     }                            
   }  
