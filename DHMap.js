@@ -582,7 +582,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
                                                                //CONTIUE HERE
   }
   else{
-    if(searches > (Intersections.length * 2)){
+    if(searches > (Intersections.length){
       alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
@@ -596,6 +596,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         findElevations();
       }
       else if(neighborsI.length == 2){
+        alert("TESTING SECOND CHANCE");
         let f = Math.min(neighborsE[0],neighborsE[1]);
         for(let i = 0; i < neighborsE.length; i++){
           if(f == neighborsE[i]){
@@ -607,6 +608,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         findElevations();
       }
       else if (neighborsI.length == 3){
+        alert("TESTING SECOND CHANCE");
         let f = Math.min(neighborsE[0],neighborsE[1],neighborsE[2]);
         for(let i = 0; i < neighborsE.length; i++){
           if(f == neighborsE[i]){
