@@ -600,36 +600,42 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       path = 0;
       lastE = 0;
       distance = 0;
-      if(neighborsI.length == 1){
-       alert("TESTING SECOND CHANCE: 1 INTERSECTION LEFT");
-        path += startingPath + ":" + Intersections[neighborsI[0]].Coord;
-        sInterID = neighborsI[0];
-        prevID = sInterID;
-        findElevations();
-      }
-      else if(neighborsI.length == 2){
-        alert("TESTING SECOND CHANCE: 2 INTERSECTIONS LEFT");
-        let f = Math.min(neighborsE[0],neighborsE[1]);
-        for(let i = 0; i < neighborsE.length; i++){
-          if(f == neighborsE[i]){
-            path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
-            sInterID = neighborsI[i];
-            prevID = sInterID;
-          }
+      if(!first){
+        if(neighborsI[0] == undefined)alert("There is no way to get to your destination going downhill.");
+        if(neighborsI.length == 1){
+         alert("TESTING SECOND CHANCE: 1 INTERSECTION LEFT");
+          path += startingPath + ":" + Intersections[neighborsI[0]].Coord;
+          sInterID = neighborsI[0];
+          prevID = sInterID;
+          neighborsI.splice(0,1);
+          findElevations();
         }
-        findElevations();
-      }
-      else if (neighborsI.length == 3){
-        alert("TESTING SECOND CHANCE: 3 INTERSECTIONS LEFT");
-        let f = Math.min(neighborsE[0],neighborsE[1],neighborsE[2]);
-        for(let i = 0; i < neighborsE.length; i++){
-          if(f == neighborsE[i]){
-            path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
-            sInterID = neighborsI[i];
-            prevID = sInterID;
+        else if(neighborsI.length == 2){
+          alert("TESTING SECOND CHANCE: 2 INTERSECTIONS LEFT");
+          let f = Math.min(neighborsE[0],neighborsE[1]);
+          for(let i = 0; i < neighborsE.length; i++){
+            if(f == neighborsE[i]){
+              path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
+              sInterID = neighborsI[i];
+              prevID = sInterID;
+              neighborsI.splice(i,1);
+            }
           }
+          findElevations();
         }
-        findElevations();
+        else if (neighborsI.length == 3){
+          alert("TESTING SECOND CHANCE: 3 INTERSECTIONS LEFT");
+          let f = Math.min(neighborsE[0],neighborsE[1],neighborsE[2]);
+          for(let i = 0; i < neighborsE.length; i++){
+            if(f == neighborsE[i]){
+              path += startingPath + ":" + Intersections[neighborsI[i]].Coord;
+              sInterID = neighborsI[i];
+              prevID = sInterID;
+              neighborsI.splice(i,1);
+            }
+          }
+          findElevations();
+        }
       }
     }
     else{  
