@@ -578,7 +578,6 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
-    callMap(path);
     document.getElementById('path').innerHTML = path;          //add function in map.js that listens for 'path' change in html, then create directions route
                                                                //CONTIUE HERE
   }
