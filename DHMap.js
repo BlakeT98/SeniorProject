@@ -595,20 +595,20 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   else{
     if(searches > Intersections.length){
-      alert("There is no way to get to your destination going downhill.");
+      //alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
       lastE = 0;
       distance = 0;
       if(neighborsI.length == 1){
-       alert("TESTING SECOND CHANCE");
+       alert("TESTING SECOND CHANCE: 1 INTERSECTION LEFT");
         path += startingPath + ":" + Intersections[neighborsI[0]].Coord;
         sInterID = neighborsI[0];
         prevID = sInterID;
         findElevations();
       }
       else if(neighborsI.length == 2){
-        alert("TESTING SECOND CHANCE");
+        alert("TESTING SECOND CHANCE: 2 INTERSECTIONS LEFT");
         let f = Math.min(neighborsE[0],neighborsE[1]);
         for(let i = 0; i < neighborsE.length; i++){
           if(f == neighborsE[i]){
@@ -620,7 +620,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         findElevations();
       }
       else if (neighborsI.length == 3){
-        alert("TESTING SECOND CHANCE");
+        alert("TESTING SECOND CHANCE: 3 INTERSECTIONS LEFT");
         let f = Math.min(neighborsE[0],neighborsE[1],neighborsE[2]);
         for(let i = 0; i < neighborsE.length; i++){
           if(f == neighborsE[i]){
@@ -636,8 +636,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       prevID = sInterID;
       sInterID = foundID;
       searches++;
-      console.log("DISTANCE: " + distance);
-      console.log("CHECK IF ID IS GOOD " + sInterID);
+      //console.log("DISTANCE: " + distance);
+      //console.log("CHECK IF ID IS GOOD " + sInterID);
       findElevations();      
     }                            
   }  
