@@ -45,7 +45,7 @@ function myMap(){
   });  
   boundary.setMap(map);
 
-  directinosRenderer.setMap(map);
+  directionsRenderer.setMap(map);
 
   function createRoute(){
     alert("createRoute( ) WORKING!");
