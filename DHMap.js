@@ -616,9 +616,15 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
 
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
-    path += ":" + Intersections[i[0]].Coord;
-    foundID = i[0];
-    //console.log("PATH: " + i[0] + " " + path);
+    if(i[0] == eInterID){
+      foundID = i[0];
+      break;
+    }
+    else{
+      path += ":" + Intersections[i[0]].Coord;
+      foundID = i[0];
+      //console.log("PATH: " + i[0] + " " + path);      
+    }
   }
   if(len == 2){
     console.log("TEST1");
