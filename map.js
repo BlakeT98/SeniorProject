@@ -50,7 +50,7 @@ function myMap(){
   const createRoute = function(){
       displayRoute(directinosService, directionRenderer);
   };
-  (document.getElementById("route") as HTMLElement).addEventListener("click", createRoute);
+  (document.getElementById("route").addEventListener("click", createRoute);
 
 }
 window.myMap = myMap;
