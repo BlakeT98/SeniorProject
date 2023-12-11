@@ -302,6 +302,7 @@ function grabAddress(){
          }
        })
        .then(function(response){
+         console.log(response.data.results[0]);
          startCoord = "" + response.data.results[0].geometry.location.lat + "," + response.data.results[0].geometry.location.lng;
          //creating the start of the path
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
