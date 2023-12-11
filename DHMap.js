@@ -222,7 +222,7 @@ function grabAddress(){
          document.getElementById('test').innerHTML = startOutput;
          document.getElementById('test2').innerHTML = endOutput;
          //creating the start of the path
-         path = "" + Intersections[sInterID].Coord + "";
+         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
          startingPath = path;
          //startID = sInterID;
@@ -310,7 +310,7 @@ function grabAddress(){
 //TESTING--------------------------------------------------------------------------------
 */       
          //startCoord = Intersections[sInterID].Coord;
-         path = "" + Intersections[sInterID].Coord + "";
+
          if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
          else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
          else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
@@ -318,7 +318,7 @@ function grabAddress(){
            document.getElementById('test').innerHTML = startOutput;
            document.getElementById('test2').innerHTML = endOutput;
            //creating the start of the path
-           path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+           path = "" + Intersections[sInterID].Coord + "";
            prevID = sInterID;
            startingPath = path;
            //startID = sInterID;
