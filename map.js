@@ -55,10 +55,25 @@ function myMap(){
 }
 window.myMap = myMap;
 
-function displayRoute(){
-  alert("createRoute( ) WORKING!");
+function displayRoute(directionsService: google.maps.DirectionsService, directionsRenderer: google.maps.DirectionsRenderer){
+  var p = document.getElementById("path").value;
+  const paths = p.split(":",2);
   
-  
+  directionsService
+    .route({
+      origin: {
+        query: paths[0],//first coord
+      },
+      destination: {
+        query: paths[1],//next coord
+      },
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    .then((response) => {
+      directionsRenderer.setDirections(response);
+    })
+  .catch((e) => console.log("Directions request failed due to " + status));
+  //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
 
