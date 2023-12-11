@@ -324,11 +324,15 @@ function grabAddress(){
            searches++;
            findElevations();
          } 
+       //TESTING----------------------------
+       /*
        })
      .catch(function(error){
        console.log(error);
        alert("Bad End Address input")
      }); 
+     //TESTING----------------------------
+     */
     })
     .catch(function(error){
       console.log(error);
