@@ -55,7 +55,7 @@ function myMap(){
 }
 window.myMap = myMap;
 
-function displayRoute(directionsService: google.maps.DirectionsService, directionsRenderer: google.maps.DirectionsRenderer){
+function displayRoute(directionsService, directionsRenderer){
   var p = document.getElementById("path").value;
   const paths = p.split(":",2);
   
