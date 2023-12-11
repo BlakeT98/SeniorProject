@@ -64,10 +64,10 @@ function displayRoute(directionsService, directionsRenderer){
     directionsService
       .route({
         origin: {
-          query: paths[i],//first coord
+          query: paths[0],//first coord
         },
         destination: {
-          query: paths[i+1],//next coord
+          query: paths[1],//next coord
         },
         travelMode: google.maps.TravelMode.DRIVING,
       })
