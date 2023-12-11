@@ -72,8 +72,8 @@ function displayRoute(directionsService: google.maps.DirectionsService, directio
     .then((response) => {
       directionsRenderer.setDirections(response);
     })
-  .catch((e) => console.log("Directions request failed due to " + status));
-  //alert("createRoute( ) WORKING!");
+    .catch((e) => console.log("Directions request failed due to " + status));
+    //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
 
