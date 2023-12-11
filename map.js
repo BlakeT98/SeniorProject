@@ -60,7 +60,7 @@ function displayRoute(directionsService, directionsRenderer){
   console.log("PATH::::: " + p);
   const paths = p.split(":");
   
-  for(let i = 0; i < paths.length; i++){
+  //for(let i = 0; i < paths.length; i++){
     directionsService
       .route({
         origin: {
@@ -75,7 +75,7 @@ function displayRoute(directionsService, directionsRenderer){
         directionsRenderer.setDirections(response);
       })
       .catch((e) => console.log("Directions request failed due to " + status));
-  }
+ // }
     //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
