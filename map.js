@@ -57,6 +57,7 @@ window.myMap = myMap;
 
 function displayRoute(directionsService, directionsRenderer){
   var p = document.getElementById("path").value;
+  console.log.("PATH::::: " + p);
   const paths = p.split(":");
   
   directionsService
