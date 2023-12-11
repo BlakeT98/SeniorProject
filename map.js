@@ -1,7 +1,8 @@
 
 //Creates Map
 function myMap(){
-
+  const directionsService = new google.maps.DirectionsService();
+  const directionsRenderer = new google.maps.DirectionsRenderer();
   const myLatlng = { lat: 46.547581, lng: -87.395592 };
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 13,
@@ -44,13 +45,20 @@ function myMap(){
   });  
   boundary.setMap(map);
 
+  directinosRenderer.setMap(map);
+
+  function createRoute(){
+    alert("createRoute( ) WORKING!");
+  }
+
 }
 window.myMap = myMap;
 
-function createRoute(){
-  alert("createRoute( ) WORKING!");
-  //directionsDisplay.setMap(map);
-}
+//function createRoute(){
+  //alert("createRoute( ) WORKING!");
+  
+  
+//}
 //window.myMap = myMap;
 
 
