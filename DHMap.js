@@ -201,7 +201,7 @@ function grabAddress(){
       })
       .catch(function(error){
         console.log(error);
-        alert("Bad End Address input")
+        alert("Bad End Address input");
       }); 
      }
      else if(end.charAt(2) != '.'){
