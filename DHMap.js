@@ -201,7 +201,7 @@ function grabAddress(){
       })
       .catch(function(error){
         console.log(error);
-        alert("Bad End Address input");
+        alert("Bad End Address input")
       }); 
      }
      else if(end.charAt(2) != '.'){
@@ -257,10 +257,10 @@ function grabAddress(){
            startID = sInterID;
            searches++;
            findElevations();
-         })    
+         }    
          .catch(function(error){
            console.log(error);
-         });
+         }
       }
    })
    .catch(function(error){
@@ -616,15 +616,9 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
 
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
   if(len == 1){
-    if(i[0] == eInterID){
-      foundID = i[0];
-      break;
-    }
-    else{
-      path += ":" + Intersections[i[0]].Coord;
-      foundID = i[0];
-      //console.log("PATH: " + i[0] + " " + path);      
-    }
+    path += ":" + Intersections[i[0]].Coord;
+    foundID = i[0];
+    //console.log("PATH: " + i[0] + " " + path);
   }
   if(len == 2){
     console.log("TEST1");
