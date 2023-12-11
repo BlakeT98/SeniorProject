@@ -199,7 +199,7 @@ function grabAddress(){
            path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
            prevID = sInterID;
            startingPath = path;
-           startID = sInterID;
+           //startID = sInterID;
            searches++;
            findElevations();
          }                  
@@ -225,7 +225,7 @@ function grabAddress(){
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
          startingPath = path;
-         startID = sInterID;
+         //startID = sInterID;
          searches++;
          findElevations();
        }                  
@@ -269,7 +269,45 @@ function grabAddress(){
        endOutput = `${endAddy}`;
        sInterID = searchAddress(startOutput);
        eInterID = searchAddress(endOutput);
-       startCoord = Intersections[sInterID].Coord;
+
+  //TESTING--------------------------------------------------------------------------
+       var blk = 0;
+       var st = "";
+       var type = "";
+       if(start.charAt(3) == " "){            //if street is formatted "123 Test St"
+         blk = start.substring(0,3);
+         st = start.substring(4);
+       }
+       else if(start.charAt(4) == " "){      //if street is formatted "1234 Test St"
+         blk = start.substring(0,4);
+         st = start.substring(5);
+       }
+       if(st.charAt(st.length - 3) == " "){
+         type = st.substring(st.length - 2, 2);
+         st = st.substring(0,st.length - 3);
+       }
+       else if(st.charAt(st.length - 4) == " "){
+         type = st.substring(st.length - 3, 3);
+         st = st.substring(0,st.length - 4);
+       }
+       else if(st.charAt(st.length - 5) == " "){
+         type = st.substring(st.length - 4, 4);
+         st = st.substring(0,st.length - 5);
+       }
+       var addr = "" + blk + "%20" + st + "%20" + type + "%20Marquette%20MI";
+       axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
+         params:{
+           address: addr,
+           key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+         }
+       })
+       .then(function(response){
+         startCoord = "" + response.data.results[0].geometry.location.lat + "," + response.data.results[0].geometry.location.lng;
+         //creating the start of the path
+         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+//TESTING--------------------------------------------------------------------------------
+
+         
        if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
        else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
        else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
@@ -280,10 +318,14 @@ function grabAddress(){
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
          startingPath = path;
-         startID = sInterID;
+          = sInterID;
          searches++;
          findElevations();
-       }                  
+       }  
+       .catch(function(error){
+         console.log(error);
+         alert("Bad End Address input")
+       }); 
     })
     .catch(function(error){
       console.log(error);
@@ -306,7 +348,7 @@ function grabAddress(){
       path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
       prevID = sInterID;
       startingPath = path;
-      startID = sInterID;
+      //startID = sInterID;
       searches++;
       findElevations();
     }                  
