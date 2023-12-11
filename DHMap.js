@@ -318,7 +318,7 @@ function grabAddress(){
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
          startingPath = path;
-          = sInterID;
+         //startID = sInterID;
          searches++;
          findElevations();
        }  
