@@ -308,24 +308,25 @@ function grabAddress(){
 //TESTING--------------------------------------------------------------------------------
 
          
-       if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
-       else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
-       else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
-       else{
-         document.getElementById('test').innerHTML = startOutput;
-         document.getElementById('test2').innerHTML = endOutput;
-         //creating the start of the path
-         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-         prevID = sInterID;
-         startingPath = path;
-         //startID = sInterID;
-         searches++;
-         findElevations();
-       }  
-       .catch(function(error){
-         console.log(error);
-         alert("Bad End Address input")
-       }); 
+         if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
+         else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
+         else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
+         else{
+           document.getElementById('test').innerHTML = startOutput;
+           document.getElementById('test2').innerHTML = endOutput;
+           //creating the start of the path
+           path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
+           prevID = sInterID;
+           startingPath = path;
+           //startID = sInterID;
+           searches++;
+           findElevations();
+         } 
+       })
+     .catch(function(error){
+       console.log(error);
+       alert("Bad End Address input")
+     }); 
     })
     .catch(function(error){
       console.log(error);
