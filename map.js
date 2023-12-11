@@ -48,7 +48,7 @@ function myMap(){
   directionsRenderer.setMap(map);
 
   const createRoute = function(){
-      displayRoute(directinosService, directionRenderer);
+      displayRoute(directionsService, directionRenderer);
   };
   document.getElementById("route").addEventListener("click", createRoute);
 
