@@ -47,18 +47,19 @@ function myMap(){
 
   directionsRenderer.setMap(map);
 
-  function createRoute(){
-    alert("createRoute( ) WORKING!");
-  }
+  const createRoute = function(){
+      displayRoute(directinosService, directionRenderer);
+  };
+  (document.getElementById("route") as HTMLElement).addEventListener("click", createRoute);
 
 }
 window.myMap = myMap;
 
-//function createRoute(){
-  //alert("createRoute( ) WORKING!");
+function displayRoute(){
+  alert("createRoute( ) WORKING!");
   
   
-//}
+}
 //window.myMap = myMap;
 
 
