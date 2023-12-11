@@ -60,14 +60,14 @@ function displayRoute(directionsService, directionsRenderer){
   console.log("PATH::::: " + p);
   const paths = p.split(":");
   
-  //for(let i = 0; i < paths.length; i++){
+  for(let i = 0; i < paths.length; i++){
     directionsService
       .route({
         origin: {
-          query: paths[0],//first coord
+          query: paths[i],//first coord
         },
         destination: {
-          query: paths[1],//next coord
+          query: paths[i + 1],//next coord
         },
         travelMode: google.maps.TravelMode.DRIVING,
       })
@@ -75,7 +75,7 @@ function displayRoute(directionsService, directionsRenderer){
         directionsRenderer.setDirections(response);
       })
       .catch((e) => console.log("Directions request failed due to " + status));
- // }
+  }
     //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
