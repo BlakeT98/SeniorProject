@@ -260,7 +260,7 @@ function grabAddress(){
          })    
          .catch(function(error){
            console.log(error);
-         }
+         })
       }
    })
    .catch(function(error){
