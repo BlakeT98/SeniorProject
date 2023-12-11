@@ -257,7 +257,7 @@ function grabAddress(){
            startID = sInterID;
            searches++;
            findElevations();
-         }    
+         })    
          .catch(function(error){
            console.log(error);
          }
