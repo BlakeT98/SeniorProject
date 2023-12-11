@@ -308,7 +308,8 @@ function grabAddress(){
          //creating the start of the path
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
 //TESTING--------------------------------------------------------------------------------
-*/
+*/       
+         startCoord = Intersections[sInterID].Coord;
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
          else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
