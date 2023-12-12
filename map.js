@@ -69,8 +69,8 @@ window.myMap = myMap;
 var index = 0;
 
 async function displayRoute(directionsService, directionsRenderer){
-  var route = document.getElementById("path").innerHTML;
-  var p = route.split(",");
+  var r = document.getElementById("path").innerHTML;
+  var p = r.split(",");
   console.log("PATH::::: " + p[index] + " " + p[index+1]);
   
   //for(let i = 0; i < paths.length; i++){
