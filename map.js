@@ -53,6 +53,7 @@ function myMap(){
     for(let i = 0; i < paths.length; i++){
       displayRoute(directionsService, directionsRenderer).then(
         function(response){      
+          console.log(response);
           directionsRenderer.setDirections(response);
         },
         function(error){
@@ -72,25 +73,24 @@ async function displayRoute(directionsService, directionsRenderer){
   var r = document.getElementById("path").innerHTML;
   var p = r.split(",");
   console.log("PATH::::: " + p[index] + " " + p[index+1]);
-  
-  //for(let i = 0; i < paths.length; i++){
-    directionsService
-      .route({
-        origin: {
-          query: p[index],//first coord
-        },
-        destination: {
-          query: p[index+1],//next coord
-        },
-        travelMode: google.maps.TravelMode.DRIVING,
-      })
-      .then((response) => {
-        index++;
-        return response;
-  
-      })
-      .catch((e) => console.log("Directions request failed due to " + status));
-  //}
+
+  directionsService
+    .route({
+      origin: {
+        query: p[index],//first coord
+      },
+      destination: {
+        query: p[index+1],//next coord
+      },
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    .then((response) => {
+      index++;
+      return response;
+
+    })
+    .catch((e) => console.log("Directions request failed due to " + status));
+
     //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
