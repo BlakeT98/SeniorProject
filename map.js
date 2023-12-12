@@ -43,7 +43,7 @@ function myMap(){
   });  
   boundary.setMap(map);
 
-  const directionsService;
+  var directionsService;
   var directionsRenderer;
   
   function createRoute() {
