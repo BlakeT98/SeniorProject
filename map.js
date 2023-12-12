@@ -54,7 +54,7 @@ function myMap(){
       directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){   
-          console.log("SETTING ROUTE");
+          console.log("SETTING ROUTE " + i);
           directionsRenderer.setDirections(response);
           directionsRenderer.setMap(map);
         },
