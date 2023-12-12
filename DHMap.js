@@ -578,12 +578,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }
   
   //Check if foundID is the ID of the end Intersection
-  if(foundID == eInterID) {    //FOUND THE END!!!!!!!!
-    console.log("TEST4");
-    //path += ":" + Intersections[foundID].Coord + ":" + endCoord;
-    console.log("FOUND THE FUCKING END, FINALLY");
+  if(foundID == eInterID) {                                                  //FOUND THE END!!!!!!!!
     console.log("PATH: " + path);
-    console.log("SEARCHES " + searches);
     path += ":" + endCoord;
     for(let k = 0; k < len.length; k++){
       if(i[k] == eInterID){
@@ -593,7 +589,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
     document.getElementById('path').innerHTML = path;          //add function in map.js that listens for 'path' change in html, then create directions route
-    creatRoute();                                                           //CONTIUE HERE
+    alert("Found a route, Please click the Display Route button");
   }
   else{
     if(searches > Intersections.length){
