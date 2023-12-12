@@ -51,7 +51,7 @@ function myMap(){
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length; i++){
-      displayRoute().then(
+      displayRoute(directionsService, directionsRenderer).then(
         function(response){      
           directionsRenderer.setDirections(response);
         },
