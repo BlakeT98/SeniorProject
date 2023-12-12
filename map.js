@@ -47,32 +47,46 @@ function myMap(){
 
   directionsRenderer.setMap(map);
 
+  var index = 0;
+  
   const createRoute = function(){
-      displayRoute(directionsService, directionsRenderer);
+    var p = document.getElementById("path").innerHTML;
+    const paths = p.split(":");
+    for(let i = 0; i < paths.length; i++){
+      displayRoute().then(
+        function(response){      
+          directionsRenderer.setDirections(response);
+        },
+        function(error){
+          console.log("ERROR IN CONTROLLER " + error);
+        }
+      );
+    }
   };
   document.getElementById("route").addEventListener("click", createRoute);
 
 }
 window.myMap = myMap;
 
-function displayRoute(directionsService, directionsRenderer){
-  var p = document.getElementById("path").innerHTML;
-  console.log("PATH::::: " + p);
-  const paths = p.split(":");
+async function displayRoute(directionsService, directionsRenderer){
+  var p = route.split(",");
+  console.log("PATH::::: " + p[index] + " " + p[index+1]);
   
   //for(let i = 0; i < paths.length; i++){
     directionsService
       .route({
         origin: {
-          query: paths[0],//first coord
+          query: p[index],//first coord
         },
         destination: {
-          query: paths[1],//next coord
+          query: p[index+1],//next coord
         },
         travelMode: google.maps.TravelMode.DRIVING,
       })
       .then((response) => {
-        directionsRenderer.setDirections(response);
+        index++;
+        return directionsService.route;
+  
       })
       .catch((e) => console.log("Directions request failed due to " + status));
   //}
