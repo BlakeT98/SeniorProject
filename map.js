@@ -50,7 +50,7 @@ function myMap(){
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length - 1; i++){
-      directionsService = = new google.maps.DirectionsService();
+      directionsService = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){   
