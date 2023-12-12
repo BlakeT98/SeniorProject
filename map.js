@@ -43,13 +43,14 @@ function myMap(){
   });  
   boundary.setMap(map);
 
-  const directionsService = new google.maps.DirectionsService();
+  const directionsService;
   var directionsRenderer;
   
   function createRoute() {
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length - 1; i++){
+      directionsService = = new google.maps.DirectionsService();
       directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){   
