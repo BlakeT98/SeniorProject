@@ -45,8 +45,6 @@ function myMap(){
 
   const directionsService = new google.maps.DirectionsService();
   var directionsRenderer;
-
-  directionsRenderer.setMap(map);
   
   function createRoute() {
     var p = document.getElementById("path").innerHTML;
@@ -56,6 +54,7 @@ function myMap(){
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){      
           directionsRenderer.setDirections(response);
+          directionsRenderer.setMap(map);
         },
         function(error){
           console.log("ERROR IN CONTROLLER " + error);
