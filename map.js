@@ -45,6 +45,7 @@ function myMap(){
 
   var directionsService;
   var directionsRenderer;
+  const delay = ms => new Promise(res => setTimeout(res,ms));
   
   function createRoute() {
     var p = document.getElementById("path").innerHTML;
@@ -58,10 +59,12 @@ function myMap(){
           directionsRenderer.setDirections(response);
           directionsRenderer.setMap(map);
         },
+        
         function(error){
           console.log("ERROR IN CONTROLLER " + error);
         }
       );
+      await delay(2000);
     }
     index = 0;
   }
