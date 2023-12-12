@@ -47,7 +47,7 @@ function myMap(){
   var directionsRenderer;
   const delay = ms => new Promise(res => setTimeout(res,ms));
   
-  function createRoute() {
+  async function createRoute() {
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length - 1; i++){
