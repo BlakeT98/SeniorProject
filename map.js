@@ -71,7 +71,7 @@ var index = 0;
 
 async function displayRoute(directionsService, directionsRenderer){
   var r = document.getElementById("path").innerHTML;
-  var p = r.split(",");
+  var p = r.split(":");
   console.log("PATH::::: " + p[index] + " " + p[index+1]);
 
   var request = {
