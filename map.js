@@ -86,7 +86,7 @@ async function displayRoute(directionsService, directionsRenderer){
       })
       .then((response) => {
         index++;
-        return directionsService.route;
+        return response;
   
       })
       .catch((e) => console.log("Directions request failed due to " + status));
