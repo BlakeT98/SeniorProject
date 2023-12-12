@@ -44,7 +44,7 @@ function myMap(){
   boundary.setMap(map);
 
   const directionsService = new google.maps.DirectionsService();
-  const directionsRenderer;
+  var directionsRenderer;
 
   directionsRenderer.setMap(map);
   
