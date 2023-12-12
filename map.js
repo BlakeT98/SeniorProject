@@ -62,6 +62,7 @@ function myMap(){
         }
       );
     }
+    index = 0;
   }
   document.getElementById("route").addEventListener("click", createRoute);
 
