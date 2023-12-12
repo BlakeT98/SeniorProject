@@ -67,10 +67,10 @@ function myMap(){
 window.myMap = myMap;
 
 var index = 0;
-var route = document.getElementById("path").innerHTML;
-var p = route.split(",");
 
 async function displayRoute(directionsService, directionsRenderer){
+  var route = document.getElementById("path").innerHTML;
+  var p = route.split(",");
   console.log("PATH::::: " + p[index] + " " + p[index+1]);
   
   //for(let i = 0; i < paths.length; i++){
