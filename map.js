@@ -44,7 +44,7 @@ function myMap(){
   boundary.setMap(map);
 
   const directionsService = new google.maps.DirectionsService();
-  const directionsRenderer = new google.maps.DirectionsRenderer();
+  const directionsRenderer;
 
   directionsRenderer.setMap(map);
   
@@ -52,6 +52,7 @@ function myMap(){
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length - 1; i++){
+      directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){      
           directionsRenderer.setDirections(response);
