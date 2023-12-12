@@ -64,7 +64,7 @@ function myMap(){
           console.log("ERROR IN CONTROLLER " + error);
         }
       );
-      await delay(100);
+      await delay(125);
     }
     index = 0;
   }
