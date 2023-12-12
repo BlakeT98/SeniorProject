@@ -46,8 +46,6 @@ function myMap(){
   boundary.setMap(map);
 
   directionsRenderer.setMap(map);
-
-  var index = 0;
   
   const createRoute = function(){
     var p = document.getElementById("path").innerHTML;
@@ -67,6 +65,8 @@ function myMap(){
 
 }
 window.myMap = myMap;
+
+var index = 0;
 
 async function displayRoute(directionsService, directionsRenderer){
   var route = document.getElementById("path").innerHTML;
