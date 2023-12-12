@@ -48,11 +48,11 @@ function myMap(){
 
   directionsRenderer.setMap(map);
   
-  const createRoute = function(){
+  function createRoute() {
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length; i++){
-      displayRoute(directionsService, directionsRenderer, function(response)).then(
+      var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){      
           directionsRenderer.setDirections(response);
         },
@@ -61,7 +61,7 @@ function myMap(){
         }
       );
     }
-  };
+  }
   document.getElementById("route").addEventListener("click", createRoute);
 
 }
@@ -79,16 +79,9 @@ async function displayRoute(directionsService, directionsRenderer){
     destination: p[index+1],
     travelMode: google.maps.TravelMode.DRIVING,
   };
-  directionsService.route(request, function(response, status){
-    if(status == google.maps.DirectionStatus.OK){
-      index++;
-      return response;
-    }
-    else{
-      console.log("DIRECTIONS SERVICES ROUTE ERROR " + status);
-    }
-  });
-
+  var response = directionsService.route(request);
+  index++;
+  return response;
     //alert("createRoute( ) WORKING!");
 }
 //window.myMap = myMap;
