@@ -74,22 +74,20 @@ async function displayRoute(directionsService, directionsRenderer){
   var p = r.split(",");
   console.log("PATH::::: " + p[index] + " " + p[index+1]);
 
-  directionsService
-    .route({
-      origin: {
-        query: p[index],//first coord
-      },
-      destination: {
-        query: p[index+1],//next coord
-      },
-      travelMode: google.maps.TravelMode.DRIVING,
-    })
-    .then((response) => {
+  var request = {
+    origin: p[index],
+    destination: p[index+1],
+    travelMode: google.maps.TravelMode.DRIVING,
+  };
+  directionsService.route(request, function(response, status){
+    if(status == google.maps.DirectionStatus.OK){
       index++;
       return response;
-
-    })
-    .catch((e) => console.log("Directions request failed due to " + status));
+    }
+    else{
+      console.log("DIRECTIONS SERVICES ROUTE ERROR " + status);
+    }
+  });
 
     //alert("createRoute( ) WORKING!");
 }
