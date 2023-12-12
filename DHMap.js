@@ -107,7 +107,6 @@ function searchAddress(street){
  }
 }
 
-
 //variables for the literal coordinates for the selected start and end locations
 var startCoord;
 var endCoord;
@@ -270,47 +269,6 @@ function grabAddress(){
        sInterID = searchAddress(startOutput);
        eInterID = searchAddress(endOutput);
 
-  //TESTING--------------------------------------------------------------------------    
- /*  
-       var blk = 0;
-       var st = "";
-       var type = "";
-       if(start.charAt(3) == " "){            //if street is formatted "123 Test St"
-         blk = start.substring(0,3);
-         st = start.substring(4);
-       }
-       else if(start.charAt(4) == " "){      //if street is formatted "1234 Test St"
-         blk = start.substring(0,4);
-         st = start.substring(5);
-       }
-       if(st.charAt(st.length - 3) == " "){
-         type = st.substring(st.length - 2, 2);
-         st = st.substring(0,st.length - 3);
-       }
-       else if(st.charAt(st.length - 4) == " "){
-         type = st.substring(st.length - 3, 3);
-         st = st.substring(0,st.length - 4);
-       }
-       else if(st.charAt(st.length - 5) == " "){
-         type = st.substring(st.length - 4, 4);
-         st = st.substring(0,st.length - 5);
-       }
-       var addr = "" + blk + "%20" + st + "%20" + type + "%20Marquette%20MI";
-       axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-         params:{
-           address: addr,
-           key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-         }
-       })
-       .then(function(response){
-         //console.log(response.data.results[0]);
-         startCoord = "" + response.data.results[0].geometry[0].location.lat + "," + response.data.results[0].geometry.location.lng;
-         //creating the start of the path
-         path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
-//TESTING--------------------------------------------------------------------------------
-*/       
-         //startCoord = Intersections[sInterID].Coord;
-
          if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
          else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
          else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
@@ -325,15 +283,6 @@ function grabAddress(){
            searches++;
            findElevations();
          } 
-       //TESTING----------------------------
-       /*
-       })
-     .catch(function(error){
-       console.log(error);
-       alert("Bad End Address input")
-     }); 
-     //TESTING----------------------------
-     */
     })
     .catch(function(error){
       console.log(error);
@@ -654,9 +603,9 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       lastE = 0;
       distance = 0;
       if(!first){
-        if(neighborsI[0] == undefined)alert("There is no way to get to your destination going downhill.");
+        if(neighborsI[0] == undefined)alert("There is no way to get to the destination going downhill.");
         if(neighborsI.length == 1){
-         alert("TESTING SECOND CHANCE: 1 INTERSECTION LEFT");
+         alert("Could not find route first try, Press OK to try another path");
           path += startingPath + ":" + Intersections[neighborsI[0]].Coord;
           sInterID = neighborsI[0];
           prevID = sInterID;
@@ -664,7 +613,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           findElevations();
         }
         else if(neighborsI.length == 2){
-          alert("TESTING SECOND CHANCE: 2 INTERSECTIONS LEFT");
+          alert("Could not find route first try, Press OK to try another path");
           let f = Math.min(neighborsE[0],neighborsE[1]);
           for(let i = 0; i < neighborsE.length; i++){
             if(f == neighborsE[i]){
@@ -677,7 +626,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           findElevations();
         }
         else if (neighborsI.length == 3){
-          alert("TESTING SECOND CHANCE: 3 INTERSECTIONS LEFT");
+         alert("Could not find route first try, Press OK to try another path");
           let f = Math.min(neighborsE[0],neighborsE[1],neighborsE[2]);
           for(let i = 0; i < neighborsE.length; i++){
             if(f == neighborsE[i]){
@@ -702,8 +651,5 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
   }  
 }
 
-//gets id index for Intersections[]
-//start = searchAddress("325 E Michigan St");
-//end = searchAddress("2724 N Lakeshore Blvd");
 
 //document.getElementById("test").innerHTML = start + " " + end;
