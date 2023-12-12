@@ -52,7 +52,8 @@ function myMap(){
     for(let i = 0; i < paths.length - 1; i++){
       directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
       var response = displayRoute(directionsService, directionsRenderer).then(
-        function(response){      
+        function(response){   
+          console.log("SETTING ROUTE");
           directionsRenderer.setDirections(response);
           directionsRenderer.setMap(map);
         },
