@@ -1,7 +1,6 @@
 
 //Creates Map
 function myMap(){
-  const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer();
   const myLatlng = { lat: 46.547581, lng: -87.395592 };
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -48,12 +47,12 @@ function myMap(){
   directionsRenderer.setMap(map);
   
   const createRoute = function(){
+    const directionsService = new google.maps.DirectionsService();
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length; i++){
       displayRoute(directionsService, directionsRenderer).then(
         function(response){      
-          console.log(response);
           directionsRenderer.setDirections(response);
         },
         function(error){
