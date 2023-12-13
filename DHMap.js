@@ -591,7 +591,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     alert("Found a route, Please click the Display Route button");
   }
   else{
-    if(searches > Intersections.length){
+    if(searches > Intersections.length/2){
       //alert("There is no way to get to your destination going downhill.");
       searches = 0;
       path = 0;
