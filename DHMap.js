@@ -44,13 +44,13 @@ for(let i = 0; i < addyArray.length; i++){
   //temp += Streets[i].Name + "<br>"; 
 }
 //temp += interArray[0] + "<br>";
-
+console.log(interArray[405]);
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
   //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   var c = "" + compass[4].replace(';',',') + "";
-  console.log("ID: " + j);
+  //console.log("ID: " + j);
   //console.log("ID " + j + " " + c);
   Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
   
