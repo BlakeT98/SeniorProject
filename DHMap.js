@@ -499,7 +499,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
 
   //TESTING
   let match = 0;
-  let index = 0;
+  let ind = 0;
   cycle.push(sInterID);
   if(cycle.length > 1){
     for(let i = 0; i < cycle.length; i++){
@@ -507,13 +507,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
       for(let j = i+1; j < cycle.length; j++){
         if(cycle[i] == cycle[j]){
           match++;
-          repeats[index] = cycle[i]
-          matches[index] = match;
-          console.log("Repeats: " + repeats[index] + " with Matches: "  + matches[index]);
+          repeats[ind] = cycle[i]
+          matches[ind] = match;
+          console.log("Repeats: " + repeats[ind] + " with Matches: "  + matches[ind]);
         }
       }
       match = 0;
-      index++;
+      ind++;
     }
     for(let n = 0; n < matches.length; n++){
       if(matches[n] > 3){
