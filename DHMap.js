@@ -43,7 +43,7 @@ for(let i = 0; i < addyArray.length; i++){
   Streets[i] = new Street(blck,n);
 }
 
-
+console.log("7| " + interArray[7] + "8| " + interArray[8] + "329| " + interArray[329] + "325| " + interArray[325]);
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
