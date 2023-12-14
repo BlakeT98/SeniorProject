@@ -131,20 +131,22 @@
               
                   <h1>Code</h1>
                 
-                <h2 id="forces">Example:</h2>
-                <p>Code Description.</p>
+                <h2 id="forces">Javascript Objects:</h2>
+                <p>This program uses two objects, Street and Intersection. Street is created for an array to search for a desired address quickly. Intersection is created for an array to store data for ID, North, East, South and West Streets connected to the Intersection, as well and the lat/lng coordinates of the intersection </p>
 <pre><code>  
-import java.util.*;
-import java.io.*;
-  
-class HelloWorld{
-                  
-  public static void main(String[] args)throws Exception{
-                  
-    System.out.println("Hello World");
-                  
- }
-}     
+function Street(blck,name){
+  this.Block = blck;
+  this.Name = name;
+}
+function Intersection(id,north,east,south,west,elev,coord){
+  this.Id = id;
+  this.North = north;
+  this.East = east;
+  this.South = south;
+  this.West = west;
+  this.Elevation = elev;
+  this.Coord = "" + coord;
+}
 </code></pre>
                
             </article>
