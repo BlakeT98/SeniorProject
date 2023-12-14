@@ -598,9 +598,10 @@ function findFinish(i,e){  //Parameters are array of ids and their elevations
       }
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
+    var change = "" + (distance * 3.2808399) + " Ft";
     searches = 0;
     document.getElementById('path').innerHTML = path;     
-    document.getElementById('change').innerHTML = (distance * 3.2808399) + " Ft";
+    document.getElementById('change').innerHTML = change + " Ft";
     alert("Found a route, Please click the Display Route button");
   }
   else{
