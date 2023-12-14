@@ -149,7 +149,7 @@
                 </code></pre>
 
               <div></div>
-              <h2 id="forces">Google Maps - Reverse Geocoding API Request</h2>
+              <h2 id="forces">Google Maps - Reverse Geocoding API Request:</h2>
               <p>Grabbing the address inputs, it will check whether the inputs are coordinates or readable addresses. If they are coordinates, then it calls the Reverse Geocoding Request to get a readable address to the coordinates.</p>
                <pre><code>
     //START INPUT
@@ -181,7 +181,7 @@
                  
                </code></pre> 
               <div></div>
-              <h2 id="forces">Google Maps - Elevation API Request</h2>
+              <h2 id="forces">Google Maps - Elevation API Request:</h2>
               <p>Using the starting Intersection ID, it grabs the coordinates of the Intersection. Converts it into a lat/lng object, then sends the request to get the elevation of the coordinates.</p>
             <pre><code>
     //Getting the elevation of the starting intersection
@@ -199,6 +199,33 @@
             lastE = results[0].elevation;
           }      
             </code></pre>
+              <div></div>
+            <h2 id="forces">Google Maps - Directions Service API Request:</h2>
+        <pre><code>
+//Creates the routes to display on map
+  async function createRoute() {
+    var p = document.getElementById("path").innerHTML;
+    const paths = p.split(":");
+    for(let i = 0; i < paths.length - 1; i++){
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});  //removes markers and doesnt re-center map to the route
+      var response = displayRoute(directionsService, directionsRenderer).then(
+        function(response){   
+          directionsRenderer.setDirections(response);
+          directionsRenderer.setMap(map);
+        },        
+        function(error){
+          console.log("ERROR IN CONTROLLER " + error);
+        }
+      );
+      await delay(250);          //Sets delay to allow api request to process before going to the next route
+    }
+    index = 0;
+  }
+  document.getElementById("route").addEventListener("click", createRoute);
+
+                
+              </code></pre>
             
             </article>
           </div>
