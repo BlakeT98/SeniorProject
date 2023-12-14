@@ -8,7 +8,6 @@ function Intersection(id,north,east,south,west,elev,coord){
   this.East = east;
   this.South = south;
   this.West = west;
-  this.Elevation = elev;
   this.Coord = "" + coord;
 }
   
@@ -46,7 +45,7 @@ for(let i = 0; i < addyArray.length; i++){
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
   var c = "" + compass[4].replace(';',',') + "";
-  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);  
+  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],c);  
 }
 
 //Searches input addresses in Streets array, then returns the intersection id connected to the input street.
