@@ -44,7 +44,7 @@ for(let i = 0; i < addyArray.length; i++){
   //temp += Streets[i].Name + "<br>"; 
 }
 //temp += interArray[0] + "<br>";
-console.log("7 " + interArray[7] + " | 8 " + interArray[7] + " | 9 " + interArray[7] + " | 10 " + interArray[7]);
+console.log("7 " + interArray[7] + " | 8 " + interArray[8] + " | 9 " + interArray[9] + " | 10 " + interArray[10]);
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
