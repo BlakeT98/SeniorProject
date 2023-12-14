@@ -1,6 +1,6 @@
 //Creates Map
 function myMap(){
-  
+  //Sets center of map and zoom 
   const myLatlng = { lat: 46.547581, lng: -87.395592 };
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 13,
@@ -15,19 +15,17 @@ function myMap(){
   });
 
   infoWindow.open(map);
-  // Configure the click listener.
+  
+  // Configure the click listener for the map.
   map.addListener("click", (mapsMouseEvent) => {
-    //map.addListener("click", function(evnt){
-    // Close the current InfoWindow.
     infoWindow.close();
     // Create a new InfoWindow.
     infoWindow = new google.maps.InfoWindow({
       position: mapsMouseEvent.latLng,
     });
     var coord = JSON.stringify(mapsMouseEvent.latLng.lat() + ", " + mapsMouseEvent.latLng.lng(), null, 2);
-    coord = coord.substring(1,coord.length-1);
-    //console.log("TEST COORD " + lat + " " + lng);
-    infoWindow.setContent("<p style=\"color:black;\"><b>" + coord + "</b></p>"   );      //JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    coord = coord.substring(1,coord.length-1);      //removes spaces
+    infoWindow.setContent("<p style=\"color:black;\"><b>" + coord + "</b></p>"   );     //Changes color of text for info window
     infoWindow.open(map);
   });    
 
@@ -46,25 +44,23 @@ function myMap(){
   var directionsService;
   var directionsRenderer;
   const delay = ms => new Promise(res => setTimeout(res,ms));
-  
+  //Creates the routes to display on map
   async function createRoute() {
     var p = document.getElementById("path").innerHTML;
     const paths = p.split(":");
     for(let i = 0; i < paths.length - 1; i++){
       directionsService = new google.maps.DirectionsService();
-      directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});
+      directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true,preserveViewport: true});  //removes markers and doesnt re-center map to the route
       var response = displayRoute(directionsService, directionsRenderer).then(
         function(response){   
-          console.log("SETTING ROUTE " + i);
           directionsRenderer.setDirections(response);
           directionsRenderer.setMap(map);
-        },
-        
+        },        
         function(error){
           console.log("ERROR IN CONTROLLER " + error);
         }
       );
-      await delay(250);
+      await delay(250);          //Sets delay to allow api request to process before going to the next route
     }
     index = 0;
   }
@@ -75,10 +71,10 @@ window.myMap = myMap;
 
 var index = 0;
 
+//Directions API Call
 async function displayRoute(directionsService, directionsRenderer){
   var r = document.getElementById("path").innerHTML;
   var p = r.split(":");
-  console.log("PATH::::: " + p[index] + " " + p[index+1]);
 
   var request = {
     origin: p[index],
@@ -88,43 +84,4 @@ async function displayRoute(directionsService, directionsRenderer){
   var response = directionsService.route(request);
   index++;
   return response;
-    //alert("createRoute( ) WORKING!");
 }
-//window.myMap = myMap;
-
-
-  //Creates marker pin
-   //var marker = new google.maps.Marker({  position: coord, map: map }); 
-
-
-//Applies onButtonClick to button
-//const button = document.querySelector('button');
-/*document.getElementById("enter").addEventListener("click", grabAddress);
-
-
-//button.addEventListener('click', grabAddress);
-//button.addEventListener('click', onButtonClick);
-
-//Grabs addresses from input text
-function grabAddress(){
- var start = document.getElementById("start").value;
- var end = document.getElementById("end").value;
- alert(start + ' ' + end);
- 
-}
-*/
-
-//Creates pop up message at button click
-/*function onButtonClick() {
-  alert('Button clicked!');
-}*/
-
-//Creates button at bottom of html page
-/*const newButton = document.createElement('button');
-newButton.textContent = 'Click me!';
-document.body.appendChild(newButton);
-
-newButton.addEventListener('click', () => {
-  alert('New button clicked!');
-});
-*/
