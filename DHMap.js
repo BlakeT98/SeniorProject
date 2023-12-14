@@ -601,7 +601,7 @@ function findFinish(i,e){  //Parameters are array of ids and their elevations
     var change = "" + (distance * 3.2808399) + " Ft";
     searches = 0;
     document.getElementById('path').innerHTML = path;     
-    document.getElementById('change').value = change;
+    document.getElementById('change').innerHTML = change;
     alert("Found a route, Please click the Display Route button");
   }
   else{
