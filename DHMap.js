@@ -122,6 +122,9 @@ var neighborsE = [];
 var first = true;
 var prevID;
 var distance = 0;
+var cycle = [];
+var repeats = [];
+var matches = [];
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
@@ -494,6 +497,40 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
   }
 
+  //TESTING
+  let match = 0;
+  let index = 0;
+  cycle.push(sInterID);
+  if(cycle.length > 1){
+    for(let i = 0; i < cycle.length; i++){
+      console.log("CYCLE: " + cycle[i]);
+      for(let j = i+1; j < cycle.length; j++){
+        if(cycle[i] == cycle[j]){
+          match++;
+          repeats[index] = cycle[i]
+          matches[index] = match;
+          console.log("Repeats: " + repeats[index] + " with Matches: "  + matches[index]);
+        }
+      }
+      match = 0;
+      index++;
+    }
+    for(let n = 0; n < matches.length; n++){
+      if(matches[n] > 3){
+        for(let p = leni-1; p >= 0; p--){
+          if(repeats[n] == i[p]){
+             console.log("FOUND REAPEAT CYCLE");
+             i.splice(p,1);
+             e.splice(p,1);
+             leni = i.length;
+             len = e.length;
+           }
+         }  
+       }
+     }
+  }
+  //TESTING
+  
   if(len == 0)alert("There is no way to get to your destination going downhill.");
 
   //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
@@ -635,7 +672,7 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         }
       }
     }
-    else{  
+    else{     
       prevID = sInterID;
       sInterID = foundID;
       searches++;
