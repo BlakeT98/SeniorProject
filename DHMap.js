@@ -3,7 +3,6 @@ function Street(blck,name){
   this.Name = name;
 }
 function Intersection(id,north,east,south,west,elev,coord){
-//function Intersection(id,north,east,south,west,elev){
   this.Id = id;
   this.North = north;
   this.East = east;
@@ -29,7 +28,7 @@ let start = "";
 let end = "";
 let blck;
 let n;
-var closestCoord = 0;
+
 //Creating Streets[] with addyArray
 for(let i = 0; i < addyArray.length; i++){
   if(addyArray[i].charAt(3) == " "){
@@ -43,27 +42,18 @@ for(let i = 0; i < addyArray.length; i++){
   Streets[i] = new Street(blck,n);
 }
 
-console.log("7| " + interArray[7] + "8| " + interArray[8] + "329| " + interArray[329] + "325| " + interArray[325]);
 //Creating Intersections[] with interArray
 for(let j = 0; j < interArray.length-1; j++){
   const compass = interArray[j].split(",");
-  //Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0);
   var c = "" + compass[4].replace(';',',') + "";
-  //console.log("ID: " + j);
-  //console.log("ID " + j + " " + c);
-  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);
-  
-  //temp += Intersections[j].Id + ", North: " + Intersections[j].North + ", East: " + Intersections[j].East + ", South: " + Intersections[j].South + ", West: " + Intersections[j].West + ", Elevation: " + Intersections[j].Elevation + "<br>";
+  Intersections[j] = new Intersection(j,compass[0],compass[1],compass[2],compass[3],0,c);  
 }
 
-//Searches input addresses in our Streets array, then returns the intersection id connected to the input street.
+//Searches input addresses in Streets array, then returns the intersection id connected to the input street.
 function searchAddress(street){
   let block = 0;
   let st = "";
   let blockNum = 0;
-  //<label id="test">100 Hawley St</label> 
-  //let street = s.substring(17,s.length-9);
-  //console.log("UPDATE " + street)
 
   for(let i = 0; i < street.length; i++){
     if(street.charAt(3) == " "){            //if street is formatted "123 Test St"
@@ -79,7 +69,6 @@ function searchAddress(street){
     else if(street.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
       block = street.substring(0,4);
       st = street.substring(10);
-      //console.log("Format Detected " + block + " : " + st);
       break;
     }
     else if(street.charAt(4) == " "){      //if street is formatted "1234 Test St"
@@ -87,7 +76,8 @@ function searchAddress(street){
       st = street.substring(5);
       break;
     }
-  }  //Checking if starting or ending locations are a match with Streets[]
+  }  
+  //Checking if starting or ending locations are a match with Streets[]
   for(let j = 0; j < Streets.length; j++){
     if(st == Streets[j].Name){
       if(blockNum == 0){
@@ -100,19 +90,24 @@ function searchAddress(street){
   }
   //blockNum is the correct block number for matching street name
   let s = "" + blockNum + " "  + st;
-  //console.log("Searching for: " + s);
- for(let k = 0; k < Intersections.length; k++){
-   if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West) return Intersections[k].Id;
- }
+  for(let k = 0; k < Intersections.length; k++){
+    if(s == Intersections[k].North || s == Intersections[k].East || s == Intersections[k].South || s == Intersections[k].West) return Intersections[k].Id;
+  }
 }
 
 //variables for the literal coordinates for the selected start and end locations
 var startCoord;
 var endCoord;
+
+//Formatted versions of inputs in readable address form
 var startOutput;
 var endOutput;
+
+//Intersections Id numbers for grabbing data easily
 var sInterID;
 var eInterID;
+
+//Creating path variables
 var path;
 var searches = 0;
 var startingPath;
@@ -125,16 +120,16 @@ var distance = 0;
 var cycle = [];
 var repeats = [];
 var matches = [];
+
 //Grabs addresses from input text and geocodes it into a human readable text.
 function grabAddress(){
   var start = document.getElementById("start").value;
   var end = document.getElementById("end").value;                  
 
   //START INPUT
-  //Check if it has a left bracket indicating the user pasted lat lng
+  //Check if it has a left bracket indicating the user input lat lng
   if(start.charAt(2) == '.'){
     startCoord = start;
-    //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY
     //used source for concatinating geocode api url and lat/lng with api key added at the end
     axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
       params:{
@@ -145,7 +140,6 @@ function grabAddress(){
    .then(function(response){  
      //combining block number and street name from geocoded results
      var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-     //console.log("Found Start LatLng :" + startAddy);
      if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
        var block = startAddy.substring(0,3);
        var st = startAddy.substring(8);     
@@ -155,7 +149,6 @@ function grabAddress(){
        block = startAddy.substring(0,4);
        st = startAddy.substring(10);
        startAddy = block + " " + st;
-       //console.log("Format Detected " + block + " : " + st);
      }
      //converting JSON obj into string
      startOutput = `${startAddy}`;
@@ -173,7 +166,6 @@ function grabAddress(){
        .then(function(response){
          //combining block number and street name from geocoded results
          var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-         //console.log("Found End LatLng :" + endAddy); 
          if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
            var block = endAddy.substring(0,3);
            var st = endAddy.substring(8);     
@@ -183,11 +175,12 @@ function grabAddress(){
            block = endAddy.substring(0,4);
            st = endAddy.substring(10);
            endAddy = block + " " + st;
-           //console.log("Format Detected " + block + " : " + st);
          }
          //converting JSON obj into string
          endOutput = `${endAddy}`;
-         
+
+         //Verifies that new formatted address is within range by checking Streets array
+         //Returns Intersection attached to formatted address
          sInterID = searchAddress(startOutput);
          eInterID = searchAddress(endOutput);
          if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
@@ -200,7 +193,6 @@ function grabAddress(){
            path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
            prevID = sInterID;
            startingPath = path;
-           //startID = sInterID;
            searches++;
            findElevations();
          }                  
@@ -226,7 +218,6 @@ function grabAddress(){
          path = "" + startCoord + ":" + Intersections[sInterID].Coord + "";
          prevID = sInterID;
          startingPath = path;
-         //startID = sInterID;
          searches++;
          findElevations();
        }                  
@@ -242,6 +233,7 @@ function grabAddress(){
    startOutput = start;
   
    //END INPUT
+   //IF END IS COORDINATES
    if(end.charAt(2) == '.'){
      endCoord = end;
      //used source for concatinating geocode api url and lat/lng with api key added at the end
@@ -253,8 +245,7 @@ function grabAddress(){
      })
      .then(function(response){
        //combining block number and street name from geocoded results
-       var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-       //console.log("Found End LatLng :" + endAddy); 
+       var endAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name; 
        if (endAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
          var block = endAddy.substring(0,3);
          var st = endAddy.substring(8);     
@@ -264,7 +255,6 @@ function grabAddress(){
          block = endAddy.substring(0,4);
          st = endAddy.substring(10);
          endAddy = block + " " + st;
-         //console.log("Format Detected " + block + " : " + st);
        }
        //converting JSON obj into string
        endOutput = `${endAddy}`;
@@ -281,7 +271,6 @@ function grabAddress(){
            path = "" + Intersections[sInterID].Coord + "";
            prevID = sInterID;
            startingPath = path;
-           //startID = sInterID;
            searches++;
            findElevations();
          } 
@@ -291,6 +280,7 @@ function grabAddress(){
       alert("Bad End Address input")
     }); 
   }
+  //END INPUT IS NOT COORDINATES
   else if(end.charAt(2) != '.'){
     endOutput = end;
     sInterID = searchAddress(startOutput);
@@ -307,7 +297,6 @@ function grabAddress(){
       path = "" + Intersections[sInterID].Coord + "";
       prevID = sInterID;
       startingPath = path;
-      //startID = sInterID;
       searches++;
       findElevations();
     }                  
@@ -315,6 +304,7 @@ function grabAddress(){
  }
 }
 
+//Calls elevation api on connected intersections
 function findElevations(){   
   var ids = [];
   var elevs = [];
@@ -332,13 +322,12 @@ function findElevations(){
     locations: [location],
   })
   .then(({ results }) => {  
-    if(results[0]){                    //Any else that needs to be done in sequence, has to be inside this if statement
-      if(lastE == 0) lastE = results[0].elevation;                   //Do I need to store the current elevation????
+    if(results[0]){                    //Anything else that needs to be done in sequence, has to be inside this if statement
+      if(lastE == 0) lastE = results[0].elevation;              
       else {
         distance += lastE - results[0].elevation;
         lastE = results[0].elevation;
       }
-      //console.log("Start Intersection Elevation: " + results[0].elevation);
 
       //Now I need to search for connected intersections
       let north = Intersections[sInterID].North;
@@ -354,35 +343,32 @@ function findElevations(){
       }
       ids.push(nextN,nextE,nextS,nextW);
       console.log("Starting Intersection: " + sInterID + " " + north + " " + east + " " + south + " " + west);
-      console.log("STARTING: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
-      
+      console.log("Connected Intersections of: " + sInterID + " - " + "IDS: " + ids[0] + " " + ids[1] + " " + ids[2] + " " + ids[3]);
+
+      //removes ids that have null attached, not ever intersections have 4 connecting intersections
+      //removes ids in reverse order, so it doesnt skip ids with an index change
       if(ids[3] == undefined)ids.splice(3,1);
       if(ids[2] == undefined)ids.splice(2,1);
       if(ids[1] == undefined)ids.splice(1,1);
       if(ids[0] == undefined)ids.splice(0,1);
 
-     // const directionalElevations = getElevs(ids);    //May not have all 4 ids
+      //Grabs coords of actual id list
       for(let i = 0; i < ids.length; i++){
-        //console.log("TESTING : ID LENGTH = " + ids.length);
         coords[i] = Intersections[ids[i]].Coord;
-        //console.log("NEW IDS[" + i + "]: " + ids[i] + " " + Intersections[ids[i]].Coord);
       }  
 
       let index = ids.length - 1;
-      //console.log("ID LENGTH = " + index);
       if(index >= 0){
         let ltlg = coords[0].split(",",2);
-        let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
-        let elevator = new google.maps.ElevationService();
+        let location = new google.maps.LatLng(ltlg[0],ltlg[1]);  
+        let elevator = new google.maps.ElevationService();        //Calls Elevation API
         elevator.getElevationForLocations({
           locations: [location],
         })
         .then(({ results }) => {
           if(results[0]){
-            elevs[0] = results[0].elevation;
-            //console.log("Elevs[0] : " + elevs[0]);
-            //console.log(ids[0] + " Coord = " + coords[0]);
-            if(index >= 1){
+            elevs[0] = results[0].elevation;                      //Stores elevation data in array of elevs[]
+            if(index >= 1){                                      //Checks if there is one or more intersections to get elevation from
               let ltlg = coords[1].split(",",2);
               let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
               let elevator = new google.maps.ElevationService();
@@ -392,9 +378,7 @@ function findElevations(){
               .then(({ results }) => {
                 if(results[0]){
                   elevs[1] = results[0].elevation;
-                  //console.log("Elevs[1] : " + elevs[1]);
-                  //console.log(ids[1] + " Coord = " + coords[1]);
-                  if(index >= 2){
+                  if(index >= 2){                                          //Checks if there are two or more elevations to get
                     let ltlg = coords[2].split(",",2);
                     let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
                     let elevator = new google.maps.ElevationService();
@@ -404,9 +388,7 @@ function findElevations(){
                     .then(({ results }) => {
                       if(results[0]){
                         elevs[2] = results[0].elevation;
-                        //console.log("Elevs[2] : " + elevs[2]);
-                        //console.log(ids[2] + " Coord = " + coords[2]);
-                        if(index == 3){
+                        if(index == 3){                                        //Checks if there are three elevations to get
                           let ltlg = coords[3].split(",",2);
                           let location = new google.maps.LatLng(ltlg[0],ltlg[1]);
                           let elevator = new google.maps.ElevationService();
@@ -468,9 +450,6 @@ function findElevations(){
           console.log("ERROR: " + e)
         );
       }
-      
-      //Then check their elevation, and decided which two to visit
-      //After visiting, check their connected
     }
     else{ 
       alert("No results found");
@@ -479,17 +458,16 @@ function findElevations(){
   .catch((e) =>
     console.log("ERROR: " + e)
   );
-  //THIS NEEDS TO BE THE END OF findRoute()
 }
 
-function findFinish(i,e){  //Parameters are array of ids and elevations
+function findFinish(i,e){  //Parameters are array of ids and their elevations
   var len = e.length;
   var leni = i.length;
   let foundID;
   let index = 0;
   console.log("PREVID IS " + prevID);
   for(let n = 0; n < leni; n++){
-    if(prevID == i[n]){
+    if(prevID == i[n]){                        //If an intersection has been previous used, remove from viable id list to prevent loops
       i.splice(n,1);
       e.splice(n,1);
       leni = i.length;
@@ -497,7 +475,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
   }
 
-  //TESTING
+  //This checks for cycle patterns greater than previous id 
+  //Keeps track of how many times an id has been chosen for the path, and removes it as an option past 4 matches
   let match = 0;
   let ind = 0;
   cycle.push(sInterID);
@@ -509,8 +488,8 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           match++;
           repeats[ind] = cycle[i]
           matches[ind] = match;
-          console.log("Repeats: " + repeats[ind] + " with Matches: "  + matches[ind]);
         }
+        console.log("Repeats: " + repeats[ind] + " with Matches: "  + matches[ind]);
       }
       match = 0;
       ind++;
@@ -529,19 +508,22 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
        }
      }
   }
-  //TESTING
+
+  //Picks intersection based on elevation data
   
+  //if there are no intersections left to chose from
   if(len == 0)alert("There is no way to get to your destination going downhill.");
 
-  //console.log("ID LENGTH = " + leni + " " + "ELEVATION LENGTH = " + len);
+  //if there is one intersection left to chose from
   if(len == 1){
     if(i[0] == eInterID)foundID = i[0];
     else{
       path += ":" + Intersections[i[0]].Coord;
       foundID = i[0];
     }
-    //console.log("PATH: " + i[0] + " " + path);
   }
+  //if there are two intersections to choose from, pick the lowest elevation
+  //Then check if the chosen intersection is the end intersection
   if(len == 2){
     console.log("TEST1");
     let found = Math.min(e[0], e[1]);
@@ -554,22 +536,19 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
           foundID = i[j];
           break;
         }
-        console.log("DEBUG: " + e[j] + " AND " + i[j]);
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
-      else if(first){
+      else if(first){                            //Stores unchosen intersections in case no route was found with the chosen intersection
         neighborsI[index] = i[j];
         neighborsE[index] = e[j];
         index++;
         first = false;
       }
     }
-    //console.log("PATH: " + foundID + " " + path);
-     //console.log("SECOND CHANCE: " + neighborsI.length);
   }
+  //if there are 3 intersections to chose from, pick the lowest elevation
   if(len == 3){
-    console.log("TEST2");
     let found = Math.min(e[0], e[1], e[2]);
     for(let j = 0; j < len; j++){
       if(e[j] == found) {
@@ -580,16 +559,15 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
-      else if(first){
+      else if(first){                            //Store unchosen intersections for later
         neighborsI[index] = i[j];
         neighborsE[index] = e[j];
         index++;
         first = false;
       }
     }
-    //console.log("PATH: " + foundID + " " + path);
-    //console.log("SECOND CHANCE: " + neighborsI.length);
   }
+  //if there are 4 intersections to chose from, pick the lowest elevation
   if(len == 4){
     console.log("TEST3");
     let found = Math.min(e[0], e[1],e[2],e[3]);
@@ -602,15 +580,13 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         path += ":" + Intersections[i[j]].Coord;
         foundID = i[j];
       }
-      else if (first){
+      else if (first){                  //Store unchosen intersections for later
         neighborsI[index] = i[j];
         neighborsE[index] = e[j];
         index++;
         first = false;
       }
     }
-    //console.log("PATH: " + foundID + " " + path);
-    //console.log("SECOND CHANCE: " + neighborsI.length);
   }
   
   //Check if foundID is the ID of the end Intersection
@@ -624,12 +600,11 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
     }
     console.log("TOTAL DOWNHILL = " + (distance * 3.2808399) + " Ft");
     searches = 0;
-    document.getElementById('path').innerHTML = path;          //add function in map.js that listens for 'path' change in html, then create directions route
+    document.getElementById('path').innerHTML = path;          
     alert("Found a route, Please click the Display Route button");
   }
   else{
-    if(searches > Intersections.length/4){
-      //alert("There is no way to get to your destination going downhill.");
+    if(searches > Intersections.length/4){                          //If searches exceed 1/4 of the Intersections, give up and try a different path
       searches = 0;
       path = 0;
       lastE = 0;
@@ -672,16 +647,11 @@ function findFinish(i,e){  //Parameters are array of ids and elevations
         }
       }
     }
-    else{     
-      prevID = sInterID;
+    else{                                       //Continue to search until it finds destination or times out
+      prevID = sInterID;                        //picks intersection from if statements above, then updates previous id and searches
       sInterID = foundID;
       searches++;
-      //console.log("DISTANCE: " + distance);
-      //console.log("CHECK IF ID IS GOOD " + sInterID);
       findElevations();      
     }                            
   }  
 }
-
-
-//document.getElementById("test").innerHTML = start + " " + end;
