@@ -523,12 +523,10 @@ function findFinish(i,e){  //Parameters are array of ids and their elevations
   //if there are two intersections to choose from, pick the lowest elevation
   //Then check if the chosen intersection is the end intersection
   if(len == 2){
-    console.log("TEST1");
     let found = Math.min(e[0], e[1]);
     console.log("Choices " + e[0] + " " + e[1]);
     console.log("Picked: " + found);
     for(let j = 0; j < len; j++){
-      //console.log("TEST4 " + j);
       if(e[j] == found) {
         if(i[j] == eInterID){
           foundID = i[j];
