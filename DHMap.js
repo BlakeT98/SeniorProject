@@ -2,7 +2,7 @@ function Street(blck,name){
   this.Block = blck;
   this.Name = name;
 }
-function Intersection(id,north,east,south,west,elev,coord){
+function Intersection(id,north,east,south,west,coord){
   this.Id = id;
   this.North = north;
   this.East = east;
