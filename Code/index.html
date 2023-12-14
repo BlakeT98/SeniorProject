@@ -149,7 +149,7 @@
                 </code></pre>
 
               <div></div>
-              <h2 id="forces">Reverse Geocoding API</h2>
+              <h2 id="forces">Google Maps - Reverse Geocoding API Request</h2>
               <p>Grabbing the address inputs, it will check whether the inputs are coordinates or readable addresses. If they are coordinates, then it calls the Reverse Geocoding Request to get a readable address to the coordinates.</p>
                <pre><code>
     //START INPUT
@@ -179,7 +179,27 @@
        //converting JSON obj into string
        startOutput = `${startAddy}`;
                  
-               </code></pre>
+               </code></pre> 
+              <div></div>
+              <h2 id="forces">Google Maps - Elevation API Request</h2>
+              <p>Using the starting Intersection ID, it grabs the coordinates of the Intersection. Converts it into a lat/lng object, then sends the request to get the elevation of the coordinates.</p>
+            <pre><code>
+    //Getting the elevation of the starting intersection
+      const latlng = Intersections[sInterID].Coord.split(',');
+      var location = new google.maps.LatLng(latlng[0],latlng[1]);
+      const elevator = new google.maps.ElevationService();
+      elevator.getElevationForLocations({
+        locations: [location],
+      })
+      .then(({ results }) => {  
+        if(results[0]){                    //Anything else that needs to be done in sequence, has to be inside this if statement
+          if(lastE == 0) lastE = results[0].elevation;              
+          else {
+            distance += lastE - results[0].elevation;
+            lastE = results[0].elevation;
+          }      
+            </code></pre>
+            
             </article>
           </div>
         </div>
