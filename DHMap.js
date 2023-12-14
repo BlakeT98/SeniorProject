@@ -53,7 +53,7 @@ function searchAddress(street){
   let block = 0;
   let st = "";
   let blockNum = 0;
-  console.log.("STREET " + street);
+  console.log("STREET " + street);
   for(let i = 0; i < street.length; i++){
     if(street.charAt(3) == " "){            //if street is formatted "123 Test St"
       block = street.substring(0,3);
