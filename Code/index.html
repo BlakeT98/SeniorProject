@@ -134,49 +134,49 @@
                 <h2 id="forces">Javascript Objects:</h2>
                 <p>This program uses two objects, Street and Intersection. Street is created for an array to search for a desired address quickly. Intersection is created for an array to store data for ID, North, East, South and West Streets connected to the Intersection, as well and the lat/lng coordinates of the intersection </p>
                 <pre><code>  
-                function Street(blck,name){
-                  this.Block = blck;
-                  this.Name = name;
-                }
-                function Intersection(id,north,east,south,west,elev,coord){
-                  this.Id = id;
-                  this.North = north;
-                  this.East = east;
-                  this.South = south;
-                  this.West = west;
-                  this.Coord = "" + coord;
-                }
+      function Street(blck,name){
+        this.Block = blck;
+        this.Name = name;
+      }
+      function Intersection(id,north,east,south,west,elev,coord){
+        this.Id = id;
+        this.North = north;
+        this.East = east;
+        this.South = south;
+        this.West = west;
+        this.Coord = "" + coord;
+      }
                 </code></pre>
 
               <div></div>
               <p>Grabbing the address inputs, it will check whether the inputs are coordinates or readable addresses. If they are coordinates, then it calls the Reverse Geocoding Request to get a readable address to the coordinates.</p>
                <pre><code>
-                  //START INPUT
-                  //Check if it has a left bracket indicating the user input lat lng
-                  if(start.charAt(2) == '.'){
-                    startCoord = start;
-                    //used source for concatinating geocode api url and lat/lng with api key added at the end
-                    axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
-                      params:{
-                        latlng: start,
-                        key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
-                      }
-                    })
-                   .then(function(response){  
-                     //combining block number and street name from geocoded results
-                     var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
-                     if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
-                       var block = startAddy.substring(0,3);
-                       var st = startAddy.substring(8);     
-                       startAddy = block + " " + st;
-                     }
-                     else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
-                       block = startAddy.substring(0,4);
-                       st = startAddy.substring(10);
-                       startAddy = block + " " + st;
-                     }
-                     //converting JSON obj into string
-                     startOutput = `${startAddy}`;
+    //START INPUT
+    //Check if it has a left bracket indicating the user input lat lng
+    if(start.charAt(2) == '.'){
+      startCoord = start;
+      //used source for concatinating geocode api url and lat/lng with api key added at the end
+      axios.get('https:maps.googleapis.com/maps/api/geocode/json',{
+        params:{
+          latlng: start,
+          key:'AIzaSyDXv29cjGoYgAy0VD5MVexGcdlXwd0eohg'
+        }
+      })
+     .then(function(response){  
+       //combining block number and street name from geocoded results
+       var startAddy = response.data.results[0].address_components[0].short_name + " " + response.data.results[0].address_components[1].short_name;
+       if (startAddy.charAt(3) == "-"){       //if street is formatted "123-321 Test St"
+         var block = startAddy.substring(0,3);
+         var st = startAddy.substring(8);     
+         startAddy = block + " " + st;
+       }
+       else if(startAddy.charAt(4) == "-"){      //if street is formatted "1234-4321 Test St"
+         block = startAddy.substring(0,4);
+         st = startAddy.substring(10);
+         startAddy = block + " " + st;
+       }
+       //converting JSON obj into string
+       startOutput = `${startAddy}`;
                  
                </code></pre>
             </article>
