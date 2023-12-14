@@ -284,8 +284,6 @@ function grabAddress(){
     endOutput = end;
     sInterID = searchAddress(startOutput);
     eInterID = searchAddress(endOutput);
-    startCoord = Intersections[sInterID].Coord;
-    endCoord = Intersections[eInterID].Coord;
     if(sInterID === undefined && eInterID === undefined)alert("Start Address: (" + start + ") and End Address: (" + end + ") are not found or within range.");
     else if(sInterID == undefined)alert("Start Address: (" + start + ") is not found or within range");
     else if(eInterID == undefined)alert("End Address: (" + end + ") is not found or within range");
