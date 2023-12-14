@@ -599,6 +599,7 @@ function findFinish(i,e){  //Parameters are array of ids and their elevations
     searches = 0;
     document.getElementById('path').innerHTML = path;     
     document.getElementById('change').innerHTML = change;
+    path = "";
     alert("Found a route, Please click the Display Route button");
   }
   else{
